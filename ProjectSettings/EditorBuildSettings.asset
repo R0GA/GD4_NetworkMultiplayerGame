@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sci-Fi Styled Modular Pack/Example scenes/outpost on desert.unity
     guid: b42ca4c5c936383429d2318c931f7ad2
+  - enabled: 1
+    path: Assets/Scenes/Rowynn Test.unity
+    guid: b09c61dd65d257f4e82641fd16d21f37
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
