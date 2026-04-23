@@ -1,5 +1,4 @@
-using System;
-using UnityEditor.ShaderGraph.Internal;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +10,15 @@ public class ReactorSabotage : MonoBehaviour
     [SerializeField] private float subtractAmount = 2f;
     [SerializeField] private float currentAmount;
     private float StartValue = 0;
+    public bool isReactorCritical;
 
     [Header("UI Settings")]
     public Slider fillbar;
+
+    [Header("Animation")]
+    public float riseTime = 0.25f;
+    public float holdTime = 0.15f;
+    public float dropTime = 0.18f;
 
     void Start()
     {
@@ -26,7 +31,28 @@ public class ReactorSabotage : MonoBehaviour
     void Update()
     {
         fillbar.value = currentAmount;
-       
+
+        if (fillbar.value > 60f )
+        {
+            fillbar.image.color = Color.orange;
+        }
+
+        if (fillbar.value > 90f)
+        {
+            fillbar.image.color= Color.red;
+        }
+
+        if (currentAmount ==98f)
+        {
+            currentAmount += 2;
+        }
+
+
+        if (currentAmount ==100f)
+        {
+            isReactorCritical = true;
+        }
+
     }
 
     public void ButtonClick()
@@ -40,6 +66,9 @@ public class ReactorSabotage : MonoBehaviour
         currentAmount = afterSub;
 
         print(currentAmount.ToString());
+
+
+
       
     }
 }
