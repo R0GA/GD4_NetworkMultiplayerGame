@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8382118695962211386}
   - component: {fileID: 4715573858406146250}
   - component: {fileID: 9088491438834059125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CinemachineBrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,8 @@ GameObject:
   - component: {fileID: 2195143465864654835}
   - component: {fileID: 4114022743777243310}
   - component: {fileID: 6620244743481665403}
-  m_Layer: 0
+  - component: {fileID: 2505488507652946073}
+  m_Layer: 7
   m_Name: FreeLook Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,6 +411,45 @@ MonoBehaviour:
         DecelTime: 0
   PlayerIndex: -1
   AutoEnableInputs: 1
+--- !u!114 &2505488507652946073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071095093125033932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDeoccluder
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 38
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
 --- !u!1 &6023558797097434753
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +464,7 @@ GameObject:
   - component: {fileID: 4507300880787058905}
   - component: {fileID: 3479291695567701955}
   - component: {fileID: 2859548820267686996}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Slug
   m_TagString: Slug
   m_Icon: {fileID: 0}
@@ -615,7 +655,7 @@ GameObject:
   - component: {fileID: 6630089794945292200}
   - component: {fileID: 7736220398771303993}
   - component: {fileID: 3373208974109531285}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BaseModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
