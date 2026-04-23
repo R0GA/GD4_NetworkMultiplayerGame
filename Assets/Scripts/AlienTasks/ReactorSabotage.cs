@@ -11,6 +11,7 @@ public class ReactorSabotage : MonoBehaviour
     [SerializeField] private float currentAmount;
     private float StartValue = 0;
     public bool isReactorCritical;
+    public bool isReactorDestroyed;
 
     [Header("UI Settings")]
     public Slider fillbar;
@@ -19,6 +20,9 @@ public class ReactorSabotage : MonoBehaviour
     public float riseTime = 0.25f;
     public float holdTime = 0.15f;
     public float dropTime = 0.18f;
+
+
+   
 
     void Start()
     {

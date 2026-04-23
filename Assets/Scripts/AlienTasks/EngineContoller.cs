@@ -22,6 +22,9 @@ public class EngineContoller : MonoBehaviour
 
     public bool isEngineCorrect = false;
 
+    public bool isEngineDestroyed;
+
+
     
 
     public void EngineUp()
@@ -80,7 +83,7 @@ public class EngineContoller : MonoBehaviour
     {
         //Debug.Log("Z rotation is: " + engine.transform.eulerAngles.z);
 
-        if (engine.transform.eulerAngles.z ==270f)
+        if (engine.transform.eulerAngles.z >267||engine.transform.eulerAngles.z <273f)
 
         {
             isEngineCorrect = true;
@@ -88,7 +91,7 @@ public class EngineContoller : MonoBehaviour
             EngineCorrect();
         }
 
-        else if(engine.transform.eulerAngles.z >270 || engine.transform.eulerAngles.z < 270)
+        else if(engine.transform.eulerAngles.z >273 || engine.transform.eulerAngles.z < 267)
         {
             isEngineCorrect= false;
             print("Engine Wrong");
