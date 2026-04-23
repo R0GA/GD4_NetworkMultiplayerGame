@@ -28,9 +28,9 @@ public class TaskManager : MonoBehaviour
         }
 
 
-        if(reactorSabotage.isReactorDestroyed)
-        {
-            reactorTxt.SetActive(false);
-        }
+        //if (reactorSabotage.isReactorDestroyed)
+        //{
+        //    reactorTxt.SetActive(false);
+        //}
     }
 }

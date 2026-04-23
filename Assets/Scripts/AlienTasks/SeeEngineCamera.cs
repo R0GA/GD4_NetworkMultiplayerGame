@@ -3,15 +3,17 @@ using UnityEngine;
 public class SeeEngineCamera : MonoBehaviour
 {
     public GameObject engineCamCanvas;
-
     [SerializeField] private SlugPlayer slugPlayer;
+   [SerializeField] private GameObject slugman;
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("collided" + other);
         if (other.CompareTag("Slug"))
         {
             engineCamCanvas.SetActive(true);
-            slugPlayer.SetUIMode(true);
+            other.GetComponent<SlugPlayer>().SetUIMode(true);
+            slugman = other.gameObject;
         }
     }
 
@@ -20,7 +22,13 @@ public class SeeEngineCamera : MonoBehaviour
         if (other.CompareTag("Slug"))
         {
             engineCamCanvas.SetActive(false);
-            slugPlayer.SetUIMode(false);
+            other.GetComponent<SlugPlayer>().SetUIMode(false);
         }
+    }
+
+    public void Close()
+    {
+        engineCamCanvas.SetActive(false);
+        slugman.GetComponent<SlugPlayer>().SetUIMode(false);
     }
 }

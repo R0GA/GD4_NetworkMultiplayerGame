@@ -1,30 +1,28 @@
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.Cinemachine;  
-
+using Unity.Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 public class SlugPlayer : NetworkBehaviour
 {
-   
     [Header("Components")]
-    [Tooltip("Cinemachine Virtual Camera that follows this player.")]
     [SerializeField] private CinemachineCamera virtualCamera;
-    [Tooltip("Root Transform of the player's own 3D model — hidden while disguised.")]
     [SerializeField] private Transform playerVisualRoot;
+
+    // ── ADD THIS ──────────────────────────────────────────
+    [Tooltip("The InputAxisController on your Cinemachine Virtual Camera.")]
+    [SerializeField] private CinemachineInputAxisController cinemachineInputController;
+    // ──────────────────────────────────────────────────────
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpHeight = 2f;
-    [Tooltip("Speed multiplier applied while disguised as a prop.")]
     [SerializeField] private float propMoveSpeedMultiplier = 0.55f;
-    [Tooltip("How fast the player rotates to face movement direction.")]
     [SerializeField] private float rotationSpeed = 10f;
 
     [Header("Look / Rotation")]
     [SerializeField] private float horizontalLookSensitivity = 2f;
-    [Tooltip("If true, vertical mouse input is ignored (let Cinemachine handle pitch).")]
     [SerializeField] private bool ignoreVerticalLook = true;
 
     [Header("Animation")]
@@ -32,12 +30,14 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private string speedParam = "Speed";
 
     [Header("Prop Transform")]
-    [Tooltip("Max distance (metres) at which a prop can be targeted for disguise.")]
     [SerializeField] private float interactRange = 4f;
-    [Tooltip("Layer mask for the prop‑targeting raycast. Include all layers your props live on.")]
     [SerializeField] private LayerMask propLayerMask = ~0;
-    [Tooltip("On‑screen hint shown when a prop is in range. Hook up a UI Text/TMP element.")]
     [SerializeField] private GameObject interactHintUI;
+
+    // ── ADD THIS ──────────────────────────────────────────
+    // Tracks whether the player is in UI interaction mode
+    private bool isInUIMode = false;
+    // ──────────────────────────────────────────────────────
 
     private PlayerInput pi;
     private InputAction moveAction;
@@ -60,11 +60,8 @@ public class SlugPlayer : NetworkBehaviour
     );
 
     private GameObject spawnedPropVisual;
-
     public bool IsTransformed => networkPropIndex.Value >= 0;
-
     private Camera mainCamera;
-
 
     public override void OnNetworkSpawn()
     {
@@ -91,7 +88,6 @@ public class SlugPlayer : NetworkBehaviour
         }
 
         SetupInput();
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -99,6 +95,10 @@ public class SlugPlayer : NetworkBehaviour
     public override void OnNetworkDespawn()
     {
         networkPropIndex.OnValueChanged -= OnPropIndexChanged;
+
+        // ── ADD THIS — safety cleanup on disconnect ────────
+        if (IsOwner) SetUIMode(false);
+        // ──────────────────────────────────────────────────
     }
 
     private void SetupInput()
@@ -118,6 +118,9 @@ public class SlugPlayer : NetworkBehaviour
     {
         if (!IsOwner) return;
 
+       
+        if (isInUIMode) return;
+       
         GroundCheck();
         HandleMovement();
         HandleTransformInput();
@@ -128,10 +131,31 @@ public class SlugPlayer : NetworkBehaviour
             animator.SetFloat(speedParam, moveAction.ReadValue<Vector2>().magnitude);
     }
 
+    
+    public void SetUIMode(bool uiActive)
+    {
+        if (!IsOwner) return;
+
+        isInUIMode = uiActive;
+
+        if (cinemachineInputController != null)
+            cinemachineInputController.enabled = !uiActive;
+
+        if (lookAction != null)
+        {
+            if (uiActive) lookAction.Disable();
+            else lookAction.Enable();
+        }
+
+        if (uiActive) velocity = Vector3.zero;
+
+        Cursor.lockState = uiActive ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = uiActive;
+    }
+    
     private void HandleMovement()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
-
 
         Vector3 forward = mainCamera.transform.forward;
         Vector3 right = mainCamera.transform.right;
@@ -146,7 +170,6 @@ public class SlugPlayer : NetworkBehaviour
         if (desiredMoveDirection.magnitude > 0.01f)
         {
             cc.Move(desiredMoveDirection * (speed * Time.deltaTime));
-
             Quaternion targetRotation = Quaternion.LookRotation(desiredMoveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
@@ -154,6 +177,7 @@ public class SlugPlayer : NetworkBehaviour
         if (!IsTransformed && jumpAction.WasPressedThisFrame())
             Jump();
     }
+
     private void ApplyGravity()
     {
         if (isGrounded && velocity.y < 0f)
@@ -182,9 +206,7 @@ public class SlugPlayer : NetworkBehaviour
         if (!transformAction.WasPressedThisFrame()) return;
 
         if (IsTransformed)
-        {
             RequestTransformServerRpc(-1);
-        }
         else
         {
             PropInteractable target = GetTargetProp();
@@ -201,14 +223,6 @@ public class SlugPlayer : NetworkBehaviour
             interactHintUI.SetActive(show);
     }
 
-    // ──────────────────────────────────────────────
-    // Networking — ServerRpc & NetworkVariable callback
-    // ──────────────────────────────────────────────
-
-    /// <summary>
-    /// Sent from the owning client to the server to request a disguise change.
-    /// Pass -1 to revert to the normal player.
-    /// </summary>
     [ServerRpc]
     private void RequestTransformServerRpc(int propIndex)
     {
@@ -218,13 +232,9 @@ public class SlugPlayer : NetworkBehaviour
             Debug.LogWarning($"[SlugPlayer] Server rejected invalid prop index {propIndex}.");
             return;
         }
-
         networkPropIndex.Value = propIndex;
     }
 
-    /// <summary>
-    /// Called on ALL clients (including server/host) whenever networkPropIndex changes.
-    /// </summary>
     private void OnPropIndexChanged(int previous, int current)
     {
         ApplyPropVisual(current);
@@ -232,7 +242,6 @@ public class SlugPlayer : NetworkBehaviour
 
     private void ApplyPropVisual(int propIndex)
     {
-        // Tear down any existing prop visual first
         if (spawnedPropVisual != null)
         {
             Destroy(spawnedPropVisual);
@@ -241,7 +250,6 @@ public class SlugPlayer : NetworkBehaviour
 
         if (propIndex < 0)
         {
-            // ── Revert to player ──────────────────────────────
             if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(true);
             ResetCharacterController();
             return;
@@ -255,43 +263,31 @@ public class SlugPlayer : NetworkBehaviour
 
         PropInteractable prop = PropInteractable.Registry[propIndex];
 
-        // ── Swap visuals ──────────────────────────────────────
         if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(false);
 
-        // Duplicate the prop as a parented child — all clients do this independently
         spawnedPropVisual = Instantiate(prop.gameObject, transform);
         spawnedPropVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         spawnedPropVisual.name = $"[PropVisual] {prop.DisplayName}";
 
-        // Strip physics and gameplay logic from the visual copy so it doesn't interfere
         foreach (var rb in spawnedPropVisual.GetComponentsInChildren<Rigidbody>()) Destroy(rb);
         foreach (var col in spawnedPropVisual.GetComponentsInChildren<Collider>()) Destroy(col);
         foreach (var pai in spawnedPropVisual.GetComponentsInChildren<PropInteractable>()) Destroy(pai);
 
-        // Resize the CharacterController to wrap the prop's visual bounds
         FitCharacterControllerToProp(spawnedPropVisual);
     }
 
-    /// <summary>
-    /// Resizes the CharacterController so its capsule approximately wraps the prop's renderers.
-    /// Called after the prop visual has been parented and positioned.
-    /// </summary>
     private void FitCharacterControllerToProp(GameObject propVisual)
     {
         Renderer[] renderers = propVisual.GetComponentsInChildren<Renderer>();
         if (renderers.Length == 0) return;
 
-        // Accumulate world‑space bounds across all child renderers
         Bounds combined = renderers[0].bounds;
         foreach (var r in renderers) combined.Encapsulate(r.bounds);
 
-        // Derive capsule dimensions from the bounding box
         float height = Mathf.Max(combined.size.y, 0.3f);
         float radius = Mathf.Max(combined.size.x, combined.size.z) * 0.5f;
-        // CharacterController constraint: radius must not exceed half the height
         radius = Mathf.Clamp(radius, 0.05f, height * 0.5f);
 
-        // Calculate the capsule centre's Y offset relative to the player root
         float localCentreY = combined.center.y - transform.position.y;
 
         cc.height = height;
@@ -309,11 +305,9 @@ public class SlugPlayer : NetworkBehaviour
     private PropInteractable GetTargetProp()
     {
         if (!mainCamera) return null;
-
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange, propLayerMask))
             return hit.collider.GetComponentInParent<PropInteractable>();
-
         return null;
     }
 }

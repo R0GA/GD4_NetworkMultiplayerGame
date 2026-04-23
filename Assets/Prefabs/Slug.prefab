@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050994422, y: 0.084472574, z: -0.0043287943, w: 0.9951107}
-  m_LocalPosition: {x: 0, y: 1.4572234, z: -3.8857732}
+  m_LocalRotation: {x: 0.050994437, y: 0.0844726, z: -0.004328796, w: 0.9951107}
+  m_LocalPosition: {x: 0, y: 2.5565324, z: -6.817145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -200,8 +200,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5071095093125033932}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05099441, y: 0.08447256, z: -0.004328793, w: 0.9951107}
-  m_LocalPosition: {x: 0, y: 1.4572234, z: -3.8857732}
+  m_LocalRotation: {x: 0.050994422, y: 0.084472574, z: -0.0043287952, w: 0.9951107}
+  m_LocalPosition: {x: 0, y: 2.5565324, z: -6.817145}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4027954745
+  GlobalObjectIdHash: 3742408582
   InScenePlacedSourceGlobalObjectIdHash: 4027954745
   DeferredDespawnTick: 0
   Ownership: 1
@@ -630,6 +630,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   virtualCamera: {fileID: 2452394603933197220}
   playerVisualRoot: {fileID: 811234723892070267}
+  cinemachineInputController: {fileID: 6620244743481665403}
   moveSpeed: 5
   jumpHeight: 2
   propMoveSpeedMultiplier: 0.55
