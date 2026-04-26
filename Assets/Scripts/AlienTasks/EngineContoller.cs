@@ -1,0 +1,99 @@
+using System.Collections;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class EngineContoller : MonoBehaviour
+{
+  [Header("UI Display")]
+  public GameObject engineDestroyedText;
+  public GameObject engineCriticalText;
+
+    [Header("VfX")]
+   public ParticleSystem engineFire;
+   public ParticleSystem engineExplode;
+
+
+    public GameObject engine;
+    public Canvas engineCameraCanvas;
+    public float engineRotationAmount ;
+    
+    public float engineKillCountTime; //How long the engine fires before it explodes. My names for things is bad so i needed to remeber what this is for.
+
+    public bool isEngineCorrect = false;
+
+    
+
+    public void EngineUp()
+    {
+        engine.transform.Rotate(0f, 0f, engineRotationAmount);
+    }
+
+    public void EngineDown()
+    {
+        engine.transform.Rotate(0f,0f,-engineRotationAmount);
+    }
+
+    public void EngineCorrect()
+    {
+        if (isEngineCorrect)
+        {
+            engineCriticalText.SetActive(true);
+            Debug.Log("Engine Danger");
+        }
+        else if(!isEngineCorrect)
+        {
+            engineCriticalText.SetActive(false);
+        }
+       
+    }
+
+    public void EngineFire()
+    {
+        if (isEngineCorrect)
+            engineFire.Play();
+            StartCoroutine(EngineKillCountDown());
+    }
+
+   public IEnumerator EngineKillCountDown()
+
+    {
+
+    yield return new WaitForSeconds(engineKillCountTime);
+
+        EngineKaboom();
+        engineFire.Stop();
+        engineExplode.Play();
+
+
+    }
+
+    public void EngineKaboom()
+    {
+        engineDestroyedText.SetActive(true);
+        Debug.Log("Engine GoKAboom");
+    }
+
+    
+
+    public void FixedUpdate()
+    {
+        //Debug.Log("Z rotation is: " + engine.transform.eulerAngles.z);
+
+        if (engine.transform.eulerAngles.z ==270f)
+
+        {
+            isEngineCorrect = true;
+            print("EngineCorrect");
+            EngineCorrect();
+        }
+
+        else if(engine.transform.eulerAngles.z >270 || engine.transform.eulerAngles.z < 270)
+        {
+            isEngineCorrect= false;
+            print("Engine Wrong");
+           engineCriticalText?.SetActive(false);
+        }
+
+    }
+}
