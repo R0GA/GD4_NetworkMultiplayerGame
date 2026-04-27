@@ -6,6 +6,7 @@ using TMPro;
 public class ReactorSabotage : MonoBehaviour
 {
     [Header("UI References")]
+    private GameObject canvas;
     public Slider fillBar;
     public Button clickButton;
    
@@ -29,6 +30,12 @@ public class ReactorSabotage : MonoBehaviour
 
     void Start()
     {
+        canvas = GameObject.FindWithTag("ReactorCanvas");   
+        fillBar = canvas.GetComponentInChildren<Slider>();
+        clickButton = canvas.GetComponentInChildren<Button>();
+
+        canvas.SetActive(false);
+
         fillBar.minValue = 0f;
         fillBar.maxValue = maxValue;
         fillBar.interactable = false;

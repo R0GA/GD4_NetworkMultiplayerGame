@@ -35,18 +35,22 @@ public class TaskManager : MonoBehaviour
 
     void Update()
     {
-        if(engineTask.isEngineDestroyed)
 
+        if (!foodTask || !reactorTask || !engineTask)
+        {
+            foodTask = FindAnyObjectByType<FoodDestroyScript>();
+            reactorTask = FindAnyObjectByType<ReactorSabotage>();
+            engineTask = FindAnyObjectByType<EngineContoller>();
+        }
+
+        if (engineTask.isEngineDestroyed)
         {
             engineTxt.SetActive(false);
         }
-
-
         if (reactorTask.isReactorDestroyed)
         {
             reactorTxt.SetActive(false);
         }
-
         if (foodTask.foodDestroyed)
         {
             foodText.SetActive(false);
