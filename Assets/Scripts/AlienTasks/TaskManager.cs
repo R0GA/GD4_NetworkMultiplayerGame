@@ -12,11 +12,11 @@ public class TaskManager : MonoBehaviour
     public GameObject reactorTxt;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private FoodDestroyScript foodTask;
+    private ReactorSabotage reactorTask;
+    private EngineContoller engineTask;
+
+    public bool slugwins;
 
     // Update is called once per frame
     void Update()
@@ -32,5 +32,25 @@ public class TaskManager : MonoBehaviour
         //{
         //    reactorTxt.SetActive(false);
         //}
+
+
+
+
+
+
+        ATDone();
+    }
+
+
+
+
+
+
+    public void ATDone()
+    {
+        if(foodTask.foodDestroyed && engineTask.isEngineDestroyed && reactorTask.reactorDestroyed)
+        {
+
+        }
     }
 }

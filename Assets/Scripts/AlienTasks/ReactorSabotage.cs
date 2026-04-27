@@ -26,6 +26,8 @@ public class ReactorSabotage : MonoBehaviour
     private float currentValue = 0f;
     private int totalClicks = 0;
     private bool isAnimating = false;
+    public bool reactorDestroyed;
+
 
     void Start()
     {
@@ -71,8 +73,7 @@ public class ReactorSabotage : MonoBehaviour
         currentValue = afterSub;
         RefreshUI(currentValue);
 
-        if (currentValue >= maxValue)
-            //deltaText.text = "Gauge full!";
+        
 
         isAnimating = false;
     }
@@ -113,4 +114,6 @@ public class ReactorSabotage : MonoBehaviour
         RefreshUI(0f);
         //deltaText.text = "Click the button to start!";
     }
+
+
 }

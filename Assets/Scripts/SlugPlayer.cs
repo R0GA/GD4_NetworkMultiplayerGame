@@ -2,6 +2,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(CharacterController))]
 public class SlugPlayer : NetworkBehaviour
@@ -34,6 +35,14 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private LayerMask propLayerMask = ~0;
     [SerializeField] private GameObject interactHintUI;
 
+    [Header("Pick Up Settins")]
+    [SerializeField] private Transform holdPoint;
+    [SerializeField] private float pickUpRange;
+    [SerializeField] private GameObject heldObject;
+    [SerializeField] private bool isHolding;
+    [SerializeField] private LayerMask pickUpLayer = ~0;
+
+
     // ── ADD THIS ──────────────────────────────────────────
     // Tracks whether the player is in UI interaction mode
     private bool isInUIMode = false;
@@ -44,6 +53,7 @@ public class SlugPlayer : NetworkBehaviour
     private InputAction lookAction;
     private InputAction jumpAction;
     private InputAction transformAction;
+    private InputAction pickUpAction;
 
     private CharacterController cc;
     private Vector3 velocity;
@@ -107,11 +117,13 @@ public class SlugPlayer : NetworkBehaviour
         lookAction = pi.actions["Look"];
         jumpAction = pi.actions["Jump"];
         transformAction = pi.actions["Transform"];
+        pickUpAction = pi.actions["PickUp"];
 
         moveAction.Enable();
         lookAction.Enable();
         jumpAction.Enable();
         transformAction.Enable();
+        pickUpAction.Enable();
     }
 
     private void Update()
@@ -129,9 +141,15 @@ public class SlugPlayer : NetworkBehaviour
 
         if (animator)
             animator.SetFloat(speedParam, moveAction.ReadValue<Vector2>().magnitude);
+
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * pickUpRange, Color.red, 2f);
+
+        if (pickUpAction.WasPressedThisFrame()) PickUp();
+
+
     }
 
-    
+
     public void SetUIMode(bool uiActive)
     {
         if (!IsOwner) return;
@@ -310,4 +328,37 @@ public class SlugPlayer : NetworkBehaviour
             return hit.collider.GetComponentInParent<PropInteractable>();
         return null;
     }
+
+    public void PickUp()
+    {
+        if(heldObject != null)
+        {
+            heldObject.GetComponent<Rigidbody>().isKinematic = false;
+            heldObject.transform.parent = null;
+            isHolding = false;
+            
+        }
+
+        Ray ray = new Ray(gameObject.transform.position, gameObject.transform.forward);
+        RaycastHit hit;
+
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward*pickUpRange, Color.red, 2f);
+
+
+        if(Physics.Raycast(ray,out hit,pickUpRange, pickUpLayer))
+        { 
+            Debug.Log("Hit");
+            heldObject = hit.collider.gameObject;
+            heldObject.GetComponent<Rigidbody>().isKinematic = true;
+
+            heldObject.transform.position = holdPoint.position;
+            heldObject.transform.rotation = holdPoint.rotation;
+            heldObject.transform.parent = holdPoint;
+            isHolding=true;
+           
+        }
+    }
+
+    
+    
 }
