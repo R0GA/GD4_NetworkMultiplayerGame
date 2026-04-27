@@ -6,8 +6,9 @@ public class OxygenRefillStation : NetworkBehaviour
     [SerializeField] private float refillAmount = 30f;
     [SerializeField] private float cooldown = 5f;   
     private float lastRefillTime;
+    private AudioSource audioSource;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (!IsServer) return; 
 
@@ -26,6 +27,7 @@ public class OxygenRefillStation : NetworkBehaviour
     [ClientRpc]
     private void OnRefillClientRpc()
     {
-        // Play sound, particle, etc. on all clients
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 }
