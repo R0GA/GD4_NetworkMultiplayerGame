@@ -77,7 +77,7 @@ public class LobbyUI : MonoBehaviour
         bool iAmReady = lobbyManager.ReadyClients.Contains(myId);
 
         // Build status string
-        string myRoleText = iAmSaboteur ? "Saboteur" : (iAmSeeker ? "Seeker" : "None");
+        string myRoleText = iAmSaboteur ? "Slug" : (iAmSeeker ? "AStronaut" : "None");
         string sabText = saboteurTaken
             ? $"Saboteur: Player {lobbyManager.SaboteurClientId.Value}"
             : "Saboteur: Open";

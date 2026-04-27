@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyNetworkManager
   ShowTopMostFoldoutHeaderGroup: 1
-  gameSceneName: Rowynn Test
+  gameSceneName: PlayableLevel
   SaboteurClientId:
     UpdateTraits:
       MinSecondsBetweenUpdates: 0
