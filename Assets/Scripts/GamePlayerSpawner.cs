@@ -1,4 +1,6 @@
 using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +8,9 @@ public class GamePlayerSpawner : NetworkBehaviour
 {
     [SerializeField] private NetworkObject saboteurPrefab;
     [SerializeField] private NetworkObject seekerPrefab;
+    [SerializeField] private Transform slugSpawn;
+    [SerializeField] private Transform astroSpawn;
+    private Transform spawnPos;
 
     public override void OnNetworkSpawn()
     {
@@ -28,20 +33,25 @@ public class GamePlayerSpawner : NetworkBehaviour
             NetworkObject prefab = null;
 
             if (clientId == lobby.SaboteurClientId.Value)
-                prefab = saboteurPrefab;
-            else if (clientId == lobby.SeekerClientId.Value)
-                prefab = seekerPrefab;
-
-            if (prefab != null)
             {
-                var playerObj = Instantiate(prefab, GetSpawnPosition(), Quaternion.identity);
+                prefab = saboteurPrefab;
+                spawnPos = slugSpawn;
+            }
+
+            else if (clientId == lobby.SeekerClientId.Value)
+            {
+                prefab = seekerPrefab;
+                spawnPos = astroSpawn;
+            }
+
+                if (prefab != null)
+            {
+                var playerObj = Instantiate(prefab, spawnPos.position, Quaternion.identity);
                 playerObj.SpawnAsPlayerObject(clientId);
             }
         }
 
         // (Optional) destroy the lobby manager now that it’s done
-        Destroy(lobby.gameObject);
+        //Destroy(lobby.gameObject);
     }
-
-    private Vector3 GetSpawnPosition() => new Vector3(0, 1, 0);
 }
