@@ -1,5 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages game win conditions and end state for the multiplayer game.
@@ -18,7 +20,8 @@ public class GameManager : MonoBehaviour
     {
         Active,
         AstronautWins,
-        SlugWins
+        SlugTasks,
+        AstroDeath
     }
 
     private GameEndState currentGameState = GameEndState.Active;
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviour
             return;
 
         Debug.Log("[GameManager] Astronaut died! Slug wins!");
-        EndGame(GameEndState.SlugWins);
+        EndGame(GameEndState.AstroDeath);
     }
 
     /// <summary>
@@ -146,7 +149,7 @@ public class GameManager : MonoBehaviour
             if (oxygenManager != null && !oxygenManager.IsDead)
             {
                 Debug.Log("[GameManager] All tasks completed! Slug wins!");
-                EndGame(GameEndState.SlugWins);
+                EndGame(GameEndState.SlugTasks);
             }
         }
     }
@@ -170,9 +173,15 @@ public class GameManager : MonoBehaviour
         {
             case GameEndState.AstronautWins:
                 Debug.Log("[GameManager] ===== ASTRONAUT WINS! =====");
+                NetworkManager.Singleton.SceneManager.LoadScene("", LoadSceneMode.Single);
                 break;
-            case GameEndState.SlugWins:
-                Debug.Log("[GameManager] ===== SLUG WINS! =====");
+            case GameEndState.AstroDeath:
+                Debug.Log("[GameManager] ===== ASTRO DIED SLUG WINS! =====");
+                NetworkManager.Singleton.SceneManager.LoadScene("", LoadSceneMode.Single);
+                break;
+            case GameEndState.SlugTasks:
+                Debug.Log("[GameManager] ===== SLUG WINS BY TASKS! =====");
+                NetworkManager.Singleton.SceneManager.LoadScene("", LoadSceneMode.Single);
                 break;
         }
 

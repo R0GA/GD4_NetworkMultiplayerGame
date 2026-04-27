@@ -33,7 +33,6 @@ public class TaskManager : MonoBehaviour
         engineTask = FindAnyObjectByType<EngineContoller>();
     }
 
-
     void Update()
     {
         if(engineTask.isEngineDestroyed)
@@ -53,18 +52,8 @@ public class TaskManager : MonoBehaviour
             foodText.SetActive(false);
         }
 
-
-
-
-
         ATDone();
     }
-
-
-
-
-
-
     public void ATDone()
     {
         if(foodTask.foodDestroyed && engineTask.isEngineDestroyed && reactorTask.isReactorDestroyed)
