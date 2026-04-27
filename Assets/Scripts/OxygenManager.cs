@@ -20,7 +20,11 @@ public class OxygenManager : NetworkBehaviour
     public UnityEvent<float, float> OnOxygenChanged;   // (current, max)
     public UnityEvent<bool> OnLowOxygenChanged;        // true when below threshold
 
+    // Event triggered when oxygen reaches 0 (player dies)
+    public UnityEvent OnDeath = new UnityEvent();
+
     private bool wasLowOxygen = false;
+    private bool isDead = false;
 
     public override void OnNetworkSpawn()
     {
@@ -63,6 +67,13 @@ public class OxygenManager : NetworkBehaviour
         {
             wasLowOxygen = isLow;
             OnLowOxygenChanged?.Invoke(isLow);
+        }
+
+        // Check if oxygen reached 0 and trigger death event
+        if (current <= 0f && !isDead)
+        {
+            isDead = true;
+            OnDeath?.Invoke();
         }
     }
 

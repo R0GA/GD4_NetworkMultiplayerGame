@@ -413,6 +413,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PropInteractable
   propDisplayName: ArtThing
+--- !u!1 &1420156502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420156504}
+  - component: {fileID: 1420156503}
+  - component: {fileID: 1420156505}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420156503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420156502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 1174059420
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!4 &1420156504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420156502}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.84315, y: 0, z: -3.71357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1420156505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420156502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92fa03d0eea45d45baad3b0d37cac63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  astronautPlayer: {fileID: 0}
+  slugPlayer: {fileID: 0}
+  taskManager: {fileID: 0}
+  OnGameEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1523045660
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1815050938
 Transform:
   m_ObjectHideFlags: 0
@@ -926,27 +1002,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 918878224646185904, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 918878224646185904, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 918878224646185904, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 460
       objectReference: {fileID: 0}
     - target: {fileID: 918878224646185904, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 93
       objectReference: {fileID: 0}
     - target: {fileID: 918878224646185904, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 918878224646185904, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -149.5
       objectReference: {fileID: 0}
     - target: {fileID: 2380650477697033434, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_Name
@@ -954,31 +1030,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2380650477697033434, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4123555152311132497, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4123555152311132497, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4123555152311132497, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 460
       objectReference: {fileID: 0}
     - target: {fileID: 4123555152311132497, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 93
       objectReference: {fileID: 0}
     - target: {fileID: 4123555152311132497, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 4123555152311132497, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -46.5
       objectReference: {fileID: 0}
     - target: {fileID: 4170911033703136095, guid: 33ae1042e1ff64ee2afa781bdb46578b, type: 3}
       propertyPath: m_Pivot.x
@@ -1202,3 +1278,4 @@ SceneRoots:
   - {fileID: 2127853077}
   - {fileID: 1540133051}
   - {fileID: 741785266}
+  - {fileID: 1420156504}
