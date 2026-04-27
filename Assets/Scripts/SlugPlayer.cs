@@ -11,6 +11,8 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
     //[SerializeField] private InputActionAsset inputAsset;
+    private AudioListener audioListener;
+
 
     // ── ADD THIS ──────────────────────────────────────────
     [Tooltip("The InputAxisController on your Cinemachine Virtual Camera.")]
@@ -84,6 +86,7 @@ public class SlugPlayer : NetworkBehaviour
         ccOriginalCenter = cc.center;
 
         mainCamera = GetComponentInChildren<Camera>();
+        audioListener = mainCamera ? mainCamera.GetComponent<AudioListener>() : null;
 
         networkPropIndex.OnValueChanged += OnPropIndexChanged;
 
@@ -93,11 +96,14 @@ public class SlugPlayer : NetworkBehaviour
         if (!IsOwner)
         {
             if (mainCamera) mainCamera.enabled = false;
+            if (audioListener) audioListener.enabled = false;
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
             return;
         }
 
+        if (mainCamera) mainCamera.enabled = true;
+        if (audioListener) audioListener.enabled = true;
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
