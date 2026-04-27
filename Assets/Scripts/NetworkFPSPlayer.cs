@@ -10,6 +10,7 @@ public class NetworkFPSPlayer : NetworkBehaviour
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Camera playerCamera;
     private AudioListener audioListener;
+    public Camera PlayerCamera => playerCamera;
 
     [Header("Player Settings")]
     [SerializeField] private float moveSpeed = 5f;
