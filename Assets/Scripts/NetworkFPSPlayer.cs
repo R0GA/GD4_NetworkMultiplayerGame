@@ -9,6 +9,7 @@ public class NetworkFPSPlayer : NetworkBehaviour
     [Header("Player Components")]
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Camera playerCamera;
+    private AudioListener audioListener;
 
     [Header("Player Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -34,11 +35,13 @@ public class NetworkFPSPlayer : NetworkBehaviour
     {
         cc = GetComponent<CharacterController>();
         pi = GetComponent<PlayerInput>();
+        audioListener = playerCamera ? playerCamera.GetComponent<AudioListener>() : null;
 
         if (!IsOwner)
         {
             if (playerCamera) playerCamera.enabled = false;
             if (pi) pi.enabled = false;
+            if (audioListener) audioListener.enabled = false;
             return;
         }
 
@@ -50,6 +53,7 @@ public class NetworkFPSPlayer : NetworkBehaviour
         jumpAction.Enable();
 
         if (playerCamera) playerCamera.enabled = true;
+        if (audioListener) audioListener.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
