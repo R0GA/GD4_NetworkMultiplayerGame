@@ -46,7 +46,7 @@ public class EngineContoller : MonoBehaviour
         if (isEngineCorrect)
         {
             engineCriticalText.SetActive(true);
-            Debug.Log("Engine Danger");
+            //Debug.Log("Engine Danger");
         }
         else if(!isEngineCorrect)
         {
@@ -94,14 +94,14 @@ public class EngineContoller : MonoBehaviour
 
         {
             isEngineCorrect = true;
-            print("EngineCorrect");
+            //print("EngineCorrect");
             EngineCorrect();
         }
 
         else if(engine.transform.eulerAngles.z >273 || engine.transform.eulerAngles.z < 267)
         {
             isEngineCorrect= false;
-            print("Engine Wrong");
+            //print("Engine Wrong");
            engineCriticalText?.SetActive(false);
         }
 

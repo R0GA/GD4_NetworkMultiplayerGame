@@ -158,7 +158,7 @@ public class SlugPlayer : NetworkBehaviour
 
         if (Time.frameCount % 60 == 0)   // every second
         {
-            Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
+            //Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
         }
     }
 
