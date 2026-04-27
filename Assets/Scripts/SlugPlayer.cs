@@ -10,6 +10,9 @@ public class SlugPlayer : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
+    //[SerializeField] private InputActionAsset inputAsset;
+    private AudioListener audioListener;
+
 
     // ── ADD THIS ──────────────────────────────────────────
     [Tooltip("The InputAxisController on your Cinemachine Virtual Camera.")]
@@ -83,6 +86,7 @@ public class SlugPlayer : NetworkBehaviour
         ccOriginalCenter = cc.center;
 
         mainCamera = GetComponentInChildren<Camera>();
+        audioListener = mainCamera ? mainCamera.GetComponent<AudioListener>() : null;
 
         networkPropIndex.OnValueChanged += OnPropIndexChanged;
 
@@ -92,14 +96,18 @@ public class SlugPlayer : NetworkBehaviour
         if (!IsOwner)
         {
             if (mainCamera) mainCamera.enabled = false;
+            if (audioListener) audioListener.enabled = false;
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
             return;
         }
 
+        if (mainCamera) mainCamera.enabled = true;
+        if (audioListener) audioListener.enabled = true;
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Debug.Log($"[SlugPlayer] After SetupInput - moveAction.enabled={moveAction.enabled}, lookAction.enabled={lookAction.enabled}, jumpAction.enabled={jumpAction.enabled}");
     }
 
     public override void OnNetworkDespawn()
@@ -113,6 +121,8 @@ public class SlugPlayer : NetworkBehaviour
 
     private void SetupInput()
     {
+        if (!IsOwner) return;
+
         moveAction = pi.actions["Move"];
         lookAction = pi.actions["Look"];
         jumpAction = pi.actions["Jump"];
@@ -146,7 +156,10 @@ public class SlugPlayer : NetworkBehaviour
 
         if (pickUpAction.WasPressedThisFrame()) PickUp();
 
-
+        if (Time.frameCount % 60 == 0)   // every second
+        {
+            Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
+        }
     }
 
 

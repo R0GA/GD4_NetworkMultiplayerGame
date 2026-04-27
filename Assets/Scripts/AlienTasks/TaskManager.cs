@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 
 public class TaskManager : MonoBehaviour
@@ -17,6 +18,10 @@ public class TaskManager : MonoBehaviour
     private EngineContoller engineTask;
 
     public bool slugwins;
+
+    // Event triggered when all tasks are completed
+    public UnityEvent OnAllTasksCompleted = new UnityEvent();
+    private bool tasksCompleted = false;
 
     // Update is called once per frame
     void Update()
@@ -50,7 +55,11 @@ public class TaskManager : MonoBehaviour
     {
         if(foodTask.foodDestroyed && engineTask.isEngineDestroyed && reactorTask.reactorDestroyed)
         {
-
+            if (!tasksCompleted)
+            {
+                tasksCompleted = true;
+                OnAllTasksCompleted?.Invoke();
+            }
         }
     }
 }
