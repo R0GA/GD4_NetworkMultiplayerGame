@@ -352,7 +352,7 @@ public class SlugPlayer : NetworkBehaviour
             
         }
 
-        Ray ray = new Ray(gameObject.transform.position, gameObject.transform.forward);
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
         Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward*pickUpRange, Color.red, 2f);

@@ -106,7 +106,7 @@ public class ReactorSabotage : MonoBehaviour
 
      {
         yield return new WaitForSeconds(1);
-    seeReactor.Close();
+        seeReactor.Close();
     
     }
 
