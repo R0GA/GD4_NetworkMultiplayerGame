@@ -8,11 +8,7 @@ public class ReactorSabotage : MonoBehaviour
     [Header("UI References")]
     public Slider fillBar;
     public Button clickButton;
-    //public Button resetButton;
-    //public TMP_Text valueText;
-    //public TMP_Text clicksText;
-    //public TMP_Text deltaText;
-
+   
     [Header("Gauge Settings")]
     public float maxValue = 100f;
     public float addAmount = 5f;
@@ -26,29 +22,29 @@ public class ReactorSabotage : MonoBehaviour
     private float currentValue = 0f;
     private int totalClicks = 0;
     private bool isAnimating = false;
-    public bool reactorDestroyed;
+    public bool isReactorDestroyed;
+
+    private SeeReactor seeReactor;
 
 
     void Start()
     {
-        // Configure slider range
         fillBar.minValue = 0f;
         fillBar.maxValue = maxValue;
-        fillBar.interactable = false; // Player shouldn't drag it manually
+        fillBar.interactable = false;
 
         clickButton.onClick.AddListener(OnClickButton);
 
-        //if (resetButton != null)
-        //    resetButton.onClick.AddListener(ResetGauge);
+      seeReactor = GetComponent<SeeReactor>();
 
         RefreshUI(0f);
-        //deltaText.text = "Click the button to start!";
+      
     }
 
     public void OnClickButton()
     {
         if (isAnimating) return;
-        totalClicks++;
+      
         StartCoroutine(AnimateGauge());
     }
 
@@ -60,14 +56,11 @@ public class ReactorSabotage : MonoBehaviour
         float afterAdd = Mathf.Min(startValue + addAmount, maxValue);
         float afterSub = Mathf.Max(afterAdd - subtractAmount, 0f);
 
-        // Phase 1 — rise by +5
-        //deltaText.text = "+5 added...";
+      
         yield return StartCoroutine(AnimateBar(startValue, afterAdd, riseTime));
 
         yield return new WaitForSeconds(holdTime);
 
-        // Phase 2 — drop by -2
-        //deltaText.text = "+5 then −2 = net +3";
         yield return StartCoroutine(AnimateBar(afterAdd, afterSub, dropTime));
 
         currentValue = afterSub;
@@ -86,7 +79,7 @@ public class ReactorSabotage : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            float ease = 1f - Mathf.Pow(1f - t, 3f); // ease-out cubic
+            float ease = 1f - Mathf.Pow(1f - t, 3f); 
             fillBar.value = Mathf.Lerp(from, to, ease);
             yield return null;
         }
@@ -97,23 +90,24 @@ public class ReactorSabotage : MonoBehaviour
     void RefreshUI(float val)
     {
         fillBar.value = val;
-        //valueText.text = Mathf.RoundToInt(val).ToString();
-        //clicksText.text = totalClicks.ToString();
+       
     }
 
-    void ResetGauge()
+    private void Update()
     {
-        if (isAnimating)
+        if(currentValue >=98f)
         {
-            StopAllCoroutines();
-            isAnimating = false;
+            isReactorDestroyed = true;
+            StartCoroutine(BlowReactor()); 
         }
-
-        currentValue = 0f;
-        totalClicks = 0;
-        RefreshUI(0f);
-        //deltaText.text = "Click the button to start!";
     }
 
+    IEnumerator BlowReactor()
+
+     {
+        yield return new WaitForSeconds(1);
+    seeReactor.Close();
+    
+    }
 
 }

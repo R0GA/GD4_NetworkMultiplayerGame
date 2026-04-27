@@ -17,6 +17,7 @@ public class EngineContoller : MonoBehaviour
     public GameObject engine;
     public Canvas engineCameraCanvas;
     public float engineRotationAmount ;
+    private SeeEngineCamera seeEngine;
     
     public float engineKillCountTime; //How long the engine fires before it explodes. My names for things is bad so i needed to remeber what this is for.
 
@@ -25,7 +26,10 @@ public class EngineContoller : MonoBehaviour
     public bool isEngineDestroyed;
 
 
-    
+    public void Start()
+    {
+        seeEngine = GetComponent<SeeEngineCamera>();
+    }
 
     public void EngineUp()
     {
@@ -68,22 +72,25 @@ public class EngineContoller : MonoBehaviour
         engineFire.Stop();
         engineExplode.Play();
 
-
+        yield return new WaitForSeconds(1);
+        engineCameraCanvas.enabled = false;
     }
 
     public void EngineKaboom()
     {
         engineDestroyedText.SetActive(true);
         Debug.Log("Engine GoKAboom");
+        isEngineDestroyed = true;
+        seeEngine.Close();
     }
 
     
 
     public void FixedUpdate()
     {
-        //Debug.Log("Z rotation is: " + engine.transform.eulerAngles.z);
+      
 
-        if (engine.transform.eulerAngles.z >267||engine.transform.eulerAngles.z <273f)
+        if (engine.transform.eulerAngles.z >267&&engine.transform.eulerAngles.z <273f)
 
         {
             isEngineCorrect = true;
