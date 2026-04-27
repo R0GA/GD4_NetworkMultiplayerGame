@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Thato Stuff.unity
     guid: ade740252d935184181489bbf511d86a
+  - enabled: 1
+    path: Assets/Scenes/JoinMenu.unity
+    guid: 7132df0b9e5e42e46a8d2fd76f222fda
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
