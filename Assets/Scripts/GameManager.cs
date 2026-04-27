@@ -173,15 +173,15 @@ public class GameManager : MonoBehaviour
         {
             case GameEndState.AstronautWins:
                 Debug.Log("[GameManager] ===== ASTRONAUT WINS! =====");
-                NetworkManager.Singleton.SceneManager.LoadScene("", LoadSceneMode.Single);
+                NetworkManager.Singleton.SceneManager.LoadScene("AstroWin", LoadSceneMode.Single);
                 break;
             case GameEndState.AstroDeath:
                 Debug.Log("[GameManager] ===== ASTRO DIED SLUG WINS! =====");
-                NetworkManager.Singleton.SceneManager.LoadScene("", LoadSceneMode.Single);
+                NetworkManager.Singleton.SceneManager.LoadScene("SlugWin-Oxy", LoadSceneMode.Single);
                 break;
             case GameEndState.SlugTasks:
                 Debug.Log("[GameManager] ===== SLUG WINS BY TASKS! =====");
-                NetworkManager.Singleton.SceneManager.LoadScene("", LoadSceneMode.Single);
+                NetworkManager.Singleton.SceneManager.LoadScene("SlugWin-Tasks", LoadSceneMode.Single);
                 break;
         }
 

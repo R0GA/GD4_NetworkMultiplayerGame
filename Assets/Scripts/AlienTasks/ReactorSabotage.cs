@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ReactorSabotage : MonoBehaviour
 {
@@ -30,19 +29,19 @@ public class ReactorSabotage : MonoBehaviour
 
     void Start()
     {
-        canvas = GameObject.FindWithTag("ReactorCanvas");   
-        fillBar = canvas.GetComponentInChildren<Slider>();
-        clickButton = canvas.GetComponentInChildren<Button>();
+        //canvas = GameObject.FindWithTag("ReactorCanvas");   
+        //fillBar = canvas.GetComponentInChildren<Slider>();
+        //clickButton = canvas.GetComponentInChildren<Button>();
 
-        canvas.SetActive(false);
+        //canvas.SetActive(false);
 
         fillBar.minValue = 0f;
         fillBar.maxValue = maxValue;
         fillBar.interactable = false;
 
-        clickButton.onClick.AddListener(OnClickButton);
+        //clickButton.onClick.AddListener(OnClickButton);
 
-      seeReactor = GetComponentInChildren<SeeReactor>();
+        seeReactor = GetComponentInChildren<SeeReactor>();
 
         RefreshUI(0f);
       

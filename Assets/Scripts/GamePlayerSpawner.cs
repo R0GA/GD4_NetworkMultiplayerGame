@@ -1,8 +1,5 @@
 using Unity.Netcode;
-using Unity.Services.Lobbies.Models;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GamePlayerSpawner : NetworkBehaviour
 {
@@ -10,6 +7,7 @@ public class GamePlayerSpawner : NetworkBehaviour
     [SerializeField] private NetworkObject seekerPrefab;
     [SerializeField] private Transform slugSpawn;
     [SerializeField] private Transform astroSpawn;
+    [SerializeField] private Transform defaultSpawn;
     private Transform spawnPos;
 
     public override void OnNetworkSpawn()
@@ -43,6 +41,8 @@ public class GamePlayerSpawner : NetworkBehaviour
                 prefab = seekerPrefab;
                 spawnPos = astroSpawn;
             }
+            else
+                spawnPos = defaultSpawn;
 
                 if (prefab != null)
             {

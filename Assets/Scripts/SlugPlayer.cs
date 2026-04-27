@@ -2,7 +2,6 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(CharacterController))]
 public class SlugPlayer : NetworkBehaviour
