@@ -15,9 +15,9 @@ public class TaskManager : MonoBehaviour
     public GameObject foodText;
 
 
-    private FoodDestroyScript foodTask;
-    private ReactorSabotage reactorTask;
-    private EngineContoller engineTask;
+    [SerializeField] private FoodDestroyScript foodTask;
+    [SerializeField] private ReactorSabotage reactorTask;
+    [SerializeField]private EngineContoller engineTask;
 
     public bool slugwins;
 
@@ -28,12 +28,8 @@ public class TaskManager : MonoBehaviour
     // Update is called once per frame
 
 
-    private void Start()
-    {
-        foodTask = GetComponent<FoodDestroyScript>();
-        reactorTask = GetComponent<ReactorSabotage>();
-        engineTask = GetComponent<EngineContoller>();
-    }
+
+      
     void Update()
     {
         if(engineContoller.isEngineDestroyed)

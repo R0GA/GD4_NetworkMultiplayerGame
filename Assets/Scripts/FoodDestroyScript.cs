@@ -15,6 +15,7 @@ public class FoodDestroyScript : MonoBehaviour
         if (other.CompareTag("Food"))
         {
             foodCount++;
+            Destroy(other);
 
         }
     }
@@ -26,7 +27,7 @@ public class FoodDestroyScript : MonoBehaviour
         if (foodCount >= totalFoodDestroyed)
         {
             foodDestroyed = true;
-            binFlames.Play();
+           
         }
     }
 }

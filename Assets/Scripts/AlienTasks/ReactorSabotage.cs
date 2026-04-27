@@ -35,7 +35,7 @@ public class ReactorSabotage : MonoBehaviour
 
         clickButton.onClick.AddListener(OnClickButton);
 
-      seeReactor = GetComponent<SeeReactor>();
+      seeReactor = GetComponentInChildren<SeeReactor>();
 
         RefreshUI(0f);
       
