@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050730363, y: 0.08447372, z: -0.0043063792, w: 0.99512416}
-  m_LocalPosition: {x: 0.43568906, y: 1.1906137, z: -1.337995}
+  m_LocalRotation: {x: 0.050994422, y: 0.08447258, z: -0.004328795, w: 0.9951107}
+  m_LocalPosition: {x: 0, y: 1.4572234, z: -3.8857732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5071095093125033932}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050730355, y: 0.08447372, z: -0.0043063792, w: 0.99512416}
+  m_LocalRotation: {x: 0.050994415, y: 0.08447257, z: -0.0043287943, w: 0.9951107}
   m_LocalPosition: {x: 0, y: 1.4572234, z: -3.8857732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -460,10 +460,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2432917210655435429}
   - component: {fileID: 6982222179438214086}
-  - component: {fileID: 3460711664902867765}
   - component: {fileID: 4507300880787058905}
   - component: {fileID: 3479291695567701955}
   - component: {fileID: 2859548820267686996}
+  - component: {fileID: 3176226063306416115}
+  - component: {fileID: -6382608805204469463}
   m_Layer: 7
   m_Name: Slug
   m_TagString: Slug
@@ -514,52 +515,6 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &3460711664902867765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6023558797097434753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
-  AutoOwnerAuthorityTickOffset: 1
-  PositionInterpolationType: 0
-  RotationInterpolationType: 0
-  ScaleInterpolationType: 0
-  PositionLerpSmoothing: 1
-  PositionMaxInterpolationTime: 0.1
-  RotationLerpSmoothing: 1
-  RotationMaxInterpolationTime: 0.1
-  ScaleLerpSmoothing: 1
-  ScaleMaxInterpolationTime: 0.1
-  AuthorityMode: 0
-  TickSyncChildren: 0
-  UseUnreliableDeltas: 0
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  UseQuaternionSynchronization: 0
-  UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
-  InLocalSpace: 0
-  SwitchTransformSpaceWhenParented: 0
-  Interpolate: 1
-  SlerpPosition: 0
 --- !u!143 &4507300880787058905
 CharacterController:
   m_ObjectHideFlags: 0
@@ -651,6 +606,71 @@ MonoBehaviour:
   pickUpLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &3176226063306416115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023558797097434753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a455c4561eb14ea4f90ce8b94b215bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkHealth
+  ShowTopMostFoldoutHeaderGroup: 1
+  maxHealth: 100
+  Health:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 100
+--- !u!114 &-6382608805204469463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023558797097434753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52bf8bbc1de48cfb221a6ff30f7972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Multiplayer.Center.NetcodeForGameObjectsExample::Unity.Multiplayer.Center.NetcodeForGameObjectsExample.ClientNetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &7483307459221253623
 GameObject:
   m_ObjectHideFlags: 0

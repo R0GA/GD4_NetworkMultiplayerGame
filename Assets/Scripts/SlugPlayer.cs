@@ -10,6 +10,7 @@ public class SlugPlayer : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
+    //[SerializeField] private InputActionAsset inputAsset;
 
     // ── ADD THIS ──────────────────────────────────────────
     [Tooltip("The InputAxisController on your Cinemachine Virtual Camera.")]
@@ -100,6 +101,7 @@ public class SlugPlayer : NetworkBehaviour
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Debug.Log($"[SlugPlayer] After SetupInput - moveAction.enabled={moveAction.enabled}, lookAction.enabled={lookAction.enabled}, jumpAction.enabled={jumpAction.enabled}");
     }
 
     public override void OnNetworkDespawn()
@@ -113,6 +115,8 @@ public class SlugPlayer : NetworkBehaviour
 
     private void SetupInput()
     {
+        if (!IsOwner) return;
+
         moveAction = pi.actions["Move"];
         lookAction = pi.actions["Look"];
         jumpAction = pi.actions["Jump"];
@@ -146,7 +150,10 @@ public class SlugPlayer : NetworkBehaviour
 
         if (pickUpAction.WasPressedThisFrame()) PickUp();
 
-
+        if (Time.frameCount % 60 == 0)   // every second
+        {
+            Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
+        }
     }
 
 

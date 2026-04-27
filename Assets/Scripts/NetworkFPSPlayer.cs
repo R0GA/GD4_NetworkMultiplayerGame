@@ -50,6 +50,8 @@ public class NetworkFPSPlayer : NetworkBehaviour
         jumpAction.Enable();
 
         if (playerCamera) playerCamera.enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()
