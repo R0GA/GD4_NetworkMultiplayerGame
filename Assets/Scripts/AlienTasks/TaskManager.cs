@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
@@ -11,6 +12,7 @@ public class TaskManager : MonoBehaviour
     [Header("UI")]
     public GameObject engineTxt;
     public GameObject reactorTxt;
+    public GameObject foodText;
 
 
     private FoodDestroyScript foodTask;
@@ -24,6 +26,14 @@ public class TaskManager : MonoBehaviour
     private bool tasksCompleted = false;
 
     // Update is called once per frame
+
+
+    private void Start()
+    {
+        foodTask = GetComponent<FoodDestroyScript>();
+        reactorTask = GetComponent<ReactorSabotage>();
+        engineTask = GetComponent<EngineContoller>();
+    }
     void Update()
     {
         if(engineContoller.isEngineDestroyed)
@@ -33,11 +43,15 @@ public class TaskManager : MonoBehaviour
         }
 
 
-        //if (reactorSabotage.isReactorDestroyed)
-        //{
-        //    reactorTxt.SetActive(false);
-        //}
+        if (reactorSabotage.isReactorDestroyed)
+        {
+            reactorTxt.SetActive(false);
+        }
 
+        if (foodTask.foodDestroyed)
+        {
+            foodText.SetActive(false);
+        }
 
 
 
@@ -53,7 +67,7 @@ public class TaskManager : MonoBehaviour
 
     public void ATDone()
     {
-        if(foodTask.foodDestroyed && engineTask.isEngineDestroyed && reactorTask.reactorDestroyed)
+        if(foodTask.foodDestroyed && engineTask.isEngineDestroyed && reactorTask.isReactorDestroyed)
         {
             if (!tasksCompleted)
             {
