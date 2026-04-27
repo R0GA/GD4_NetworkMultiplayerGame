@@ -5,8 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class TaskManager : MonoBehaviour
 {
-    private EngineContoller engineContoller;
-    private ReactorSabotage reactorSabotage;
+   
 
 
     [Header("UI")]
@@ -27,19 +26,24 @@ public class TaskManager : MonoBehaviour
 
     // Update is called once per frame
 
+    private void Start()
+    {
+        foodTask = FindAnyObjectByType<FoodDestroyScript>();
+        reactorTask = FindAnyObjectByType<ReactorSabotage>();
+        engineTask = FindAnyObjectByType<EngineContoller>();
+    }
 
 
-      
     void Update()
     {
-        if(engineContoller.isEngineDestroyed)
+        if(engineTask.isEngineDestroyed)
 
         {
             engineTxt.SetActive(false);
         }
 
 
-        if (reactorSabotage.isReactorDestroyed)
+        if (reactorTask.isReactorDestroyed)
         {
             reactorTxt.SetActive(false);
         }

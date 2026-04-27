@@ -28,7 +28,7 @@ public class EngineContoller : MonoBehaviour
 
     public void Start()
     {
-        seeEngine = GetComponent<SeeEngineCamera>();
+        seeEngine = GetComponentInChildren<SeeEngineCamera>();
     }
 
     public void EngineUp()
