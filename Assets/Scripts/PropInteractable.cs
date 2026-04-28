@@ -12,8 +12,6 @@ public class PropInteractable : MonoBehaviour
 
     private void Awake()
     {
-        // Build the full hierarchy path e.g. "Room/Props/Chair"
-        // This is identical on every client since it comes from the scene file
         string path = GetHierarchyPath();
         PropIndex = path.GetHashCode();
 

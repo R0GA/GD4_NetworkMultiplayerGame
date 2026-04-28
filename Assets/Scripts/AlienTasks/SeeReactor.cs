@@ -13,7 +13,6 @@ public class SeeReactor : MonoBehaviour
 
     public void Interact(NetworkBehaviour interactingPlayer)
     {
-        // Only open the canvas for the player who actually interacted
         if (!interactingPlayer.IsOwner) return;
 
         myCanvas.enabled = true;

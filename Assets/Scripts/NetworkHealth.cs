@@ -8,7 +8,6 @@ public class NetworkHealth : NetworkBehaviour
 
     public NetworkVariable<int> Health = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
-    // Event triggered when health reaches 0
     public UnityEvent OnDeath = new UnityEvent();
 
     [Rpc(SendTo.Server, InvokePermission = RpcInvokePermission.Everyone)]

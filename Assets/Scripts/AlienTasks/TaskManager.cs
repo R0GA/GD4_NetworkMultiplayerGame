@@ -20,11 +20,9 @@ public class TaskManager : MonoBehaviour
 
     public bool slugwins;
 
-    // Event triggered when all tasks are completed
     public UnityEvent OnAllTasksCompleted = new UnityEvent();
     private bool tasksCompleted = false;
 
-    // Update is called once per frame
 
     private void Start()
     {

@@ -15,14 +15,12 @@ public class GamePlayerSpawner : NetworkBehaviour
     {
         if (!IsServer) return;
 
-        // Wait until ALL clients have fully loaded the scene before spawning
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnSceneLoadCompleted;
     }
 
     private void OnSceneLoadCompleted(string sceneName, LoadSceneMode loadSceneMode,
                                       List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
-        // Unsubscribe immediately so this only fires once
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
 
         LobbyNetworkManager lobby = FindObjectOfType<LobbyNetworkManager>();
@@ -58,7 +56,6 @@ public class GamePlayerSpawner : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
-        // Safety cleanup in case the object is destroyed before scene finishes loading
         if (NetworkManager.Singleton != null)
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
     }

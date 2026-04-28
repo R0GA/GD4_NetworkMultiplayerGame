@@ -11,13 +11,12 @@ public class EngineContoller : MonoBehaviour
    public ParticleSystem engineFire;
    public ParticleSystem engineExplode;
 
-
     public GameObject engine;
     public Canvas engineCameraCanvas;
     public float engineRotationAmount ;
     private SeeEngineCamera seeEngine;
     
-    public float engineKillCountTime; //How long the engine fires before it explodes. My names for things is bad so i needed to remeber what this is for.
+    public float engineKillCountTime; 
 
     public bool isEngineCorrect = false;
 

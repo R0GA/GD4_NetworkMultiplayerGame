@@ -11,10 +11,10 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private Button seekerButton;
     [SerializeField] private Button readyButton;
     [SerializeField] private Button deselectButton;
-    [SerializeField] private TMP_Text readyButtonText;   // Text component of the ready button
+    [SerializeField] private TMP_Text readyButtonText;
 
     [Header("Text")]
-    [SerializeField] private TMP_Text statusText;        // Main info text
+    [SerializeField] private TMP_Text statusText; 
 
     private LobbyNetworkManager lobbyManager;
     private NetworkManager netManager;
@@ -34,14 +34,11 @@ public class LobbyUI : MonoBehaviour
 
         netManager = NetworkManager.Singleton;
 
-        // Subscribe to role changes
         lobbyManager.SaboteurClientId.OnValueChanged += OnRoleChanged;
         lobbyManager.SeekerClientId.OnValueChanged += OnRoleChanged;
 
-        // Subscribe to ready list changes
         lobbyManager.ReadyClients.OnListChanged += OnReadyListChanged;
 
-        // Wire up buttons
         sabotButton.onClick.AddListener(() => lobbyManager.RequestRoleServerRpc(RoleType.Saboteur));
         seekerButton.onClick.AddListener(() => lobbyManager.RequestRoleServerRpc(RoleType.Seeker));
         deselectButton.onClick.AddListener(() => lobbyManager.ClearMyRoleServerRpc());
@@ -76,7 +73,6 @@ public class LobbyUI : MonoBehaviour
         bool seekerTaken = lobbyManager.SeekerClientId.Value != UNASSIGNED;
         bool iAmReady = lobbyManager.ReadyClients.Contains(myId);
 
-        // Build status string
         string myRoleText = iAmSaboteur ? "Slug" : (iAmSeeker ? "Astronaut" : "None");
         string sabText = saboteurTaken
             ? $"Slug: Player {lobbyManager.SaboteurClientId.Value}"
@@ -91,22 +87,18 @@ public class LobbyUI : MonoBehaviour
                           $"{seekText}\n" +
                           $"You are: {readyStatus}";
 
-        // Role button interactability
         sabotButton.interactable = !saboteurTaken && !iAmSaboteur;
         seekerButton.interactable = !seekerTaken && !iAmSeeker;
 
-        // Ready button
         bool hasRole = iAmSaboteur || iAmSeeker;
         readyButton.interactable = hasRole;
-        deselectButton.gameObject.SetActive(hasRole);      // only visible when you have a role
+        deselectButton.gameObject.SetActive(hasRole);   
         deselectButton.interactable = hasRole;
 
-        // Update ready button text and color
         if (readyButtonText != null)
         {
             readyButtonText.text = iAmReady ? "Unready" : "Ready";
         }
-        // Optional: change button colors to indicate state
         var colors = readyButton.colors;
         colors.normalColor = iAmReady ? Color.green : Color.white;
         readyButton.colors = colors;

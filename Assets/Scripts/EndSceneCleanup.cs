@@ -7,7 +7,6 @@ public class EndSceneCleanup : MonoBehaviour
 {
     private void Start()
     {
-        // Fix cursor immediately so UI is usable
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -21,7 +20,6 @@ public class EndSceneCleanup : MonoBehaviour
         Debug.Log("[EndSceneCleanup] Shutting down NetworkManager");
         NetworkManager.Singleton.Shutdown();
 
-        // Wait for shutdown to fully complete
         yield return new WaitUntil(() =>
             NetworkManager.Singleton == null ||
             !NetworkManager.Singleton.IsListening

@@ -10,14 +10,9 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
     [SerializeField] private Canvas taskCanvas;
-    //[SerializeField] private InputActionAsset inputAsset;
     private AudioListener audioListener;
 
-
-    // ── ADD THIS ──────────────────────────────────────────
-    [Tooltip("The InputAxisController on your Cinemachine Virtual Camera.")]
     [SerializeField] private CinemachineInputAxisController cinemachineInputController;
-    // ──────────────────────────────────────────────────────
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -46,11 +41,7 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private bool isHolding;
     [SerializeField] private LayerMask pickUpLayer = ~0;
 
-
-    // ── ADD THIS ──────────────────────────────────────────
-    // Tracks whether the player is in UI interaction mode
     private bool isInUIMode = false;
-    // ──────────────────────────────────────────────────────
 
     private PlayerInput pi;
     private InputAction moveAction;
@@ -101,13 +92,13 @@ public class SlugPlayer : NetworkBehaviour
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
             if (pickupHintUI) pickupHintUI.SetActive(false);
-            if (taskCanvas) taskCanvas.enabled = false; // ← add this
+            if (taskCanvas) taskCanvas.enabled = false;
             return;
         }
 
         if (mainCamera) mainCamera.enabled = true;
         if (audioListener) audioListener.enabled = true;
-        if (taskCanvas) taskCanvas.enabled = true; // ← add this
+        if (taskCanvas) taskCanvas.enabled = true;
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -118,9 +109,7 @@ public class SlugPlayer : NetworkBehaviour
     {
         networkPropIndex.OnValueChanged -= OnPropIndexChanged;
 
-        // ── ADD THIS — safety cleanup on disconnect ────────
         if (IsOwner) SetUIMode(false);
-        // ──────────────────────────────────────────────────
     }
 
     private void SetupInput()
@@ -161,7 +150,7 @@ public class SlugPlayer : NetworkBehaviour
 
         if (pickUpAction.WasPressedThisFrame()) PickUp();
 
-        if (Time.frameCount % 60 == 0)   // every second
+        if (Time.frameCount % 60 == 0) 
         {
             //Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
         }
@@ -279,7 +268,6 @@ public class SlugPlayer : NetworkBehaviour
     [ServerRpc]
     private void RequestTransformServerRpc(int propId)
     {
-        // -1 means untransform, anything else must exist in the registry
         if (propId != -1 && !PropInteractable.Registry.ContainsKey(propId))
         {
             Debug.LogWarning($"[SlugPlayer] Server rejected unknown prop id {propId}.");
