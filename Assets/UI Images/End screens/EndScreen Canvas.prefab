@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 7768745836542809752}
   - component: {fileID: 7047680704622274643}
   - component: {fileID: 1800176711092391504}
+  - component: {fileID: 7672796125894132694}
   m_Layer: 5
   m_Name: EndScreen Canvas
   m_TagString: Untagged
@@ -249,6 +250,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364712d63b03c4d4f940c469e59961b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackToMenuScript
+--- !u!114 &7672796125894132694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051472649754130746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c6401d810809c448efd66713b6d873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndSceneCleanup
 --- !u!1 &6039660369313004271
 GameObject:
   m_ObjectHideFlags: 0

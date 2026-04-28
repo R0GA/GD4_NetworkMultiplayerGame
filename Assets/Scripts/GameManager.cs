@@ -2,7 +2,6 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -87,14 +86,12 @@ public class GameManager : MonoBehaviour
     private void OnAstronautDeath()
     {
         if (currentGameState != GameEndState.Active) return;
-        Debug.Log("[GameManager] Astronaut died! Slug wins!");
         EndGame(GameEndState.AstroDeath);
     }
 
     private void OnSlugDeath()
     {
         if (currentGameState != GameEndState.Active) return;
-        Debug.Log("[GameManager] Slug died! Astronaut wins!");
         EndGame(GameEndState.AstronautWins);
     }
 
@@ -106,10 +103,7 @@ public class GameManager : MonoBehaviour
         {
             OxygenManager oxygenManager = astronautPlayer.GetComponent<OxygenManager>();
             if (oxygenManager != null && !oxygenManager.IsDead)
-            {
-                Debug.Log("[GameManager] All tasks completed! Slug wins!");
                 EndGame(GameEndState.SlugTasks);
-            }
         }
     }
 
@@ -118,6 +112,7 @@ public class GameManager : MonoBehaviour
         if (currentGameState != GameEndState.Active) return;
 
         currentGameState = endState;
+        Time.timeScale = 1f;
         OnGameEnd?.Invoke(endState);
 
         string sceneName = endState switch
@@ -128,64 +123,11 @@ public class GameManager : MonoBehaviour
             _ => ""
         };
 
-        Time.timeScale = 1f;
+        Debug.Log($"[GameManager] Game ending, loading {sceneName} for ALL clients via NGO");
 
-        // Notify clients FIRST before any despawning or shutdown
-        if (GameManagerNetwork.Instance != null)
-        {
-            Debug.Log("[GameManager] Notifying clients of game end");
-            GameManagerNetwork.Instance.NotifyClientsGameEnd(sceneName);
-        }
-        else
-        {
-            Debug.LogError("[GameManager] GameManagerNetwork.Instance is null!");
-        }
-
-        StartCoroutine(ServerShutdownAndLoad(sceneName));
-    }
-
-    private IEnumerator ServerShutdownAndLoad(string sceneName)
-    {
-        // Wait long enough for the RPC to reach and be processed by clients
-        // before we start tearing down NetworkObjects
-        Debug.Log("[GameManager] Server waiting before despawn...");
-        yield return new WaitForSecondsRealtime(2f);
-
-        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer)
-        {
-            Debug.Log("[GameManager] Server despawning all NetworkObjects");
-            var spawnedObjects = new System.Collections.Generic.List<NetworkObject>(
-                NetworkManager.Singleton.SpawnManager.SpawnedObjects.Values
-            );
-
-            foreach (var netObj in spawnedObjects)
-            {
-                if (netObj != null)
-                    netObj.Despawn(true);
-            }
-        }
-
-        yield return null;
-
-        Debug.Log("[GameManager] Server shutting down NetworkManager");
-        if (NetworkManager.Singleton != null)
-            NetworkManager.Singleton.Shutdown();
-
-        yield return new WaitUntil(() =>
-            NetworkManager.Singleton == null ||
-            !NetworkManager.Singleton.IsListening
-        );
-
-        if (NetworkManager.Singleton != null)
-            Destroy(NetworkManager.Singleton.gameObject);
-
-        yield return null;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        Debug.Log($"[GameManager] Server loading scene: {sceneName}");
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        // This single call loads the scene on EVERY connected client simultaneously
+        // No RPCs, no NetworkVariables needed — NGO handles it natively
+        NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public GameEndState GetGameState() => currentGameState;

@@ -9,6 +9,7 @@ public class SlugPlayer : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
+    [SerializeField] private Canvas taskCanvas;
     //[SerializeField] private InputActionAsset inputAsset;
     private AudioListener audioListener;
 
@@ -100,11 +101,13 @@ public class SlugPlayer : NetworkBehaviour
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
             if (pickupHintUI) pickupHintUI.SetActive(false);
+            if (taskCanvas) taskCanvas.enabled = false; // ← add this
             return;
         }
 
         if (mainCamera) mainCamera.enabled = true;
         if (audioListener) audioListener.enabled = true;
+        if (taskCanvas) taskCanvas.enabled = true; // ← add this
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -274,15 +277,15 @@ public class SlugPlayer : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void RequestTransformServerRpc(int propIndex)
+    private void RequestTransformServerRpc(int propId)
     {
-        if (propIndex != -1 &&
-            (propIndex < 0 || propIndex >= PropInteractable.Registry.Count))
+        // -1 means untransform, anything else must exist in the registry
+        if (propId != -1 && !PropInteractable.Registry.ContainsKey(propId))
         {
-            Debug.LogWarning($"[SlugPlayer] Server rejected invalid prop index {propIndex}.");
+            Debug.LogWarning($"[SlugPlayer] Server rejected unknown prop id {propId}.");
             return;
         }
-        networkPropIndex.Value = propIndex;
+        networkPropIndex.Value = propId;
     }
 
     private void OnPropIndexChanged(int previous, int current)
@@ -290,7 +293,7 @@ public class SlugPlayer : NetworkBehaviour
         ApplyPropVisual(current);
     }
 
-    private void ApplyPropVisual(int propIndex)
+    private void ApplyPropVisual(int propId)
     {
         if (spawnedPropVisual != null)
         {
@@ -298,20 +301,18 @@ public class SlugPlayer : NetworkBehaviour
             spawnedPropVisual = null;
         }
 
-        if (propIndex < 0)
+        if (propId < 0)
         {
             if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(true);
             ResetCharacterController();
             return;
         }
 
-        if (propIndex >= PropInteractable.Registry.Count)
+        if (!PropInteractable.Registry.TryGetValue(propId, out PropInteractable prop))
         {
-            Debug.LogWarning($"[SlugPlayer] Prop index {propIndex} not found in registry.");
+            Debug.LogWarning($"[SlugPlayer] Prop id {propId} not found in registry.");
             return;
         }
-
-        PropInteractable prop = PropInteractable.Registry[propIndex];
 
         if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(false);
 
