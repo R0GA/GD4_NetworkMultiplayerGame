@@ -36,6 +36,7 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private float interactRange = 4f;
     [SerializeField] private LayerMask propLayerMask = ~0;
     [SerializeField] private GameObject interactHintUI;
+    [SerializeField] private GameObject pickupHintUI;
 
     [Header("Pick Up Settins")]
     [SerializeField] private Transform holdPoint;
@@ -98,6 +99,7 @@ public class SlugPlayer : NetworkBehaviour
             if (audioListener) audioListener.enabled = false;
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
+            if (pickupHintUI) pickupHintUI.SetActive(false);
             return;
         }
 
@@ -147,6 +149,7 @@ public class SlugPlayer : NetworkBehaviour
         HandleTransformInput();
         ApplyGravity();
         UpdateInteractHint();
+        UpdatePickupHint();
 
         if (animator)
             animator.SetFloat(speedParam, moveAction.ReadValue<Vector2>().magnitude);
@@ -182,7 +185,8 @@ public class SlugPlayer : NetworkBehaviour
         Cursor.lockState = uiActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = uiActive;
     }
-    
+    public bool GetUIMode() => isInUIMode;
+
     private void HandleMovement()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
@@ -251,6 +255,22 @@ public class SlugPlayer : NetworkBehaviour
         bool show = !IsTransformed && GetTargetProp() != null;
         if (interactHintUI.activeSelf != show)
             interactHintUI.SetActive(show);
+    }
+    private void UpdatePickupHint()
+    {
+        if (!pickupHintUI) return;
+        bool show = !isHolding && GetPickupTarget() != null;
+        if (pickupHintUI.activeSelf != show)
+            pickupHintUI.SetActive(show);
+    }
+
+    private GameObject GetPickupTarget()
+    {
+        if (!mainCamera) return null;
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(ray, out RaycastHit hit, pickUpRange, pickUpLayer))
+            return hit.collider.gameObject;
+        return null;
     }
 
     [ServerRpc]

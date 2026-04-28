@@ -56,8 +56,10 @@ public class EngineContoller : MonoBehaviour
     public void EngineFire()
     {
         if (isEngineCorrect)
+        {
             engineFire.Play();
             StartCoroutine(EngineKillCountDown());
+        }
     }
 
    public IEnumerator EngineKillCountDown()
@@ -79,6 +81,7 @@ public class EngineContoller : MonoBehaviour
         engineDestroyedText.SetActive(true);
         Debug.Log("Engine GoKAboom");
         isEngineDestroyed = true;
+        seeEngine.taskCompleted = true;
         seeEngine.Close();
     }
 

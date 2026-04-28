@@ -2,14 +2,8 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-/// <summary>
-/// Manages game win conditions and end state for the multiplayer game.
-/// 
-/// Win Conditions:
-/// - Astronaut wins: Slug player (SlugPlayer) health reaches 0
-/// - Slug wins: Astronaut oxygen reaches 0 OR all sabotage tasks are completed
-/// </summary>
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private NetworkFPSPlayer astronautPlayer;
@@ -25,15 +19,11 @@ public class GameManager : MonoBehaviour
     }
 
     private GameEndState currentGameState = GameEndState.Active;
-
-    // Event triggered when game ends with win state
     public UnityEvent<GameEndState> OnGameEnd = new UnityEvent<GameEndState>();
-
     private static GameManager instance;
 
     private void Awake()
     {
-        // Singleton pattern
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -43,14 +33,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    private void Start() => InitializeGameManager();
+
+    private void Update()
     {
-        InitializeGameManager();
+        if (astronautPlayer == null || slugPlayer == null || taskManager == null)
+            InitializeGameManager();
     }
 
     private void InitializeGameManager()
     {
-        // Find components if not assigned in inspector
         if (astronautPlayer == null)
             astronautPlayer = FindObjectOfType<NetworkFPSPlayer>();
 
@@ -60,89 +52,56 @@ public class GameManager : MonoBehaviour
         if (taskManager == null)
             taskManager = FindObjectOfType<TaskManager>();
 
-        // Subscribe to astronaut death (oxygen depletion)
         if (astronautPlayer != null)
         {
             OxygenManager oxygenManager = astronautPlayer.GetComponent<OxygenManager>();
             if (oxygenManager != null)
-            {
                 oxygenManager.OnDeath.AddListener(OnAstronautDeath);
-            }
             else
-            {
                 Debug.LogWarning("[GameManager] OxygenManager not found on Astronaut player!");
-            }
         }
         else
         {
             Debug.LogWarning("[GameManager] NetworkFPSPlayer not found in scene!");
         }
 
-        // Subscribe to slug death (health depletion)
         if (slugPlayer != null)
         {
             NetworkHealth slugHealth = slugPlayer.GetComponent<NetworkHealth>();
             if (slugHealth != null)
-            {
                 slugHealth.OnDeath.AddListener(OnSlugDeath);
-            }
             else
-            {
                 Debug.LogWarning("[GameManager] NetworkHealth not found on Slug player!");
-            }
         }
         else
         {
             Debug.LogWarning("[GameManager] SlugPlayer not found in scene!");
         }
 
-        // Subscribe to task completion
         if (taskManager != null)
-        {
             taskManager.OnAllTasksCompleted.AddListener(OnTasksCompleted);
-        }
         else
-        {
             Debug.LogWarning("[GameManager] TaskManager not found in scene!");
-        }
     }
 
-    /// <summary>
-    /// Called when the astronaut dies (oxygen reaches 0).
-    /// Slug wins immediately.
-    /// </summary>
     private void OnAstronautDeath()
     {
-        if (currentGameState != GameEndState.Active)
-            return;
-
+        if (currentGameState != GameEndState.Active) return;
         Debug.Log("[GameManager] Astronaut died! Slug wins!");
         EndGame(GameEndState.AstroDeath);
     }
 
-    /// <summary>
-    /// Called when the slug dies (health reaches 0).
-    /// Astronaut wins immediately.
-    /// </summary>
     private void OnSlugDeath()
     {
-        if (currentGameState != GameEndState.Active)
-            return;
-
+        if (currentGameState != GameEndState.Active) return;
         Debug.Log("[GameManager] Slug died! Astronaut wins!");
         EndGame(GameEndState.AstronautWins);
     }
 
-    /// <summary>
-    /// Called when all sabotage tasks are completed.
-    /// Slug wins if astronaut is still alive.
-    /// </summary>
     private void OnTasksCompleted()
     {
-        if (currentGameState != GameEndState.Active)
-            return;
+        if (currentGameState != GameEndState.Active) return;
 
-        // Check if astronaut is still alive
         if (astronautPlayer != null)
         {
             OxygenManager oxygenManager = astronautPlayer.GetComponent<OxygenManager>();
@@ -154,50 +113,82 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Ends the game with the given end state.
-    /// Triggers OnGameEnd event and handles cleanup/UI.
-    /// </summary>
     private void EndGame(GameEndState endState)
     {
-        if (currentGameState != GameEndState.Active)
-            return;
+        if (currentGameState != GameEndState.Active) return;
 
         currentGameState = endState;
-
-        // Trigger event for UI or scene management
         OnGameEnd?.Invoke(endState);
 
-        // Log game result
-        switch (endState)
+        string sceneName = endState switch
         {
-            case GameEndState.AstronautWins:
-                Debug.Log("[GameManager] ===== ASTRONAUT WINS! =====");
-                NetworkManager.Singleton.SceneManager.LoadScene("AstroWin", LoadSceneMode.Single);
-                break;
-            case GameEndState.AstroDeath:
-                Debug.Log("[GameManager] ===== ASTRO DIED SLUG WINS! =====");
-                NetworkManager.Singleton.SceneManager.LoadScene("SlugWin-Oxy", LoadSceneMode.Single);
-                break;
-            case GameEndState.SlugTasks:
-                Debug.Log("[GameManager] ===== SLUG WINS BY TASKS! =====");
-                NetworkManager.Singleton.SceneManager.LoadScene("SlugWin-Tasks", LoadSceneMode.Single);
-                break;
+            GameEndState.AstronautWins => "AstroWin",
+            GameEndState.AstroDeath => "SlugWin-Oxy",
+            GameEndState.SlugTasks => "SlugWin-Tasks",
+            _ => ""
+        };
+
+        Time.timeScale = 1f;
+
+        // Notify clients FIRST before any despawning or shutdown
+        if (GameManagerNetwork.Instance != null)
+        {
+            Debug.Log("[GameManager] Notifying clients of game end");
+            GameManagerNetwork.Instance.NotifyClientsGameEnd(sceneName);
+        }
+        else
+        {
+            Debug.LogError("[GameManager] GameManagerNetwork.Instance is null!");
         }
 
-        // Optional: Pause the game
-         Time.timeScale = 0f;
+        StartCoroutine(ServerShutdownAndLoad(sceneName));
     }
 
-    /// <summary>
-    /// Gets the current game state.
-    /// </summary>
+    private IEnumerator ServerShutdownAndLoad(string sceneName)
+    {
+        // Wait long enough for the RPC to reach and be processed by clients
+        // before we start tearing down NetworkObjects
+        Debug.Log("[GameManager] Server waiting before despawn...");
+        yield return new WaitForSecondsRealtime(2f);
+
+        if (NetworkManager.Singleton != null && NetworkManager.Singleton.IsServer)
+        {
+            Debug.Log("[GameManager] Server despawning all NetworkObjects");
+            var spawnedObjects = new System.Collections.Generic.List<NetworkObject>(
+                NetworkManager.Singleton.SpawnManager.SpawnedObjects.Values
+            );
+
+            foreach (var netObj in spawnedObjects)
+            {
+                if (netObj != null)
+                    netObj.Despawn(true);
+            }
+        }
+
+        yield return null;
+
+        Debug.Log("[GameManager] Server shutting down NetworkManager");
+        if (NetworkManager.Singleton != null)
+            NetworkManager.Singleton.Shutdown();
+
+        yield return new WaitUntil(() =>
+            NetworkManager.Singleton == null ||
+            !NetworkManager.Singleton.IsListening
+        );
+
+        if (NetworkManager.Singleton != null)
+            Destroy(NetworkManager.Singleton.gameObject);
+
+        yield return null;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Debug.Log($"[GameManager] Server loading scene: {sceneName}");
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }
+
     public GameEndState GetGameState() => currentGameState;
-
-    /// <summary>
-    /// Returns true if the game is still active.
-    /// </summary>
     public bool IsGameActive() => currentGameState == GameEndState.Active;
-
     public static GameManager Instance => instance;
 }

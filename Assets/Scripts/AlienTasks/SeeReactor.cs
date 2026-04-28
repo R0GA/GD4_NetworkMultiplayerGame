@@ -4,14 +4,13 @@ using UnityEngine.UI;
 
 public class SeeReactor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject reactorCamCanvas;
     [SerializeField] private SlugPlayer slugPlayer;
     [SerializeField] private GameObject slugman;
     [SerializeField] private Canvas myCanvas;
     [SerializeField] private GraphicRaycaster raycaster;
+    public bool taskCompleted = false;
 
-    // Called when a player interacts (e.g. press E, enter trigger, etc.)
     public void Interact(NetworkBehaviour interactingPlayer)
     {
         // Only open the canvas for the player who actually interacted
@@ -20,12 +19,11 @@ public class SeeReactor : MonoBehaviour
         myCanvas.enabled = true;
         raycaster.enabled = true;
         myCanvas.worldCamera = slugman.GetComponentInChildren<Camera>();
-        Debug.Log($"Interacted with reactor camera{myCanvas} {raycaster} {myCanvas.worldCamera}");
     }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collided" + other);
-        if (other.CompareTag("Slug"))
+        if (other.CompareTag("Slug") && !taskCompleted)
         {
             other.GetComponent<SlugPlayer>().SetUIMode(true);
             slugman = other.gameObject;
@@ -38,7 +36,7 @@ public class SeeReactor : MonoBehaviour
         if (other.CompareTag("Slug"))
         {
             Close();
-            other.GetComponent<SlugPlayer>().SetUIMode(false);
+            //other.GetComponent<SlugPlayer>().SetUIMode(false);
         }
     }
 

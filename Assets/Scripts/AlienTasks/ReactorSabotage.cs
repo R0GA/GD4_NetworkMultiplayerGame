@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ReactorSabotage : MonoBehaviour
 {
     [Header("UI References")]
-    private GameObject canvas;
+    [SerializeField] private GameObject canvas;
     public Slider fillBar;
     public Button clickButton;
    
@@ -101,7 +101,7 @@ public class ReactorSabotage : MonoBehaviour
 
     private void Update()
     {
-        if(currentValue >=98f)
+        if(currentValue >=98f && !isReactorDestroyed)
         {
             isReactorDestroyed = true;
             StartCoroutine(BlowReactor()); 
@@ -112,8 +112,9 @@ public class ReactorSabotage : MonoBehaviour
 
      {
         yield return new WaitForSeconds(1);
+        canvas.SetActive(false);
+        seeReactor.taskCompleted = true;
         seeReactor.Close();
-    
     }
 
 }

@@ -119,7 +119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9063687073841064678}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1800176711092391504}
+        m_TargetAssemblyTypeName: BackToMenuScript, Assembly-CSharp
+        m_MethodName: BackToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5051472649754130746
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +144,7 @@ GameObject:
   - component: {fileID: 4236569030926816412}
   - component: {fileID: 7768745836542809752}
   - component: {fileID: 7047680704622274643}
+  - component: {fileID: 1800176711092391504}
   m_Layer: 5
   m_Name: EndScreen Canvas
   m_TagString: Untagged
@@ -224,6 +237,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1800176711092391504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051472649754130746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364712d63b03c4d4f940c469e59961b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackToMenuScript
 --- !u!1 &6039660369313004271
 GameObject:
   m_ObjectHideFlags: 0

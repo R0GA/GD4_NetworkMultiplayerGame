@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamePlayerSpawner : NetworkBehaviour
 {
@@ -8,13 +10,21 @@ public class GamePlayerSpawner : NetworkBehaviour
     [SerializeField] private Transform slugSpawn;
     [SerializeField] private Transform astroSpawn;
     [SerializeField] private Transform defaultSpawn;
-    private Transform spawnPos;
 
     public override void OnNetworkSpawn()
     {
         if (!IsServer) return;
 
-        // We already know the lobby manager survived, find it
+        // Wait until ALL clients have fully loaded the scene before spawning
+        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnSceneLoadCompleted;
+    }
+
+    private void OnSceneLoadCompleted(string sceneName, LoadSceneMode loadSceneMode,
+                                      List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        // Unsubscribe immediately so this only fires once
+        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
+
         LobbyNetworkManager lobby = FindObjectOfType<LobbyNetworkManager>();
         if (lobby == null)
         {
@@ -22,36 +32,34 @@ public class GamePlayerSpawner : NetworkBehaviour
             return;
         }
 
-        // Scene is already loaded when this NetworkObject spawns.
-        // Spawn each connected client’s character.
-        var clients = NetworkManager.Singleton.ConnectedClients;
-        foreach (var kvp in clients)
+        foreach (ulong clientId in clientsCompleted)
         {
-            ulong clientId = kvp.Key;
             NetworkObject prefab = null;
+            Transform spawnPos = defaultSpawn;
 
             if (clientId == lobby.SaboteurClientId.Value)
             {
                 prefab = saboteurPrefab;
                 spawnPos = slugSpawn;
             }
-
             else if (clientId == lobby.SeekerClientId.Value)
             {
                 prefab = seekerPrefab;
                 spawnPos = astroSpawn;
             }
-            else
-                spawnPos = defaultSpawn;
 
-                if (prefab != null)
+            if (prefab != null)
             {
                 var playerObj = Instantiate(prefab, spawnPos.position, Quaternion.identity);
                 playerObj.SpawnAsPlayerObject(clientId);
             }
         }
+    }
 
-        // (Optional) destroy the lobby manager now that it’s done
-        //Destroy(lobby.gameObject);
+    public override void OnNetworkDespawn()
+    {
+        // Safety cleanup in case the object is destroyed before scene finishes loading
+        if (NetworkManager.Singleton != null)
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
     }
 }
