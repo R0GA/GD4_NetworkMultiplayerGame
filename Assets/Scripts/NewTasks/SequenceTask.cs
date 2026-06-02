@@ -3,50 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-/// <summary>
-/// Memory Sequence Task — Navigation Console Sabotage
-/// 
-/// The player must repeat three rounds of a flashing 3x3 grid sequence.
-/// Each round adds one extra step:
-///   Round 1 → 3 flashes
-///   Round 2 → 5 flashes
-///   Round 3 → 7 flashes
-///
-/// ── Scene Setup ─────────────────────────────────────────────────────────────
-///
-/// 1. Create a Canvas (Screen Space – Overlay or Camera) on the SAME
-///    NetworkObject as the player (so only the owner sees it).
-///    - taskPanel   → a child Panel acting as the task's root (assign in Inspector).
-///
-/// 2. Inside taskPanel build:
-///
-///    [SequenceTask Panel]
-///    ├── Background (Image – dark translucent)
-///    ├── Title (TMP_Text)           → assign to titleText
-///    ├── StatusText (TMP_Text)      → assign to statusText
-///    ├── RoundText (TMP_Text)       → assign to roundText
-///    ├── GridRoot (GridLayoutGroup) → assign to gridRoot
-///    │     9× GridCell (Button)     → assign each to gridButtons[0..8]
-///    ├── FeedbackText (TMP_Text)    → assign to feedbackText   (optional)
-///    └── CloseButton (Button)       → assign to closeButton
-///
-/// 3. GridCell setup:
-///    - Normal color  : dark / muted  (e.g. #1A2233)
-///    - Highlighted   : brighter tint handled by code, disable built-in transitions
-///      (Transition = None) so we control color directly.
-///    - Each Button's onClick should be LEFT EMPTY — the script wires them up.
-///
-/// 4. Attach SequenceTask to the same GameObject as (or a child of) the task
-///    panel root. Drag references into the Inspector.
-///
-/// 5. Create a world-space TaskTrigger on the Navigation Console prop and wire
-///    its OnInteract event → SequenceTask.TryOpen(slugPlayerRef).
-/// </summary>
 public class SequenceTask : BaseTask
 {
-    // ── Inspector ─────────────────────────────────────────────────────────────
-
     [Header("Grid")]
     [SerializeField] private List<Button> gridButtons = new(9);
 
@@ -77,7 +35,6 @@ public class SequenceTask : BaseTask
     [SerializeField] private Color wrongColor = new Color(0.90f, 0.20f, 0.25f, 1f);
     [SerializeField] private Color activeColor = new Color(0.25f, 0.55f, 0.80f, 1f); // player pressed
 
-    // ── Runtime ───────────────────────────────────────────────────────────────
 
     private List<int> currentSequence = new();
     private int currentRound = 0;
@@ -85,10 +42,6 @@ public class SequenceTask : BaseTask
     private bool acceptingInput = false;
     private bool roundFailed = false;   // NEW: indicates current round attempt failed
     private Coroutine activeRoutine;
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // BaseTask Overrides
-    // ═════════════════════════════════════════════════════════════════════════
 
     protected override void OnOpen()
     {
@@ -126,10 +79,6 @@ public class SequenceTask : BaseTask
         acceptingInput = false;
         ResetAllButtons();
     }
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // Core Game Loop
-    // ═════════════════════════════════════════════════════════════════════════
 
     private IEnumerator RunGame()
     {
@@ -202,9 +151,6 @@ public class SequenceTask : BaseTask
         }
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
-    // Player Input
-    // ═════════════════════════════════════════════════════════════════════════
 
     private void OnGridButtonPressed(int index)
     {
@@ -248,9 +194,6 @@ public class SequenceTask : BaseTask
         if (feedbackText) feedbackText.text = "";
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
-    // UI Helpers
-    // ═════════════════════════════════════════════════════════════════════════
 
     private IEnumerator FlashButtonBriefly(int index, Color color)
     {

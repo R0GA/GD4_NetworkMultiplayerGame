@@ -3,17 +3,9 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Central task manager. Attach to the same NetworkObject as the saboteur player
-/// (or a dedicated manager GameObject that is spawned per-player).
-/// 
-/// Only the local owner sees task UI. Task completion is tracked via a
-/// NetworkVariable so the seeker can react to events server-side.
-/// </summary>
+
 public class TaskManager : NetworkBehaviour
 {
-    // ── Inspector ────────────────────────────────────────────────────────────
-
     [Header("Task Registry")]
     [Tooltip("All BaseTask components that exist in the scene. Populate in Inspector or let Start() find them.")]
     [SerializeField] private List<BaseTask> allTasks = new();
@@ -22,26 +14,15 @@ public class TaskManager : NetworkBehaviour
     [SerializeField] private GameObject taskListPanel;   // optional HUD showing task list
     [SerializeField] private List<GameObject> taskListItems; // one per task, same order as allTasks
 
-    // ── Events ───────────────────────────────────────────────────────────────
 
-    /// <summary>Fired on the owner client (and server) when every task is complete.</summary>
     public UnityEvent OnAllTasksCompleted = new();
 
-    // ── Network State ────────────────────────────────────────────────────────
-
-    // Bitmask: bit N = task index N is complete. Supports up to 32 tasks.
     private readonly NetworkVariable<int> completedTasksMask = new(
         0,
         NetworkVariableReadPermission.Everyone,
         NetworkVariableWritePermission.Server);
 
-    // ── Runtime ──────────────────────────────────────────────────────────────
-
     private bool allDone = false;
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // Lifecycle
-    // ═════════════════════════════════════════════════════════════════════════
 
     public override void OnNetworkSpawn()
     {
@@ -69,23 +50,11 @@ public class TaskManager : NetworkBehaviour
         completedTasksMask.OnValueChanged -= OnCompletedMaskChanged;
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
-    // Public API (called by BaseTask)
-    // ═════════════════════════════════════════════════════════════════════════
-
-    /// <summary>
-    /// Called by a BaseTask when the player completes it locally.
-    /// Sends an RPC to the server to record completion.
-    /// </summary>
     public void NotifyTaskCompleted(int taskIndex)
     {
         if (!IsOwner) return;
         MarkTaskCompleteServerRpc(taskIndex);
     }
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // Server RPCs
-    // ═════════════════════════════════════════════════════════════════════════
 
     [ServerRpc]
     private void MarkTaskCompleteServerRpc(int taskIndex)
@@ -99,10 +68,6 @@ public class TaskManager : NetworkBehaviour
         completedTasksMask.Value |= (1 << taskIndex);
         CheckAllComplete();
     }
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // Private Helpers
-    // ═════════════════════════════════════════════════════════════════════════
 
     private void OnCompletedMaskChanged(int previous, int current)
     {
@@ -134,10 +99,6 @@ public class TaskManager : NetworkBehaviour
             OnAllTasksCompleted?.Invoke();
         }
     }
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // Utility
-    // ═════════════════════════════════════════════════════════════════════════
 
     public bool IsTaskComplete(int index) =>
         index >= 0 && index < allTasks.Count && (completedTasksMask.Value & (1 << index)) != 0;

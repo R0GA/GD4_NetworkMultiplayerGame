@@ -3,40 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Wavelength Matching Task – Adjust amplitude and frequency to match a target wave.
-/// 
-/// ── Scene Setup ─────────────────────────────────────────────────────────────
-/// 
-/// 1. Create a Canvas (Screen Space – Overlay or Camera) on the player's
-///    NetworkObject so only the owner sees it. Assign its root Panel to taskPanel.
-/// 
-/// 2. Inside the Panel, build this hierarchy:
-/// 
-///    [WavelengthTask Panel]
-///    ├── Title (TMP_Text)
-///    ├── Target Wave Container (Image or RawImage) – or use two LineRenderers.
-///    ├── Current Wave Container
-///    ├── Amplitude Slider (Slider)
-///    ├── Frequency Slider (Slider)
-///    ├── Amplitude Value Label (TMP_Text)
-///    ├── Frequency Value Label (TMP_Text)
-///    ├── StatusText (TMP_Text)
-///    ├── FeedbackText (TMP_Text)
-///    └── CloseButton (Button)
-/// 
-/// 3. For wave rendering: This script uses LineRenderer components that draw on a
-///    World Space Canvas or directly in the world. However, for simplicity in UI,
-///    you can attach LineRenderers to two child GameObjects (TargetWaveRenderer,
-///    CurrentWaveRenderer) and set their positions in Update.
-/// 
-///    Alternative (simpler): Use a custom UIGraphic or a texture. This example
-///    uses LineRenderers because they are easy to update dynamically.
-/// 
-/// 4. Assign all references in the Inspector.
-/// 
-/// 5. Set taskIdentifier on this component (e.g. "WavelengthConsole").
-/// </summary>
 public class WavelengthTask : BaseTask
 {
     // ── Inspector ─────────────────────────────────────────────────────────────
@@ -83,7 +49,7 @@ public class WavelengthTask : BaseTask
     [SerializeField] private Color wrongColor = Color.red;
     [SerializeField] private Color neutralColor = Color.white;
 
-    // ── Runtime ───────────────────────────────────────────────────────────────
+   
 
     private float targetAmplitude;
     private float targetFrequency;
@@ -92,10 +58,6 @@ public class WavelengthTask : BaseTask
     private float currentFrequency;
 
     private bool isMatching = false;
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // BaseTask Overrides
-    // ═════════════════════════════════════════════════════════════════════════
 
     protected override void OnOpen()
     {
@@ -147,9 +109,6 @@ public class WavelengthTask : BaseTask
         if (frequencySlider) frequencySlider.onValueChanged.RemoveListener(OnFrequencyChanged);
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
-    // UI Event Handlers
-    // ═════════════════════════════════════════════════════════════════════════
 
     private void OnAmplitudeChanged(float value)
     {
@@ -167,9 +126,6 @@ public class WavelengthTask : BaseTask
         CheckMatch();
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
-    // Matching Logic
-    // ═════════════════════════════════════════════════════════════════════════
 
     private void CheckMatch()
     {
@@ -184,7 +140,7 @@ public class WavelengthTask : BaseTask
         if (amplitudeMatch && frequencyMatch)
         {
             isMatching = true;
-            SetFeedback("✓ PERFECT MATCH! TASK COMPLETE ✓", correctColor);
+            SetFeedback("PERFECT MATCH! TASK COMPLETE", correctColor);
             SetStatus("CALIBRATION SUCCESS");
             StartCoroutine(CompleteAfterDelay(1.2f));
         }
@@ -204,13 +160,7 @@ public class WavelengthTask : BaseTask
         CompleteTask();
     }
 
-    // ═════════════════════════════════════════════════════════════════════════
-    // Wave Drawing
-    // ═════════════════════════════════════════════════════════════════════════
 
-    /// <summary>
-    /// Draws a sine wave using a LineRenderer.
-    /// </summary>
     /// <param name="lr">LineRenderer component.</param>
     /// <param name="amplitude">Height of the wave (peak to trough).</param>
     /// <param name="frequency">Number of full cycles over the total width.</param>
@@ -238,10 +188,6 @@ public class WavelengthTask : BaseTask
 
         lr.SetPositions(points);
     }
-
-    // ═════════════════════════════════════════════════════════════════════════
-    // UI Helpers
-    // ═════════════════════════════════════════════════════════════════════════
 
     private void UpdateValueLabels()
     {
