@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acca2ec8cab09784ebd39c0f83c24d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
-  taskIdentifier: Reactor
+  taskIdentifier: Comms
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
   OnInteracted:
@@ -1543,6 +1543,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4875885164974171077, guid: 374d1de7e7bec10458611cf3b52aae9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993540660094395164, guid: 374d1de7e7bec10458611cf3b52aae9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203010304534581660, guid: 374d1de7e7bec10458611cf3b52aae9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6023558797097434753, guid: 374d1de7e7bec10458611cf3b52aae9a, type: 3}
       propertyPath: m_Name
       value: Slug
@@ -1554,6 +1566,10 @@ PrefabInstance:
     - target: {fileID: 6982222179438214086, guid: 374d1de7e7bec10458611cf3b52aae9a, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1397519582
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402448331642660917, guid: 374d1de7e7bec10458611cf3b52aae9a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -166,7 +166,7 @@ public class SequenceTask : BaseTask
             // If the round failed, retry without advancing to next round
             if (roundFailed)
             {
-                SetFeedback("✗ WRONG — RETRYING", wrongColor);
+                SetFeedback("WRONG — RETRYING", wrongColor);
                 yield return new WaitForSeconds(1.2f);
                 continue; // Stay on same round
             }
@@ -174,7 +174,7 @@ public class SequenceTask : BaseTask
             // Round succeeded – show success feedback
             if (currentRound < totalRounds)
             {
-                SetFeedback("✓ CORRECT", correctColor);
+                SetFeedback("CORRECT", correctColor);
                 yield return new WaitForSeconds(1.0f);
                 ResetAllButtons();
             }
@@ -185,7 +185,7 @@ public class SequenceTask : BaseTask
 
         // All rounds completed successfully
         SetStatus("ACCESS GRANTED");
-        SetFeedback("✓ SABOTAGE SUCCESSFUL", correctColor);
+        SetFeedback("SABOTAGE SUCCESSFUL", correctColor);
         yield return new WaitForSeconds(1.5f);
         CompleteTask();
     }
