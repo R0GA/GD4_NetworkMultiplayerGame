@@ -379,7 +379,16 @@ public class SlugPlayer : NetworkBehaviour
            
         }
     }
-
-    
-    
+    public BaseTask GetTaskByIdentifier(string identifier)
+    {
+        if (string.IsNullOrEmpty(identifier)) return null;
+        BaseTask[] tasks = GetComponentsInChildren<BaseTask>(true);
+        foreach (var task in tasks)
+        {
+            if (task.taskIdentifier == identifier)
+                return task;
+        }
+        Debug.LogWarning($"[SlugPlayer] No task with identifier '{identifier}' found.");
+        return null;
+    }
 }
