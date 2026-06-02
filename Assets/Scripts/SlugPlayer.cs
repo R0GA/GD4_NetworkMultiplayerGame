@@ -2,7 +2,6 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(CharacterController))]
 public class SlugPlayer : NetworkBehaviour
@@ -10,14 +9,10 @@ public class SlugPlayer : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
-    //[SerializeField] private InputActionAsset inputAsset;
+    [SerializeField] private Canvas taskCanvas;
     private AudioListener audioListener;
 
-
-    // ── ADD THIS ──────────────────────────────────────────
-    [Tooltip("The InputAxisController on your Cinemachine Virtual Camera.")]
     [SerializeField] private CinemachineInputAxisController cinemachineInputController;
-    // ──────────────────────────────────────────────────────
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -37,6 +32,7 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private float interactRange = 4f;
     [SerializeField] private LayerMask propLayerMask = ~0;
     [SerializeField] private GameObject interactHintUI;
+    [SerializeField] private GameObject pickupHintUI;
 
     [Header("Pick Up Settins")]
     [SerializeField] private Transform holdPoint;
@@ -45,11 +41,7 @@ public class SlugPlayer : NetworkBehaviour
     [SerializeField] private bool isHolding;
     [SerializeField] private LayerMask pickUpLayer = ~0;
 
-
-    // ── ADD THIS ──────────────────────────────────────────
-    // Tracks whether the player is in UI interaction mode
     private bool isInUIMode = false;
-    // ──────────────────────────────────────────────────────
 
     private PlayerInput pi;
     private InputAction moveAction;
@@ -99,11 +91,14 @@ public class SlugPlayer : NetworkBehaviour
             if (audioListener) audioListener.enabled = false;
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
+            if (pickupHintUI) pickupHintUI.SetActive(false);
+            if (taskCanvas) taskCanvas.enabled = false;
             return;
         }
 
         if (mainCamera) mainCamera.enabled = true;
         if (audioListener) audioListener.enabled = true;
+        if (taskCanvas) taskCanvas.enabled = true;
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -114,9 +109,7 @@ public class SlugPlayer : NetworkBehaviour
     {
         networkPropIndex.OnValueChanged -= OnPropIndexChanged;
 
-        // ── ADD THIS — safety cleanup on disconnect ────────
         if (IsOwner) SetUIMode(false);
-        // ──────────────────────────────────────────────────
     }
 
     private void SetupInput()
@@ -148,6 +141,7 @@ public class SlugPlayer : NetworkBehaviour
         HandleTransformInput();
         ApplyGravity();
         UpdateInteractHint();
+        UpdatePickupHint();
 
         if (animator)
             animator.SetFloat(speedParam, moveAction.ReadValue<Vector2>().magnitude);
@@ -156,9 +150,9 @@ public class SlugPlayer : NetworkBehaviour
 
         if (pickUpAction.WasPressedThisFrame()) PickUp();
 
-        if (Time.frameCount % 60 == 0)   // every second
+        if (Time.frameCount % 60 == 0) 
         {
-            Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
+            //Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
         }
     }
 
@@ -183,7 +177,8 @@ public class SlugPlayer : NetworkBehaviour
         Cursor.lockState = uiActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = uiActive;
     }
-    
+    public bool GetUIMode() => isInUIMode;
+
     private void HandleMovement()
     {
         Vector2 input = moveAction.ReadValue<Vector2>();
@@ -253,17 +248,32 @@ public class SlugPlayer : NetworkBehaviour
         if (interactHintUI.activeSelf != show)
             interactHintUI.SetActive(show);
     }
+    private void UpdatePickupHint()
+    {
+        if (!pickupHintUI) return;
+        bool show = !isHolding && GetPickupTarget() != null;
+        if (pickupHintUI.activeSelf != show)
+            pickupHintUI.SetActive(show);
+    }
+
+    private GameObject GetPickupTarget()
+    {
+        if (!mainCamera) return null;
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Physics.Raycast(ray, out RaycastHit hit, pickUpRange, pickUpLayer))
+            return hit.collider.gameObject;
+        return null;
+    }
 
     [ServerRpc]
-    private void RequestTransformServerRpc(int propIndex)
+    private void RequestTransformServerRpc(int propId)
     {
-        if (propIndex != -1 &&
-            (propIndex < 0 || propIndex >= PropInteractable.Registry.Count))
+        if (propId != -1 && !PropInteractable.Registry.ContainsKey(propId))
         {
-            Debug.LogWarning($"[SlugPlayer] Server rejected invalid prop index {propIndex}.");
+            Debug.LogWarning($"[SlugPlayer] Server rejected unknown prop id {propId}.");
             return;
         }
-        networkPropIndex.Value = propIndex;
+        networkPropIndex.Value = propId;
     }
 
     private void OnPropIndexChanged(int previous, int current)
@@ -271,7 +281,7 @@ public class SlugPlayer : NetworkBehaviour
         ApplyPropVisual(current);
     }
 
-    private void ApplyPropVisual(int propIndex)
+    private void ApplyPropVisual(int propId)
     {
         if (spawnedPropVisual != null)
         {
@@ -279,20 +289,18 @@ public class SlugPlayer : NetworkBehaviour
             spawnedPropVisual = null;
         }
 
-        if (propIndex < 0)
+        if (propId < 0)
         {
             if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(true);
             ResetCharacterController();
             return;
         }
 
-        if (propIndex >= PropInteractable.Registry.Count)
+        if (!PropInteractable.Registry.TryGetValue(propId, out PropInteractable prop))
         {
-            Debug.LogWarning($"[SlugPlayer] Prop index {propIndex} not found in registry.");
+            Debug.LogWarning($"[SlugPlayer] Prop id {propId} not found in registry.");
             return;
         }
-
-        PropInteractable prop = PropInteractable.Registry[propIndex];
 
         if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(false);
 

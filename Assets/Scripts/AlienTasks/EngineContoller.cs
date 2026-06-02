@@ -1,7 +1,5 @@
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EngineContoller : MonoBehaviour
 {
@@ -13,13 +11,12 @@ public class EngineContoller : MonoBehaviour
    public ParticleSystem engineFire;
    public ParticleSystem engineExplode;
 
-
     public GameObject engine;
     public Canvas engineCameraCanvas;
     public float engineRotationAmount ;
     private SeeEngineCamera seeEngine;
     
-    public float engineKillCountTime; //How long the engine fires before it explodes. My names for things is bad so i needed to remeber what this is for.
+    public float engineKillCountTime; 
 
     public bool isEngineCorrect = false;
 
@@ -46,7 +43,7 @@ public class EngineContoller : MonoBehaviour
         if (isEngineCorrect)
         {
             engineCriticalText.SetActive(true);
-            Debug.Log("Engine Danger");
+            //Debug.Log("Engine Danger");
         }
         else if(!isEngineCorrect)
         {
@@ -58,8 +55,10 @@ public class EngineContoller : MonoBehaviour
     public void EngineFire()
     {
         if (isEngineCorrect)
+        {
             engineFire.Play();
             StartCoroutine(EngineKillCountDown());
+        }
     }
 
    public IEnumerator EngineKillCountDown()
@@ -81,6 +80,7 @@ public class EngineContoller : MonoBehaviour
         engineDestroyedText.SetActive(true);
         Debug.Log("Engine GoKAboom");
         isEngineDestroyed = true;
+        seeEngine.taskCompleted = true;
         seeEngine.Close();
     }
 
@@ -94,14 +94,14 @@ public class EngineContoller : MonoBehaviour
 
         {
             isEngineCorrect = true;
-            print("EngineCorrect");
+            //print("EngineCorrect");
             EngineCorrect();
         }
 
         else if(engine.transform.eulerAngles.z >273 || engine.transform.eulerAngles.z < 267)
         {
             isEngineCorrect= false;
-            print("Engine Wrong");
+            //print("Engine Wrong");
            engineCriticalText?.SetActive(false);
         }
 

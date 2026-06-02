@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class ReactorSabotage : MonoBehaviour
 {
     [Header("UI References")]
+    [SerializeField] private GameObject canvas;
     public Slider fillBar;
     public Button clickButton;
    
@@ -29,13 +29,19 @@ public class ReactorSabotage : MonoBehaviour
 
     void Start()
     {
+        //canvas = GameObject.FindWithTag("ReactorCanvas");   
+        //fillBar = canvas.GetComponentInChildren<Slider>();
+        //clickButton = canvas.GetComponentInChildren<Button>();
+
+        //canvas.SetActive(false);
+
         fillBar.minValue = 0f;
         fillBar.maxValue = maxValue;
         fillBar.interactable = false;
 
-        clickButton.onClick.AddListener(OnClickButton);
+        //clickButton.onClick.AddListener(OnClickButton);
 
-      seeReactor = GetComponentInChildren<SeeReactor>();
+        seeReactor = GetComponentInChildren<SeeReactor>();
 
         RefreshUI(0f);
       
@@ -95,7 +101,7 @@ public class ReactorSabotage : MonoBehaviour
 
     private void Update()
     {
-        if(currentValue >=98f)
+        if(currentValue >=98f && !isReactorDestroyed)
         {
             isReactorDestroyed = true;
             StartCoroutine(BlowReactor()); 
@@ -106,8 +112,9 @@ public class ReactorSabotage : MonoBehaviour
 
      {
         yield return new WaitForSeconds(1);
+        canvas.SetActive(false);
+        seeReactor.taskCompleted = true;
         seeReactor.Close();
-    
     }
 
 }
