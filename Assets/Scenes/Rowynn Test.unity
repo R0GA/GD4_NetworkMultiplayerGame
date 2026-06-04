@@ -927,6 +927,7 @@ GameObject:
   - component: {fileID: 1729004574}
   - component: {fileID: 1729004573}
   - component: {fileID: 1729004572}
+  - component: {fileID: 1729004577}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -946,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acca2ec8cab09784ebd39c0f83c24d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
-  taskIdentifier: Comms
+  taskIdentifier: Wires
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
   OnInteracted:
@@ -1045,6 +1046,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1729004577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729004571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d98b10e7904d2f4383c93503ed9810d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RaycastDebugger
 --- !u!1 &1815050937
 GameObject:
   m_ObjectHideFlags: 0
