@@ -38,6 +38,9 @@ public class WireTask : BaseTask
     [Tooltip("Parent for RIGHT (destination) sockets.")]
     [SerializeField] private RectTransform rightSocketContainer;
 
+    [Tooltip("Parent for wire tip handles. Must NOT be inside wireContainer (which has blocksRaycasts=false). Use the panel root.")]
+    [SerializeField] private RectTransform tipHandleContainer;
+
     [Header("Wire Task – UI")]
     [SerializeField] private TextMeshProUGUI statusLabel;
     [SerializeField] private Button closeButton;
@@ -47,12 +50,12 @@ public class WireTask : BaseTask
 
     [Header("Wire Task – Layout")]
     [SerializeField] private float socketSpacing = 90f;
-    [SerializeField] private bool  shuffleDestinationsOnOpen = true;
+    [SerializeField] private bool shuffleDestinationsOnOpen = true;
 
     // ── Runtime ───────────────────────────────────────────────────────────────
     private WireConnector[] sourceSockets;
     private WireConnector[] destSockets;
-    private WireRenderer[]  wires;
+    private WireRenderer[] wires;
 
     private bool taskInitialised = false;
 
@@ -69,8 +72,8 @@ public class WireTask : BaseTask
             ResetWires();
         }
 
-        if (statusLabel)      statusLabel.text = "Rewire the breaker panel.";
-        if (completionFlash)  completionFlash.color = Color.clear;
+        if (statusLabel) statusLabel.text = "Rewire the breaker panel.";
+        if (completionFlash) completionFlash.color = Color.clear;
 
         if (closeButton)
         {
@@ -92,8 +95,8 @@ public class WireTask : BaseTask
 
         int count = taskData.wires.Length;
         sourceSockets = new WireConnector[count];
-        destSockets   = new WireConnector[count];
-        wires         = new WireRenderer[count];
+        destSockets = new WireConnector[count];
+        wires = new WireRenderer[count];
 
         // Ensure wireContainer blocks no raycasts (wires draw on top, but
         // OnDrop events must reach the socket Images below).
@@ -126,10 +129,10 @@ public class WireTask : BaseTask
             // the MaskableGraphic covers the whole panel and drag events can
             // originate anywhere near the source socket.
             RectTransform wireRT = wireGO.GetComponent<RectTransform>();
-            wireRT.anchorMin        = Vector2.zero;
-            wireRT.anchorMax        = Vector2.one;
-            wireRT.offsetMin        = Vector2.zero;
-            wireRT.offsetMax        = Vector2.zero;
+            wireRT.anchorMin = Vector2.zero;
+            wireRT.anchorMax = Vector2.one;
+            wireRT.offsetMin = Vector2.zero;
+            wireRT.offsetMax = Vector2.zero;
             wireRT.anchoredPosition = Vector2.zero;
 
             WireRenderer wr = wireGO.GetComponent<WireRenderer>();
@@ -139,10 +142,17 @@ public class WireTask : BaseTask
                 continue;
             }
 
-            wr.wireIndex    = i;
-            wr.wireColor    = def.color;
+            wr.wireIndex = i;
+            wr.wireColor = def.color;
             wr.sourceSocket = src;
-            wires[i]        = wr;
+            wires[i] = wr;
+
+            // Spawn the invisible tip handle that lets the player grab a
+            // drooping wire by its end and drag it to a new destination.
+            // MUST use tipHandleContainer (panel root), NOT wireContainer,
+            // because wireContainer has blocksRaycasts=false which would
+            // swallow all clicks on tip handles.
+            wr.SpawnTipHandle(tipHandleContainer != null ? tipHandleContainer : wireContainer);
         }
 
         ResetWires();
@@ -155,10 +165,10 @@ public class WireTask : BaseTask
         go.name = isSource ? $"SourceSocket_{def.label}" : $"DestSocket_{def.label}";
 
         RectTransform rt = go.GetComponent<RectTransform>();
-        rt.anchorMin        = new Vector2(0.5f, 0.5f);
-        rt.anchorMax        = new Vector2(0.5f, 0.5f);
-        rt.pivot            = new Vector2(0.5f, 0.5f);
-        rt.sizeDelta        = new Vector2(50f, 50f);
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.sizeDelta = new Vector2(50f, 50f);
         rt.anchoredPosition = anchoredPos;
 
         WireConnector conn = go.GetComponent<WireConnector>();
@@ -168,8 +178,8 @@ public class WireTask : BaseTask
             return null;
         }
 
-        conn.socketColor      = def.color;
-        conn.isSource         = isSource;
+        conn.socketColor = def.color;
+        conn.isSource = isSource;
         conn.correctWireIndex = index;
 
         AddSocketLabel(go.transform, def.label, def.color);
@@ -178,15 +188,15 @@ public class WireTask : BaseTask
 
     private void AddSocketLabel(Transform parent, string text, Color col)
     {
-        var go  = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+        var go = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
         go.transform.SetParent(parent, false);
-        var rt  = go.GetComponent<RectTransform>();
+        var rt = go.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2(0f, -36f);
-        rt.sizeDelta        = new Vector2(80f, 24f);
+        rt.sizeDelta = new Vector2(80f, 24f);
         var tmp = go.GetComponent<TextMeshProUGUI>();
-        tmp.text      = text;
-        tmp.color     = col;
-        tmp.fontSize  = 14f;
+        tmp.text = text;
+        tmp.color = col;
+        tmp.fontSize = 14f;
         tmp.alignment = TextAlignmentOptions.Center;
     }
 
@@ -220,7 +230,7 @@ public class WireTask : BaseTask
         foreach (WireConnector dest in destSockets)
         {
             WireRenderer plugged = dest.pluggedWire;
-            if (plugged == null)                            return; // socket empty
+            if (plugged == null) return; // socket empty
             if (plugged.wireIndex == dest.correctWireIndex) return; // still matched
         }
 
@@ -257,8 +267,8 @@ public class WireTask : BaseTask
         CanvasGroup cg = go.GetComponent<CanvasGroup>();
         if (cg == null) cg = go.AddComponent<CanvasGroup>();
         cg.blocksRaycasts = false;
-        cg.interactable   = true;
-        cg.alpha          = 1f;
+        cg.interactable = true;
+        cg.alpha = 1f;
     }
 
     private static int[] ShuffledIndices(int count)
@@ -275,7 +285,7 @@ public class WireTask : BaseTask
 
         // Guarantee no fixed points (derangement)
         bool hasFix = true;
-        int  guard  = 0;
+        int guard = 0;
         while (hasFix && guard++ < 50)
         {
             hasFix = false;

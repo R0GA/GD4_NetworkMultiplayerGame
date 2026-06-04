@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Placed on each terminal socket (both left source sockets and right destination sockets).
@@ -29,16 +31,23 @@ public class WireConnector : MonoBehaviour,
 
     // Cached during OnBeginDrag so OnDrag/OnEndDrag still have a reference
     // even after pluggedWire is cleared by DetachFromDestination().
-    private WireRenderer activeDragWire;
+    // Public getter so WireConnector.OnPointerEnter can read it when another
+    // socket is forwarding the drag.
+    public WireRenderer activeDragWire { get; private set; }
 
     private static readonly Color kHighlightColor = new Color(1f, 1f, 0.3f, 0.85f);
 
     private void Awake()
     {
         if (socketImage == null) socketImage = GetComponent<Image>();
-        if (socketImage) socketImage.color = socketColor;
         if (socketImage) socketImage.raycastTarget = true;
         if (highlightRing) highlightRing.enabled = false;
+        
+    }
+
+    void Start()
+    {
+        socketImage.color = socketColor;
     }
 
     // ── IPointerDownHandler ───────────────────────────────────────────────────
@@ -80,16 +89,20 @@ public class WireConnector : MonoBehaviour,
     // ── IDropHandler ──────────────────────────────────────────────────────────
     public void OnDrop(PointerEventData eventData)
     {
-        // pointerDrag is the socket that started the drag, not the wire.
-        // Retrieve the wire via the socket's activeDragWire.
+        // pointerDrag can be a WireConnector (source-socket forwarding),
+        // a WireRenderer (direct), or a WireTipHandle (tip-end drag).
         WireRenderer dragged = null;
 
-        // First try: the drag source is a WireConnector forwarding its wire
+        // Case 1: drag source is a WireConnector forwarding its wire
         WireConnector srcSocket = eventData.pointerDrag?.GetComponent<WireConnector>();
         if (srcSocket != null)
             dragged = srcSocket.activeDragWire;
 
-        // Fallback: drag source is a WireRenderer directly
+        // Case 2: drag source is a WireTipHandle — ask it for its wire
+        if (dragged == null)
+            dragged = eventData.pointerDrag?.GetComponent<WireTipHandle>()?.GetDragWire();
+
+        // Case 3: drag source is a WireRenderer directly
         if (dragged == null)
             dragged = eventData.pointerDrag?.GetComponent<WireRenderer>();
 
@@ -113,12 +126,14 @@ public class WireConnector : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         // Highlight when any wire drag is in progress.
-        // pointerDrag may be a WireConnector (forwarding) or WireRenderer (direct).
+        // pointerDrag may be a WireConnector (forwarding), WireRenderer (direct),
+        // or WireTipHandle (tip-end drag).
         if (eventData.pointerDrag == null) return;
 
         bool wireIsDragging =
             eventData.pointerDrag.GetComponent<WireRenderer>() != null ||
-            eventData.pointerDrag.GetComponent<WireConnector>()?.activeDragWire != null;
+            eventData.pointerDrag.GetComponent<WireConnector>()?.activeDragWire != null ||
+            eventData.pointerDrag.GetComponent<WireTipHandle>()?.GetDragWire() != null;
 
         if (wireIsDragging)
             SetHighlight(true);

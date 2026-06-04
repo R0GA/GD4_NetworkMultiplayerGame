@@ -57,13 +57,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3717b19f6c94c643b36722f3d27d449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WireRenderer
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
   wireIndex: 0
   wireColor: {r: 1, g: 0, b: 0, a: 1}
   sourceSocket: {fileID: 0}
   destinationSocket: {fileID: 0}
   wireThickness: 18
   segmentCount: 32
-  sag: 0.22
+  sag: 0.05
   connectorLength: 28
   connectorWidth: 26
-  dragZOffset: -2

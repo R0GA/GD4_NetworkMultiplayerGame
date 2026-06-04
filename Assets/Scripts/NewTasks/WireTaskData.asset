@@ -21,3 +21,9 @@ MonoBehaviour:
     label: Blue
   - color: {r: 0, g: 1, b: 0, a: 1}
     label: Green
+  - color: {r: 1, g: 0, b: 0.7353096, a: 1}
+    label: Pink
+  - color: {r: 0.36507463, g: 0, b: 1, a: 1}
+    label: Purple
+  - color: {r: 0, g: 0.03011465, b: 1, a: 1}
+    label: DarkBlue
