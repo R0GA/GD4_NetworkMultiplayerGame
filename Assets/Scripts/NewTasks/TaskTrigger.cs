@@ -43,6 +43,13 @@ public class TaskTrigger : MonoBehaviour
 
         if (interactPrompt) interactPrompt.SetActive(true);
     }
+    private void OnTriggerExit(Collider other)
+    {
+        var player = other.GetComponentInParent<SlugPlayer>();
+        if (player == null || !player.IsOwner) return;
+        if (player != playerInRange) return;
+        CleanUp();
+    }
 
     private void OnInteractPerformed(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
