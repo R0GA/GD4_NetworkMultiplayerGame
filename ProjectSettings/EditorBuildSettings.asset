@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/End screens/SlugWin-Tasks.unity
     guid: 55969a96e11862f45b1cea3c0296b570
+  - enabled: 1
+    path: Assets/Scenes/NewLevel.unity
+    guid: e95b47d669ee2a04fb524b3376c44edc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
