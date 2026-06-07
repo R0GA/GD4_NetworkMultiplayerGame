@@ -9596,6 +9596,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 4.3137517
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 8665882b4b9194a4cbaf01fc3ec7c504, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1542260536131837908, guid: 305178659f83d3f49b55d7dc1fe89e4f, type: 3}
+    - target: {fileID: 8417361359673230750, guid: 8665882b4b9194a4cbaf01fc3ec7c504, type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 8665882b4b9194a4cbaf01fc3ec7c504, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 8665882b4b9194a4cbaf01fc3ec7c504, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 8665882b4b9194a4cbaf01fc3ec7c504, type: 3}
+      propertyPath: 'm_Materials.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 208dd2e4e12c9de47af156d3eb8a605c, type: 2}
     - target: {fileID: 8440968579376214471, guid: 8665882b4b9194a4cbaf01fc3ec7c504, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -31.803473
