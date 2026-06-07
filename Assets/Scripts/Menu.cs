@@ -28,8 +28,8 @@ public class Menu : MonoBehaviour
         if (ipInput) ipInput.text = defaultIp;
         if (portInput) portInput.text = defaultPort.ToString();
 
-        if (connectionPanel) connectionPanel.SetActive(true);
-        if (lobbyPanel) lobbyPanel.SetActive(false);
+       // if (connectionPanel) connectionPanel.SetActive(true);
+      //  if (lobbyPanel) lobbyPanel.SetActive(false);
 
         networkManager.OnServerStarted += OnServerStarted;
         networkManager.OnClientConnectedCallback += OnClientConnected;
