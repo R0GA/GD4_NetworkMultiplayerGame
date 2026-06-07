@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acca2ec8cab09784ebd39c0f83c24d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
-  taskIdentifier: Navigation
+  taskIdentifier: Valve
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
   OnInteracted:
