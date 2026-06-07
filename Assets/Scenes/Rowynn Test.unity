@@ -154,8 +154,9 @@ MonoBehaviour:
   taskIdentifier: Navigation
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
-  alarmLightRenderers: []
+  alarmLights: []
   alarmActiveMaterial: {fileID: 0}
+  alarmLightColor: {r: 1, g: 0, b: 0, a: 1}
   pulseFrequency: 1.5
   OnInteracted:
     m_PersistentCalls:
@@ -641,11 +642,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b5797a18349fb546be8acddc71151ff, type: 3}
---- !u!23 &1069535287 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2328064, guid: 8b5797a18349fb546be8acddc71151ff, type: 3}
-  m_PrefabInstance: {fileID: 1069535286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1127539354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1225,9 +1221,9 @@ MonoBehaviour:
   taskIdentifier: Valve
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
-  alarmLightRenderers:
-  - {fileID: 1069535287}
+  alarmLights: []
   alarmActiveMaterial: {fileID: 2100000, guid: dc25d5205e3ef0b478c94639c7288f9b, type: 2}
+  alarmLightColor: {r: 1, g: 0, b: 0, a: 1}
   pulseFrequency: 1.5
   OnInteracted:
     m_PersistentCalls:
@@ -1616,8 +1612,9 @@ MonoBehaviour:
   taskIdentifier: Wires
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
-  alarmLightRenderers: []
+  alarmLights: []
   alarmActiveMaterial: {fileID: 0}
+  alarmLightColor: {r: 1, g: 0, b: 0, a: 1}
   pulseFrequency: 1.5
   OnInteracted:
     m_PersistentCalls:
