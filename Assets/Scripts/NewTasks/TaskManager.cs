@@ -3,17 +3,15 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class TaskManager : NetworkBehaviour
 {
     [Header("Task Registry")]
-    [Tooltip("All BaseTask components that exist in the scene. Populate in Inspector or let Start() find them.")]
+    [Tooltip("All BaseTask components that exist in the scene. Populate in Inspector or let OnNetworkSpawn() find them.")]
     [SerializeField] private List<BaseTask> allTasks = new();
 
     [Header("UI")]
-    [SerializeField] private GameObject taskListPanel;   // optional HUD showing task list
+    [SerializeField] private GameObject taskListPanel;
     [SerializeField] private List<GameObject> taskListItems; // one per task, same order as allTasks
-
 
     public UnityEvent OnAllTasksCompleted = new();
 
@@ -26,22 +24,15 @@ public class TaskManager : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        // Auto-discover tasks if none assigned
         if (allTasks.Count == 0)
             allTasks.AddRange(FindObjectsByType<BaseTask>(FindObjectsSortMode.None));
 
-        // Register each task with an index and hook completion callback
         for (int i = 0; i < allTasks.Count; i++)
-        {
-            int capturedIndex = i;
-            allTasks[i].Initialise(this, capturedIndex);
-        }
+            allTasks[i].Initialise(this, i);
 
-        // UI is owner-only
         bool isOwner = IsOwner;
         if (taskListPanel) taskListPanel.SetActive(isOwner);
 
-        // Subscribe to network changes so non-owner clients (seeker) can react
         completedTasksMask.OnValueChanged += OnCompletedMaskChanged;
     }
 
@@ -50,11 +41,19 @@ public class TaskManager : NetworkBehaviour
         completedTasksMask.OnValueChanged -= OnCompletedMaskChanged;
     }
 
+    // -------------------------------------------------------------------------
+    // Called by individual tasks on the owning client
+    // -------------------------------------------------------------------------
+
     public void NotifyTaskCompleted(int taskIndex)
     {
         if (!IsOwner) return;
         MarkTaskCompleteServerRpc(taskIndex);
     }
+
+    // -------------------------------------------------------------------------
+    // Server-side logic
+    // -------------------------------------------------------------------------
 
     [ServerRpc]
     private void MarkTaskCompleteServerRpc(int taskIndex)
@@ -69,23 +68,64 @@ public class TaskManager : NetworkBehaviour
         CheckAllComplete();
     }
 
+    // -------------------------------------------------------------------------
+    // Reacts to the network variable changing on ALL clients
+    // -------------------------------------------------------------------------
+
     private void OnCompletedMaskChanged(int previous, int current)
     {
-        // Update task list HUD items for owner
+        int newlyCompleted = current & ~previous;
+
+        // Update HUD on the owner client.
         if (IsOwner)
         {
             for (int i = 0; i < taskListItems.Count; i++)
             {
                 if (taskListItems[i] == null) continue;
                 bool done = (current & (1 << i)) != 0;
-                // You can add a CanvasGroup fade or strikethrough here
                 taskListItems[i].SetActive(!done);
             }
         }
 
-        // Check completion (runs on all clients so each can react)
+        // Trigger room lights and ship alarm for each newly completed task.
+        // This runs on every client, so both players get lights and audio.
+        if (newlyCompleted != 0)
+            TriggerAlarms(newlyCompleted);
+
         CheckAllComplete();
     }
+
+    // -------------------------------------------------------------------------
+    // Alarm & light helpers — run on every client
+    // -------------------------------------------------------------------------
+
+    private void TriggerAlarms(int newlyCompletedMask)
+    {
+        // Activate room warning lights on the matching TaskTrigger.
+        var allTriggers = FindObjectsByType<TaskTrigger>(FindObjectsSortMode.None);
+        for (int i = 0; i < allTasks.Count; i++)
+        {
+            if ((newlyCompletedMask & (1 << i)) == 0) continue;
+
+            string id = allTasks[i].taskIdentifier;
+            foreach (var trigger in allTriggers)
+            {
+                if (trigger.TaskIdentifier == id)
+                    trigger.ActivateAlarmLights();
+            }
+        }
+
+        // Delegate audio to the scene-level ShipAudioManager so it plays
+        // reliably on every client from a non-networked, always-present object.
+        if (ShipAudioManager.Instance != null)
+            ShipAudioManager.Instance.PlayAlarm();
+        else
+            Debug.LogWarning("[TaskManager] ShipAudioManager.Instance is null — place a ShipAudioManager component on a persistent ship GameObject.");
+    }
+
+    // -------------------------------------------------------------------------
+    // Completion check
+    // -------------------------------------------------------------------------
 
     private void CheckAllComplete()
     {
@@ -99,6 +139,10 @@ public class TaskManager : NetworkBehaviour
             OnAllTasksCompleted?.Invoke();
         }
     }
+
+    // -------------------------------------------------------------------------
+    // Utilities
+    // -------------------------------------------------------------------------
 
     public bool IsTaskComplete(int index) =>
         index >= 0 && index < allTasks.Count && (completedTasksMask.Value & (1 << index)) != 0;
