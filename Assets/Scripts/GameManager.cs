@@ -3,85 +3,84 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Tracks win/loss conditions. Because players are spawned dynamically by
+/// GamePlayerSpawner we cannot serialise references in the Inspector — instead
+/// each player prefab calls GameManager.Instance.RegisterPlayer() on spawn.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private NetworkFPSPlayer astronautPlayer;
-    [SerializeField] private SlugPlayer slugPlayer;
-    [SerializeField] private TaskManager taskManager;
+    // -------------------------------------------------------------------------
+    // Singleton
+    // -------------------------------------------------------------------------
 
-    public enum GameEndState
-    {
-        Active,
-        AstronautWins,
-        SlugTasks,
-        AstroDeath
-    }
-
-    private GameEndState currentGameState = GameEndState.Active;
-    public UnityEvent<GameEndState> OnGameEnd = new UnityEvent<GameEndState>();
     private static GameManager instance;
+    public static GameManager Instance => instance;
 
     private void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (instance != null && instance != this) { Destroy(gameObject); return; }
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start() => InitializeGameManager();
+    // -------------------------------------------------------------------------
+    // State
+    // -------------------------------------------------------------------------
 
-    private void Update()
+    public enum GameEndState { Active, AstronautWins, SlugTasks, AstroDeath }
+
+    private GameEndState currentGameState = GameEndState.Active;
+    public UnityEvent<GameEndState> OnGameEnd = new();
+
+    // Populated at runtime once players spawn (see RegisterPlayer / RegisterTaskManager).
+    private NetworkFPSPlayer astronautPlayer;
+    private SlugPlayer slugPlayer;
+    private TaskManager taskManager;
+
+    // -------------------------------------------------------------------------
+    // Registration API — called by each player prefab on OnNetworkSpawn
+    // -------------------------------------------------------------------------
+
+    public void RegisterAstronaut(NetworkFPSPlayer player)
     {
-        if (astronautPlayer == null || slugPlayer == null || taskManager == null)
-            InitializeGameManager();
+        if (astronautPlayer == player) return;
+        astronautPlayer = player;
+
+        var oxy = player.GetComponent<OxygenManager>();
+        if (oxy != null)
+            oxy.OnDeath.AddListener(OnAstronautDeath);
+        else
+            Debug.LogWarning("[GameManager] OxygenManager not found on astronaut player!");
+
+        Debug.Log("[GameManager] Astronaut registered.");
     }
 
-    private void InitializeGameManager()
+    public void RegisterSlug(SlugPlayer player)
     {
-        if (astronautPlayer == null)
-            astronautPlayer = FindObjectOfType<NetworkFPSPlayer>();
+        if (slugPlayer == player) return;
+        slugPlayer = player;
 
-        if (slugPlayer == null)
-            slugPlayer = FindObjectOfType<SlugPlayer>();
-
-        if (taskManager == null)
-            taskManager = FindObjectOfType<TaskManager>();
-
-        if (astronautPlayer != null)
-        {
-            OxygenManager oxygenManager = astronautPlayer.GetComponent<OxygenManager>();
-            if (oxygenManager != null)
-                oxygenManager.OnDeath.AddListener(OnAstronautDeath);
-            else
-                Debug.LogWarning("[GameManager] OxygenManager not found on Astronaut player!");
-        }
+        var health = player.GetComponent<NetworkHealth>();
+        if (health != null)
+            health.OnDeath.AddListener(OnSlugDeath);
         else
-        {
-            Debug.LogWarning("[GameManager] NetworkFPSPlayer not found in scene!");
-        }
+            Debug.LogWarning("[GameManager] NetworkHealth not found on slug player!");
 
-        if (slugPlayer != null)
-        {
-            NetworkHealth slugHealth = slugPlayer.GetComponent<NetworkHealth>();
-            if (slugHealth != null)
-                slugHealth.OnDeath.AddListener(OnSlugDeath);
-            else
-                Debug.LogWarning("[GameManager] NetworkHealth not found on Slug player!");
-        }
-        else
-        {
-            Debug.LogWarning("[GameManager] SlugPlayer not found in scene!");
-        }
-
-        if (taskManager != null)
-            taskManager.OnAllTasksCompleted.AddListener(OnTasksCompleted);
-        else
-            Debug.LogWarning("[GameManager] TaskManager not found in scene!");
+        Debug.Log("[GameManager] Slug registered.");
     }
+
+    public void RegisterTaskManager(TaskManager manager)
+    {
+        if (taskManager == manager) return;
+        taskManager = manager;
+        taskManager.OnAllTasksCompleted.AddListener(OnTasksCompleted);
+        Debug.Log("[GameManager] TaskManager registered.");
+    }
+
+    // -------------------------------------------------------------------------
+    // Win condition callbacks
+    // -------------------------------------------------------------------------
 
     private void OnAstronautDeath()
     {
@@ -99,13 +98,15 @@ public class GameManager : MonoBehaviour
     {
         if (currentGameState != GameEndState.Active) return;
 
-        if (astronautPlayer != null)
-        {
-            OxygenManager oxygenManager = astronautPlayer.GetComponent<OxygenManager>();
-            if (oxygenManager != null && !oxygenManager.IsDead)
-                EndGame(GameEndState.SlugTasks);
-        }
+        // Only counts as a slug win if the astronaut is still alive.
+        var oxy = astronautPlayer != null ? astronautPlayer.GetComponent<OxygenManager>() : null;
+        if (oxy == null || !oxy.IsDead)
+            EndGame(GameEndState.SlugTasks);
     }
+
+    // -------------------------------------------------------------------------
+    // End game
+    // -------------------------------------------------------------------------
 
     private void EndGame(GameEndState endState)
     {
@@ -123,14 +124,16 @@ public class GameManager : MonoBehaviour
             _ => ""
         };
 
-        Debug.Log($"[GameManager] Game ending, loading {sceneName} for ALL clients via NGO");
+        if (string.IsNullOrEmpty(sceneName)) return;
 
-        // This single call loads the scene on EVERY connected client simultaneously
-        // No RPCs, no NetworkVariables needed — NGO handles it natively
+        Debug.Log($"[GameManager] Ending game → {sceneName}");
         NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
+    // -------------------------------------------------------------------------
+    // Utilities
+    // -------------------------------------------------------------------------
+
     public GameEndState GetGameState() => currentGameState;
     public bool IsGameActive() => currentGameState == GameEndState.Active;
-    public static GameManager Instance => instance;
 }
