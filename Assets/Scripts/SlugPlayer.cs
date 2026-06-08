@@ -85,6 +85,15 @@ public class SlugPlayer : NetworkBehaviour
         if (networkPropIndex.Value >= 0)
             ApplyPropVisual(networkPropIndex.Value);
 
+        // Register with GameManager on the SERVER (where OnDeath fires)
+        if (IsServer)
+        {
+            if (GameManager.Instance != null)
+                GameManager.Instance.RegisterSlug(this);
+            else
+                Debug.LogWarning("[SlugPlayer] GameManager.Instance is null on spawn.");
+        }
+
         if (!IsOwner)
         {
             if (mainCamera) mainCamera.enabled = false;

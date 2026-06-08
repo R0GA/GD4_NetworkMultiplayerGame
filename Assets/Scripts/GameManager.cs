@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     private void OnSlugDeath()
     {
+        Debug.Log("[GameManager] Slug died.");
         if (currentGameState != GameEndState.Active) return;
         EndGame(GameEndState.AstronautWins);
     }

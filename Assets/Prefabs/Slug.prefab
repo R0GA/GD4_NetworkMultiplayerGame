@@ -1652,8 +1652,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863728242528542431}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.028649515, y: 0.93435395, z: -0.34669954, w: 0.07721034}
-  m_LocalPosition: {x: 0.2554342, y: 3.5929313, z: 3.4720376}
+  m_LocalRotation: {x: -0.028856887, y: 0.96943665, z: 0.19898406, w: 0.14058879}
+  m_LocalPosition: {x: 0.1565023, y: 0.104595184, z: 2.503211}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4643,8 +4643,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.028649515, y: 0.93435395, z: -0.34669954, w: 0.07721034}
-  m_LocalPosition: {x: 0.2554342, y: 3.5929313, z: 3.4720376}
+  m_LocalRotation: {x: -0.028856887, y: 0.96943665, z: 0.19898406, w: 0.14058879}
+  m_LocalPosition: {x: 0.1565023, y: 0.104595184, z: 2.503211}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5324,8 +5324,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5071095093125033932}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.028649515, y: 0.93435395, z: -0.34669954, w: 0.07721034}
-  m_LocalPosition: {x: 0.2554342, y: 3.5929313, z: 3.4720376}
+  m_LocalRotation: {x: -0.028856887, y: 0.96943665, z: 0.19898406, w: 0.14058879}
+  m_LocalPosition: {x: 0.1565023, y: 0.104595184, z: 2.503211}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5408,7 +5408,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: -175.79239
+    Value: -176.42249
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -5418,7 +5418,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 28.299107
+    Value: -9.892851
     Center: 10
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -7035,7 +7035,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   virtualCamera: {fileID: 2452394603933197220}
   playerVisualRoot: {fileID: 2543385146466021363}
-  taskCanvas: {fileID: 3984877037701041132}
+  taskCanvas: {fileID: 2192009978218757766}
   cinemachineInputController: {fileID: 6620244743481665403}
   moveSpeed: 5
   jumpHeight: 2
