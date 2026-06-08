@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1962376999
+  GlobalObjectIdHash: 1139382641
   InScenePlacedSourceGlobalObjectIdHash: 1139382641
   DeferredDespawnTick: 0
   Ownership: 1
@@ -332,6 +332,7 @@ MonoBehaviour:
   projectileSpeed: 20
   repulsorBlast: {fileID: 1003394971968487168}
   targetDistance: 30
+  oxygenCostPerShot: 2
 --- !u!114 &810900932998658865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11048,7 +11049,7 @@ GameObject:
   - component: {fileID: 1184450501774214950}
   - component: {fileID: 6179862074380267138}
   - component: {fileID: 7504097996560114507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiniMapMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11149,7 +11150,7 @@ GameObject:
   - component: {fileID: 1555710001497682434}
   - component: {fileID: 5457849903189368514}
   - component: {fileID: 5747749385122867908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerMArk
   m_TagString: Untagged
   m_Icon: {fileID: 0}

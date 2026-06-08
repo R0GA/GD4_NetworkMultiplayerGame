@@ -2085,7 +2085,7 @@ GameObject:
   - component: {fileID: 2415040071808977168}
   - component: {fileID: 789603595269457730}
   - component: {fileID: 8053735256676680682}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Mark Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5758,7 +5758,7 @@ GameObject:
   - component: {fileID: 7829385731767783237}
   - component: {fileID: 1072640484404976644}
   - component: {fileID: 3771863020625220935}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
