@@ -72,7 +72,7 @@ public class WireTask : BaseTask
             ResetWires();
         }
 
-        if (statusLabel) statusLabel.text = "Rewire the breaker panel.";
+        if (statusLabel) statusLabel.text = "Disconnect the wires and rewire the breaker incorrectly.";
         if (completionFlash) completionFlash.color = Color.clear;
 
         if (closeButton)

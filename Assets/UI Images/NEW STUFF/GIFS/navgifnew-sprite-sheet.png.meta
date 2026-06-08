@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9277fe2bc21b9d64c967dadb45020dab
+guid: c9566d3c43637864dbac1b410e0137ad
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_0
+      name: navgifnew-sprite-sheet_0
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 12973
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 9523
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 801e333daa3ae5a4494b83a13c93d33c
-      internalID: 421905205
+      spriteID: 8c447ebd6b764e745b4bcbc65d0aafa7
+      internalID: -1567959230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_1
+      name: navgifnew-sprite-sheet_1
       rect:
         serializedVersion: 2
-        x: 7684
-        y: 12973
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 9523
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae6cfc7f16136a1488188d29070b38f3
-      internalID: -1300780013
+      spriteID: 73182274b554dc94985cb3714627325d
+      internalID: 1743457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_2
+      name: navgifnew-sprite-sheet_2
       rect:
         serializedVersion: 2
-        x: 9605
-        y: 12973
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 9523
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,152 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b587acc745410854fbde6c3d13f58232
-      internalID: 919387905
+      spriteID: a8f73d929825b0b4390e4b95947c04cf
+      internalID: -1145778651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 11892
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 352231b84f126f043baea7a90da7c15b
-      internalID: -1744485228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_4
-      rect:
-        serializedVersion: 2
-        x: 1921
-        y: 11892
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2581fb5edee67ce42b14f182372ea527
-      internalID: 1256535526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_5
-      rect:
-        serializedVersion: 2
-        x: 3842
-        y: 11892
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1243ec756a841a41a68c4b7ebe7f7d4
-      internalID: 637681801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_6
-      rect:
-        serializedVersion: 2
-        x: 5763
-        y: 11892
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ff5de2e8a7819348a927f3b588f01c5
-      internalID: -436784773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_7
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 11892
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d22f4ebe27d3c9a46a855e9370bff5cf
-      internalID: 785127938
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_8
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 11892
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb80f2a3056193e47a2069f6704c4b25
-      internalID: -179413118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_9
+      name: navgifnew-sprite-sheet_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 10811
-        width: 1921
-        height: 1081
+        y: 8994
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,20 +191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83e816bed20ba4b418dabffe777c57e9
-      internalID: 156371143
+      spriteID: 25c8627287fee7f4d9a32e5aaf1feace
+      internalID: 1088737585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_10
+      name: navgifnew-sprite-sheet_4
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 10811
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 8994
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 135f9a928c411fd488706c1bf84dbc1f
-      internalID: 121799530
+      spriteID: 327c7989749e92143a01ce4f5607f07d
+      internalID: 1216369826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_11
+      name: navgifnew-sprite-sheet_5
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 10811
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 8994
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd1bf847be52395408cf50f75d7b22c4
-      internalID: 1524835191
+      spriteID: 67809054e3fcb04428afc2a84e1a7119
+      internalID: 1985369022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_12
+      name: navgifnew-sprite-sheet_6
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 10811
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 8994
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,42 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3b20bab1717a1241bc27934d6919674
-      internalID: -407648731
+      spriteID: c2894efc857de4f44866c25267f95d71
+      internalID: -518749146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_13
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 10811
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0179b8db2be16934e9cee0c6795a3421
-      internalID: -1447755133
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_14
+      name: navgifnew-sprite-sheet_7
       rect:
         serializedVersion: 2
         x: 0
-        y: 9730
-        width: 1921
-        height: 1081
+        y: 8465
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 811f571765ef0de479bb754740a0cdf0
-      internalID: 1375289481
+      spriteID: 8a036ecde060d134eb76be2ae14b47c9
+      internalID: 303310766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_15
+      name: navgifnew-sprite-sheet_8
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 9730
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 8465
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,20 +301,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 645a740b24105b9498057cd7ea4811da
-      internalID: -563906817
+      spriteID: d511d9df3532a32469eff334d646ff94
+      internalID: -1036359159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_16
+      name: navgifnew-sprite-sheet_9
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 9730
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 8465
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -477,20 +323,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 166a4a7b20d4040478d29948694b5efc
-      internalID: -1933644094
+      spriteID: 79771a93254d75c40b0d1bdcdd5fd7e7
+      internalID: 1574341964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_17
+      name: navgifnew-sprite-sheet_10
       rect:
         serializedVersion: 2
-        x: 9605
-        y: 9730
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 8465
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,152 +345,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74a6a5f93d29c4d42a177112149935ba
-      internalID: 1086347843
+      spriteID: 30ec58b13118d904c909519da5dc4f2d
+      internalID: -865933822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_18
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 8649
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0274b3a6e1d0b3b4396261c7579797cc
-      internalID: 258136644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_19
-      rect:
-        serializedVersion: 2
-        x: 1921
-        y: 8649
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 285c9e4100e5f0b49a0dc39cc0c6ba3d
-      internalID: 1730090163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_20
-      rect:
-        serializedVersion: 2
-        x: 3842
-        y: 8649
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afd4fd67c575cc14ca96cd29490eb6d4
-      internalID: -251001370
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_21
-      rect:
-        serializedVersion: 2
-        x: 5763
-        y: 8649
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9adb75c32df4cf041a7e7bba2bc8c0f4
-      internalID: -378098624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_22
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 8649
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 68f0c11f16976c74c9f10ca83261f81b
-      internalID: -628003248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_23
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 8649
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0779294c202117246af22edc0d0652bb
-      internalID: 826593132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_24
+      name: navgifnew-sprite-sheet_11
       rect:
         serializedVersion: 2
         x: 0
-        y: 7568
-        width: 1921
-        height: 1081
+        y: 7936
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -653,20 +367,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d951e28cc4c7a8347b49197152afe7b9
-      internalID: -2129473557
+      spriteID: a4f7631fde9b266478e450c67d1974d6
+      internalID: -1573774141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_25
+      name: navgifnew-sprite-sheet_12
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 7568
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 7936
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -675,20 +389,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c5d945e9a970eb479ec6e0367dbfab5
-      internalID: 888482447
+      spriteID: a013bb7c69cbe9e47a9f7505667a5082
+      internalID: 900390305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_26
+      name: navgifnew-sprite-sheet_13
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 7568
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 7936
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -697,86 +411,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a77657f70d0b9b04c919f545fcbfd20a
-      internalID: -1314327455
+      spriteID: 2013d1869f4080e42bcde7e896bf634b
+      internalID: -1710212136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_27
-      rect:
-        serializedVersion: 2
-        x: 5763
-        y: 7568
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94522dff62909ad43bbb7f139eea143b
-      internalID: 298296349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_28
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 7568
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b10a06ff970516419a0591de199f61f
-      internalID: 787686459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_29
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 7568
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c437e985d0786a46b349046b153c295
-      internalID: -1260754198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_30
+      name: navgifnew-sprite-sheet_14
       rect:
         serializedVersion: 2
         x: 0
-        y: 6487
-        width: 1921
-        height: 1081
+        y: 7407
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -785,20 +433,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81c7a9f997d2534496af442636369ea
-      internalID: -1167148126
+      spriteID: 2fc38c7a4a302d9469401dda69948c6a
+      internalID: -1220084202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_31
+      name: navgifnew-sprite-sheet_15
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 6487
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 7407
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -807,20 +455,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 391e9c7b4cffa8746b3289023cff9cfd
-      internalID: 464103790
+      spriteID: d8f053fa64e77264ab97930ad45374a4
+      internalID: -2097376376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_32
+      name: navgifnew-sprite-sheet_16
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 6487
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 7407
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -829,20 +477,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be10d8e3b1218244bbe1ec2a85bcebc6
-      internalID: 1766937611
+      spriteID: e89162ab6487489449624aeac1c955d5
+      internalID: -1821071416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_33
+      name: navgifnew-sprite-sheet_17
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 6487
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 6878
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -851,20 +499,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c0790417e592a9478629ae6971d0d47
-      internalID: -122752862
+      spriteID: 9b1efafacfd8cf44abae49c215fe3c34
+      internalID: 389588386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_34
+      name: navgifnew-sprite-sheet_18
       rect:
         serializedVersion: 2
-        x: 9605
-        y: 6487
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 6878
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -873,20 +521,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46050156ec62c2448af3a46d6d47264e
-      internalID: 1535926436
+      spriteID: 609a355e572d4ea4593903c3fe8a19eb
+      internalID: 1827116557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_35
+      name: navgifnew-sprite-sheet_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 5406
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 6878
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -895,130 +543,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b2d4bad535e28f41b3f934eb9a118c0
-      internalID: 1034895489
+      spriteID: c6534ba94bd3bdd4fbee3cea951b89a4
+      internalID: -466780558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_36
-      rect:
-        serializedVersion: 2
-        x: 1921
-        y: 5406
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73102009234c3f14f9692a22083ef05a
-      internalID: 251719538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_37
-      rect:
-        serializedVersion: 2
-        x: 3842
-        y: 5406
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca57113325235c4419696d8d8014d1e4
-      internalID: 1946419283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_38
-      rect:
-        serializedVersion: 2
-        x: 5763
-        y: 5406
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8be99edb113cdde478e5042a0a1650fb
-      internalID: 1892071082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_39
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 5406
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9519203d3700cde429491922c5c73fe9
-      internalID: -526994400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_40
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 5406
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8966a9a3043d513428e79f49f97e82c3
-      internalID: 1254511565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_41
+      name: navgifnew-sprite-sheet_20
       rect:
         serializedVersion: 2
         x: 0
-        y: 4325
-        width: 1921
-        height: 1081
+        y: 6349
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1027,20 +565,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d72ffde53588e274786731bce27030c0
-      internalID: -909616529
+      spriteID: f68ea62321dd96a4f9d51243cb015c46
+      internalID: 1956520006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_42
+      name: navgifnew-sprite-sheet_21
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 4325
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 6349
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1049,20 +587,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 398b5b3aad5b6e543848cc12c1939e93
-      internalID: 525196510
+      spriteID: 59d482d79fe19584382ac421806b0570
+      internalID: -1821224633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_43
+      name: navgifnew-sprite-sheet_22
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 4325
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 6349
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1071,20 +609,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 415fb5fcd076d2b4bbf8265073af30b4
-      internalID: 833345985
+      spriteID: 15b812b1f1e32d84386d0c2d9a32dd7f
+      internalID: -1783741332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_44
+      name: navgifnew-sprite-sheet_23
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 4325
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 6349
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1093,64 +631,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 217ba1271e5899e4bb7e4e298d52bfe3
-      internalID: -1972359172
+      spriteID: f00e0525fa34441459aa724175119ee4
+      internalID: 1793437826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_45
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 4325
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27dbe9fa37cec064d831d065e0b4d317
-      internalID: -1841473978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_46
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 4325
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 147d8ec0bdf7c2d48ba05ddbb4d5e051
-      internalID: -1646042075
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_47
+      name: navgifnew-sprite-sheet_24
       rect:
         serializedVersion: 2
         x: 0
-        y: 3244
-        width: 1921
-        height: 1081
+        y: 5820
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1159,20 +653,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fea02b481b0213d409f2253ccb3e303e
-      internalID: -11137394
+      spriteID: cb1381e4c08db2440b2ddd1effc9c294
+      internalID: -1258816881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_48
+      name: navgifnew-sprite-sheet_25
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 3244
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 5820
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1181,20 +675,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85240af96ead9fe429f824a7818ed90a
-      internalID: -1202530404
+      spriteID: 3411bc54c54c3994395f849c7fe6f4d7
+      internalID: -884537973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_49
+      name: navgifnew-sprite-sheet_26
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 3244
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 5820
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1203,20 +697,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f8f63295050da943b325283c14e17b8
-      internalID: -320323981
+      spriteID: 544e25759463b6f4f9d3a34556f80292
+      internalID: 641832238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_50
+      name: navgifnew-sprite-sheet_27
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 3244
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 5820
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1225,64 +719,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94b224311e1a5ad4a89750151b5c9bf3
-      internalID: 1126265159
+      spriteID: ee2d4cd16932a1a4fbf3ec34cae53c83
+      internalID: -1149284321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_51
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 3244
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4123157d8f16f54cb071221a79fcdf1
-      internalID: 1546252792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_52
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 3244
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1707e0aef2527c428dad23c54e6d8c4
-      internalID: 1491597386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_53
+      name: navgifnew-sprite-sheet_28
       rect:
         serializedVersion: 2
         x: 0
-        y: 2163
-        width: 1921
-        height: 1081
+        y: 5291
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1291,20 +741,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b48a41752299dc8478077b966ec02503
-      internalID: -2042772784
+      spriteID: 7346accc40d9ae64a9931852d374139e
+      internalID: 468395768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_54
+      name: navgifnew-sprite-sheet_29
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 2163
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 5291
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1313,20 +763,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5a320a3e5f1c204da17711eb228cd7d
-      internalID: -1984072395
+      spriteID: 2eb7bede6712cb841aac7b6f7e2d7b34
+      internalID: -286789506
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_55
+      name: navgifnew-sprite-sheet_30
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 2163
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 5291
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1335,20 +785,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ae219543fda8f443a56397a928b6ea5
-      internalID: 819343360
+      spriteID: a0a73b8251373ea449ae5b503a0c1cb1
+      internalID: -1217139056
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_56
+      name: navgifnew-sprite-sheet_31
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 2163
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 5291
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1357,64 +807,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3aec39df69df5b4587d665ca6744c0f
-      internalID: 1825942682
+      spriteID: 212efccc1a8c6654182e029c9ee2ee98
+      internalID: 1915022495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_57
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 2163
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e254ed3685fcca0459a49f1de924dc69
-      internalID: 985426649
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_58
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 2163
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c13b8405a4e5cb4ca927a697786a10f
-      internalID: 356200228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_59
+      name: navgifnew-sprite-sheet_32
       rect:
         serializedVersion: 2
         x: 0
-        y: 1082
-        width: 1921
-        height: 1081
+        y: 4762
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1423,20 +829,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 759b3b7e60762a04991a144ea5c4f359
-      internalID: -701237622
+      spriteID: 63712688ad0831d4bbc91934e278db73
+      internalID: -824307891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_60
+      name: navgifnew-sprite-sheet_33
       rect:
         serializedVersion: 2
-        x: 1921
-        y: 1082
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 4762
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1445,20 +851,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a227bd181bf6c29479b55194c7d99fff
-      internalID: 2058145180
+      spriteID: bece01f74dccf114d8a380c4dc4c1b94
+      internalID: 219674375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_61
+      name: navgifnew-sprite-sheet_34
       rect:
         serializedVersion: 2
-        x: 3842
-        y: 1082
-        width: 1921
-        height: 1081
+        x: 4226
+        y: 4762
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1467,20 +873,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d531c2b93959e3b44a019d10616bb317
-      internalID: 819445848
+      spriteID: 8662dea34875ab340972b9e5a991845e
+      internalID: 11512518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_62
+      name: navgifnew-sprite-sheet_35
       rect:
         serializedVersion: 2
-        x: 5763
-        y: 1082
-        width: 1921
-        height: 1081
+        x: 6339
+        y: 4762
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1489,20 +895,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54c9481024ccedf40a938f17e50f7554
-      internalID: 1273762117
+      spriteID: 211a35e4aee9a5140b14c9c959c9f73e
+      internalID: -720388251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_63
+      name: navgifnew-sprite-sheet_36
       rect:
         serializedVersion: 2
-        x: 7684
-        y: 1082
-        width: 1921
-        height: 1081
+        x: 0
+        y: 4233
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1511,20 +917,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d27680c1410c2fa4cbf05900fb160861
-      internalID: -665932418
+      spriteID: f379af12ef8152c42a79c98e9fdc6757
+      internalID: -1552909514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_64
+      name: navgifnew-sprite-sheet_37
       rect:
         serializedVersion: 2
-        x: 9605
-        y: 1082
-        width: 1921
-        height: 1081
+        x: 2113
+        y: 4233
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1533,20 +939,680 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85efa66f52c4f154d9737b73ce79b476
-      internalID: 361382072
+      spriteID: f734c4065890dba448b36161c00130df
+      internalID: -2063950786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_65
+      name: navgifnew-sprite-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 4233
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd446d56104278b4784a665f97a40ec9
+      internalID: -2088579414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 4233
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943015705d21a4549bc349b9ad2124b3
+      internalID: -1921503393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3704
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ee5c54729c01a446ad87bd2792b1de4
+      internalID: -1021254549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 3704
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e0d059cc77ef44f8a4ec03a3b52116
+      internalID: 765182877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 3704
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ea73f1647088a44a5face368fbceba
+      internalID: 304692447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_43
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 3704
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0523d1823b2ad34aa2e7c580a18c103
+      internalID: 240514354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3175
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2233c212c678d6342b3249df6e517d6f
+      internalID: 1494699674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_45
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 3175
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee75ec33b824a70449cb7712aa06d44c
+      internalID: 1912311843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_46
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 3175
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a9aa837dda63548950eb8cce5f7af6
+      internalID: 1339860422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_47
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 3175
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb66a22ff874b54fb2ef7866d313a26
+      internalID: -1624914349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2646
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b962e2c55575ca645bc8bc1058beee06
+      internalID: 1049908942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_49
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 2646
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108e8bd494b01a24493658612c76be8d
+      internalID: 1649053986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_50
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 2646
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21c89e66d860de4891ed41a83344b86
+      internalID: 455101089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_51
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 2646
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfdeb09ecedf45849badb2cadb444eb2
+      internalID: 86348939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2117
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91f7758e489ff7449d858dc941a34fa
+      internalID: 891709509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_53
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 2117
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36c10c107ce2514fa8ce4d678346d9c
+      internalID: -1951538762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_54
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 2117
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf1c492bb041ea458f263a97270d755
+      internalID: -834408361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_55
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 2117
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14ca3a2a71ddd14eaf89f166844b584
+      internalID: 252800569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1588
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ab708ba27e9bd47b64ea0a6d58c2b3
+      internalID: -872994238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_57
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 1588
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0933a3083d2f5b4cb91937987edd426
+      internalID: 175293050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_58
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 1588
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a64eae84d293444833de02ec764f7b
+      internalID: 155299020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_59
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 1588
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5314a446eb31ba46bfc88d20f6ef6e9
+      internalID: -1268418540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1059
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adbeff55e78dc974897443975785054a
+      internalID: -116438815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_61
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 1059
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd4fedf64d00a7419d0f1d0981fd3da
+      internalID: 895741310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_62
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 1059
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6f676e15591134fa484ea6efe5797a
+      internalID: -1285179942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_63
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 1059
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83184570ff2dea64cbaec0afa0e5e3de
+      internalID: 889173393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 530
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9562fb280b435a469270b58c7c1a4df
+      internalID: 1781506524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_65
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 530
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d32edd3d602f88542841110de10d5ade
+      internalID: 363030083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_66
+      rect:
+        serializedVersion: 2
+        x: 4226
+        y: 530
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8478aeec33623246a0b7b7d73cfcd63
+      internalID: -723686473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_67
+      rect:
+        serializedVersion: 2
+        x: 6339
+        y: 530
+        width: 2113
+        height: 529
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: facdacb21e6c47f498a043eb22bcdd98
+      internalID: 275181141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: navgifnew-sprite-sheet_68
       rect:
         serializedVersion: 2
         x: 0
         y: 1
-        width: 1921
-        height: 1081
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1555,20 +1621,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 965046d471e700945af9366c5de5d0a9
-      internalID: 927688742
+      spriteID: 2f4fe96d764df8e458265c2244e65c34
+      internalID: -854181480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_66
+      name: navgifnew-sprite-sheet_69
       rect:
         serializedVersion: 2
-        x: 1921
+        x: 2113
         y: 1
-        width: 1921
-        height: 1081
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1577,20 +1643,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b6bfd523f73b3040a666635ef05907f
-      internalID: 180940747
+      spriteID: b1cbe26b8f8431a4f9fb434323e86c0a
+      internalID: 692981158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_67
+      name: navgifnew-sprite-sheet_70
       rect:
         serializedVersion: 2
-        x: 3842
+        x: 4226
         y: 1
-        width: 1921
-        height: 1081
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1599,20 +1665,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddf07c3548ac534418c8571e398ed946
-      internalID: 1614971563
+      spriteID: 921c5b6003b564d4eb10dfdabed38d12
+      internalID: -1417166920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NavGif-sprite-sheet_68
+      name: navgifnew-sprite-sheet_71
       rect:
         serializedVersion: 2
-        x: 5763
+        x: 6339
         y: 1
-        width: 1921
-        height: 1081
+        width: 2113
+        height: 529
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1621,52 +1687,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff6ea586cdfcb3148acc781758980389
-      internalID: 223383114
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_69
-      rect:
-        serializedVersion: 2
-        x: 7684
-        y: 1
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c00b4b9b0290e9e41bf30d5c61b2430a
-      internalID: 566602895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NavGif-sprite-sheet_70
-      rect:
-        serializedVersion: 2
-        x: 9605
-        y: 1
-        width: 1921
-        height: 1081
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4de4c82d09961954eb10d16ba3878f53
-      internalID: 493062024
+      spriteID: 6fade325f68cb81449de23081440fa6e
+      internalID: -620942348
       vertices: []
       indices: 
       edges: []
@@ -1675,7 +1697,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4814298054a24954abc79516152c905a
+    spriteID: dc36afa9efcfd3d438f0644931a9e257
     internalID: 0
     vertices: []
     indices: 
@@ -1685,79 +1707,80 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":15.0},"gridSpriteSize":{"x":1921.0,"y":1081.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":19.0},"gridSpriteSize":{"x":2113.0,"y":529.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      NavGif-sprite-sheet_0: 421905205
-      NavGif-sprite-sheet_1: -1300780013
-      NavGif-sprite-sheet_10: 121799530
-      NavGif-sprite-sheet_11: 1524835191
-      NavGif-sprite-sheet_12: -407648731
-      NavGif-sprite-sheet_13: -1447755133
-      NavGif-sprite-sheet_14: 1375289481
-      NavGif-sprite-sheet_15: -563906817
-      NavGif-sprite-sheet_16: -1933644094
-      NavGif-sprite-sheet_17: 1086347843
-      NavGif-sprite-sheet_18: 258136644
-      NavGif-sprite-sheet_19: 1730090163
-      NavGif-sprite-sheet_2: 919387905
-      NavGif-sprite-sheet_20: -251001370
-      NavGif-sprite-sheet_21: -378098624
-      NavGif-sprite-sheet_22: -628003248
-      NavGif-sprite-sheet_23: 826593132
-      NavGif-sprite-sheet_24: -2129473557
-      NavGif-sprite-sheet_25: 888482447
-      NavGif-sprite-sheet_26: -1314327455
-      NavGif-sprite-sheet_27: 298296349
-      NavGif-sprite-sheet_28: 787686459
-      NavGif-sprite-sheet_29: -1260754198
-      NavGif-sprite-sheet_3: -1744485228
-      NavGif-sprite-sheet_30: -1167148126
-      NavGif-sprite-sheet_31: 464103790
-      NavGif-sprite-sheet_32: 1766937611
-      NavGif-sprite-sheet_33: -122752862
-      NavGif-sprite-sheet_34: 1535926436
-      NavGif-sprite-sheet_35: 1034895489
-      NavGif-sprite-sheet_36: 251719538
-      NavGif-sprite-sheet_37: 1946419283
-      NavGif-sprite-sheet_38: 1892071082
-      NavGif-sprite-sheet_39: -526994400
-      NavGif-sprite-sheet_4: 1256535526
-      NavGif-sprite-sheet_40: 1254511565
-      NavGif-sprite-sheet_41: -909616529
-      NavGif-sprite-sheet_42: 525196510
-      NavGif-sprite-sheet_43: 833345985
-      NavGif-sprite-sheet_44: -1972359172
-      NavGif-sprite-sheet_45: -1841473978
-      NavGif-sprite-sheet_46: -1646042075
-      NavGif-sprite-sheet_47: -11137394
-      NavGif-sprite-sheet_48: -1202530404
-      NavGif-sprite-sheet_49: -320323981
-      NavGif-sprite-sheet_5: 637681801
-      NavGif-sprite-sheet_50: 1126265159
-      NavGif-sprite-sheet_51: 1546252792
-      NavGif-sprite-sheet_52: 1491597386
-      NavGif-sprite-sheet_53: -2042772784
-      NavGif-sprite-sheet_54: -1984072395
-      NavGif-sprite-sheet_55: 819343360
-      NavGif-sprite-sheet_56: 1825942682
-      NavGif-sprite-sheet_57: 985426649
-      NavGif-sprite-sheet_58: 356200228
-      NavGif-sprite-sheet_59: -701237622
-      NavGif-sprite-sheet_6: -436784773
-      NavGif-sprite-sheet_60: 2058145180
-      NavGif-sprite-sheet_61: 819445848
-      NavGif-sprite-sheet_62: 1273762117
-      NavGif-sprite-sheet_63: -665932418
-      NavGif-sprite-sheet_64: 361382072
-      NavGif-sprite-sheet_65: 927688742
-      NavGif-sprite-sheet_66: 180940747
-      NavGif-sprite-sheet_67: 1614971563
-      NavGif-sprite-sheet_68: 223383114
-      NavGif-sprite-sheet_69: 566602895
-      NavGif-sprite-sheet_7: 785127938
-      NavGif-sprite-sheet_70: 493062024
-      NavGif-sprite-sheet_8: -179413118
-      NavGif-sprite-sheet_9: 156371143
+      navgifnew-sprite-sheet_0: -1567959230
+      navgifnew-sprite-sheet_1: 1743457
+      navgifnew-sprite-sheet_10: -865933822
+      navgifnew-sprite-sheet_11: -1573774141
+      navgifnew-sprite-sheet_12: 900390305
+      navgifnew-sprite-sheet_13: -1710212136
+      navgifnew-sprite-sheet_14: -1220084202
+      navgifnew-sprite-sheet_15: -2097376376
+      navgifnew-sprite-sheet_16: -1821071416
+      navgifnew-sprite-sheet_17: 389588386
+      navgifnew-sprite-sheet_18: 1827116557
+      navgifnew-sprite-sheet_19: -466780558
+      navgifnew-sprite-sheet_2: -1145778651
+      navgifnew-sprite-sheet_20: 1956520006
+      navgifnew-sprite-sheet_21: -1821224633
+      navgifnew-sprite-sheet_22: -1783741332
+      navgifnew-sprite-sheet_23: 1793437826
+      navgifnew-sprite-sheet_24: -1258816881
+      navgifnew-sprite-sheet_25: -884537973
+      navgifnew-sprite-sheet_26: 641832238
+      navgifnew-sprite-sheet_27: -1149284321
+      navgifnew-sprite-sheet_28: 468395768
+      navgifnew-sprite-sheet_29: -286789506
+      navgifnew-sprite-sheet_3: 1088737585
+      navgifnew-sprite-sheet_30: -1217139056
+      navgifnew-sprite-sheet_31: 1915022495
+      navgifnew-sprite-sheet_32: -824307891
+      navgifnew-sprite-sheet_33: 219674375
+      navgifnew-sprite-sheet_34: 11512518
+      navgifnew-sprite-sheet_35: -720388251
+      navgifnew-sprite-sheet_36: -1552909514
+      navgifnew-sprite-sheet_37: -2063950786
+      navgifnew-sprite-sheet_38: -2088579414
+      navgifnew-sprite-sheet_39: -1921503393
+      navgifnew-sprite-sheet_4: 1216369826
+      navgifnew-sprite-sheet_40: -1021254549
+      navgifnew-sprite-sheet_41: 765182877
+      navgifnew-sprite-sheet_42: 304692447
+      navgifnew-sprite-sheet_43: 240514354
+      navgifnew-sprite-sheet_44: 1494699674
+      navgifnew-sprite-sheet_45: 1912311843
+      navgifnew-sprite-sheet_46: 1339860422
+      navgifnew-sprite-sheet_47: -1624914349
+      navgifnew-sprite-sheet_48: 1049908942
+      navgifnew-sprite-sheet_49: 1649053986
+      navgifnew-sprite-sheet_5: 1985369022
+      navgifnew-sprite-sheet_50: 455101089
+      navgifnew-sprite-sheet_51: 86348939
+      navgifnew-sprite-sheet_52: 891709509
+      navgifnew-sprite-sheet_53: -1951538762
+      navgifnew-sprite-sheet_54: -834408361
+      navgifnew-sprite-sheet_55: 252800569
+      navgifnew-sprite-sheet_56: -872994238
+      navgifnew-sprite-sheet_57: 175293050
+      navgifnew-sprite-sheet_58: 155299020
+      navgifnew-sprite-sheet_59: -1268418540
+      navgifnew-sprite-sheet_6: -518749146
+      navgifnew-sprite-sheet_60: -116438815
+      navgifnew-sprite-sheet_61: 895741310
+      navgifnew-sprite-sheet_62: -1285179942
+      navgifnew-sprite-sheet_63: 889173393
+      navgifnew-sprite-sheet_64: 1781506524
+      navgifnew-sprite-sheet_65: 363030083
+      navgifnew-sprite-sheet_66: -723686473
+      navgifnew-sprite-sheet_67: 275181141
+      navgifnew-sprite-sheet_68: -854181480
+      navgifnew-sprite-sheet_69: 692981158
+      navgifnew-sprite-sheet_7: 303310766
+      navgifnew-sprite-sheet_70: -1417166920
+      navgifnew-sprite-sheet_71: -620942348
+      navgifnew-sprite-sheet_8: -1036359159
+      navgifnew-sprite-sheet_9: 1574341964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
