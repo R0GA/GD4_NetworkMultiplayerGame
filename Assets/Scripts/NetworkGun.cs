@@ -13,6 +13,11 @@ public class NetworkGun : NetworkBehaviour
     [Header("Aiming")]
     [SerializeField] private float targetDistance = 50f;
 
+    [Header("Shooting Cost")]
+    [SerializeField] private float oxygenCostPerShot = 2f;
+
+    private OxygenManager oxygenManager;
+
     private PlayerInput pi;
     private InputAction shootAction;
     private NetworkFPSPlayer player;
@@ -28,7 +33,10 @@ public class NetworkGun : NetworkBehaviour
 
         player = GetComponentInParent<NetworkFPSPlayer>();
         if (player != null)
+        {
             playerCamera = player.PlayerCamera;
+            oxygenManager = player.GetComponent<OxygenManager>(); // ADD THIS
+        }
 
         if (playerCamera == null)
             Debug.LogWarning("NetworkGun: No camera found for aiming.", this);
@@ -64,6 +72,8 @@ public class NetworkGun : NetworkBehaviour
     [ServerRpc]
     private void ShootServerRPC(Vector3 pos, Vector3 direction)
     {
+        GetComponentInParent<OxygenManager>()?.DrainOxygen(oxygenCostPerShot);
+
         var proj = Instantiate(projectilePrefab, pos, Quaternion.LookRotation(direction));
         proj.Spawn();
         var rb = proj.GetComponent<Rigidbody>();

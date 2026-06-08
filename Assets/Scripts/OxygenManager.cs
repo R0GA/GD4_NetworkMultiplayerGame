@@ -75,6 +75,11 @@ public class OxygenManager : NetworkBehaviour
         if (!IsServer) return;
         currentOxygen.Value = Mathf.Min(currentOxygen.Value + amount, maxOxygen);
     }
+    public void DrainOxygen(float amount)
+    {
+        if (!IsServer) return;
+        currentOxygen.Value = Mathf.Max(currentOxygen.Value - amount, 0f);
+    }
 
     public float CurrentOxygen => currentOxygen.Value;
     public float MaxOxygen => maxOxygen;

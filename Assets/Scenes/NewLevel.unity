@@ -57443,7 +57443,7 @@ PrefabInstance:
     - target: {fileID: 1601420753995088371, guid: ebf293d5474818a409c2441a456cb3b7, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 87bbbfe20d0dde74eaa4c0033afb463e, type: 3}
+      objectReference: {fileID: 8300000, guid: 8d94c2a12010a3a4f8a1f97e95e915c0, type: 3}
     - target: {fileID: 1601420753995088371, guid: ebf293d5474818a409c2441a456cb3b7, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -57487,8 +57487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipAudioManager
   alarmSource: {fileID: 1447451020}
-  alarmClip: {fileID: 8300000, guid: 87bbbfe20d0dde74eaa4c0033afb463e, type: 3}
-  alarmDuration: 10
+  alarmClip: {fileID: 8300000, guid: 8d94c2a12010a3a4f8a1f97e95e915c0, type: 3}
+  alarmDuration: 6
 --- !u!1 &1449932309
 GameObject:
   m_ObjectHideFlags: 0
