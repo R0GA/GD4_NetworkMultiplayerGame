@@ -14,7 +14,23 @@ public class LobbyUI : MonoBehaviour
     [SerializeField] private TMP_Text readyButtonText;
 
     [Header("Text")]
-    [SerializeField] private TMP_Text statusText; 
+    [SerializeField] private TMP_Text statusText;
+
+    [Header("Saboteur Character Images")]
+    [Tooltip("Shown when no one has selected this character")]
+    [SerializeField] private GameObject sabotDefaultImage;
+    [Tooltip("Shown when the OTHER player has selected this character")]
+    [SerializeField] private GameObject sabotNotReadyImage;
+    [Tooltip("Shown when YOU have selected this character")]
+    [SerializeField] private GameObject sabotSelectedImage;
+
+    [Header("Seeker Character Images")]
+    [Tooltip("Shown when no one has selected this character")]
+    [SerializeField] private GameObject seekerDefaultImage;
+    [Tooltip("Shown when the OTHER player has selected this character")]
+    [SerializeField] private GameObject seekerNotReadyImage;
+    [Tooltip("Shown when YOU have selected this character")]
+    [SerializeField] private GameObject seekerSelectedImage;
 
     private LobbyNetworkManager lobbyManager;
     private NetworkManager netManager;
@@ -75,24 +91,22 @@ public class LobbyUI : MonoBehaviour
 
         string myRoleText = iAmSaboteur ? "Slug" : (iAmSeeker ? "Astronaut" : "None");
         string sabText = saboteurTaken
-            ? $"Slug: Player {lobbyManager.SaboteurClientId.Value}"
-            : "Slug: Open";
+            ? $"Slug: <b>Player {lobbyManager.SaboteurClientId.Value + 1}</b>"
+            : "Slug: <b>Open</b>";
         string seekText = seekerTaken
-            ? $"Astronaut: Player {lobbyManager.SeekerClientId.Value}"
-            : "Astronaut: Open";
+            ? $"Astronaut: <b>Player {lobbyManager.SeekerClientId.Value + 1}</b>"
+            : "Astronaut: <b>Open</b>";
         string readyStatus = iAmReady ? "Ready" : "Not Ready";
 
-        statusText.text = $"Your role: {myRoleText}\n" +
-                          $"{sabText}\n" +
-                          $"{seekText}\n" +
-                          $"You are: {readyStatus}";
+        statusText.text = $"Your role: <b>{myRoleText}</b>     You are: <b>{readyStatus}\n</b>" +
+                  $"{sabText}     {seekText}";
 
         sabotButton.interactable = !saboteurTaken && !iAmSaboteur;
         seekerButton.interactable = !seekerTaken && !iAmSeeker;
 
         bool hasRole = iAmSaboteur || iAmSeeker;
         readyButton.interactable = hasRole;
-        deselectButton.gameObject.SetActive(hasRole);   
+        deselectButton.gameObject.SetActive(hasRole);
         deselectButton.interactable = hasRole;
 
         if (readyButtonText != null)
@@ -102,5 +116,33 @@ public class LobbyUI : MonoBehaviour
         var colors = readyButton.colors;
         colors.normalColor = iAmReady ? Color.green : Color.white;
         readyButton.colors = colors;
+
+        // --- Character image states ---
+        // Saboteur images
+        bool otherPlayerIsSaboteur = saboteurTaken && !iAmSaboteur;
+        SetCharacterImageState(sabotDefaultImage, sabotNotReadyImage, sabotSelectedImage,
+            iAmSaboteur, otherPlayerIsSaboteur);
+
+        // Seeker images
+        bool otherPlayerIsSeeker = seekerTaken && !iAmSeeker;
+        SetCharacterImageState(seekerDefaultImage, seekerNotReadyImage, seekerSelectedImage,
+            iAmSeeker, otherPlayerIsSeeker);
+    }
+
+    /// <summary>
+    /// Activates exactly one of the three state images for a character slot.
+    /// </summary>
+    /// <param name="defaultImg">Shown when the slot is unclaimed.</param>
+    /// <param name="notReadyImg">Shown when the OTHER player has claimed this slot.</param>
+    /// <param name="selectedImg">Shown when the LOCAL player has claimed this slot.</param>
+    /// <param name="iSelected">True if the local player owns this slot.</param>
+    /// <param name="otherSelected">True if the remote player owns this slot.</param>
+    private void SetCharacterImageState(
+        GameObject defaultImg, GameObject notReadyImg, GameObject selectedImg,
+        bool iSelected, bool otherSelected)
+    {
+        if (defaultImg) defaultImg.SetActive(!iSelected && !otherSelected);
+        if (notReadyImg) notReadyImg.SetActive(otherSelected);
+        if (selectedImg) selectedImg.SetActive(iSelected);
     }
 }

@@ -6872,7 +6872,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 4e23695eab9309340b6ae704374a9fd0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cba979e8cda174f468808d173cc03541, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
   m_FlipX: 0
   m_FlipY: 0
@@ -9562,14 +9562,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -9577,7 +9577,7 @@ MonoBehaviour:
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
+  m_paragraphSpacing: 10
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
@@ -9631,8 +9631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -186, y: -406}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchoredPosition: {x: 30.678, y: -407}
+  m_SizeDelta: {x: 881.05, y: 89.8178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1133674660
 GameObject:
@@ -11097,6 +11097,12 @@ MonoBehaviour:
   deselectButton: {fileID: 945958895}
   readyButtonText: {fileID: 1146402717}
   statusText: {fileID: 1130572905}
+  sabotDefaultImage: {fileID: 1207673271}
+  sabotNotReadyImage: {fileID: 1133674660}
+  sabotSelectedImage: {fileID: 1224066800}
+  seekerDefaultImage: {fileID: 2122784444}
+  seekerNotReadyImage: {fileID: 1684799170}
+  seekerSelectedImage: {fileID: 404986126}
 --- !u!114 &1308422631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14770,7 +14776,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 5f0f4d24780bfc548ac443b7ccb244ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb4e9727ca0f8fa4e9df89e59ef78bcd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
   m_FlipX: 0
   m_FlipY: 0
