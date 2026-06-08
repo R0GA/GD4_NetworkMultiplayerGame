@@ -39,6 +39,16 @@ public class TaskTrigger : MonoBehaviour
     [Tooltip("How fast the lights pulse (full cycles per second). Set to 0 for solid-on lights.")]
     [SerializeField] private float pulseFrequency = 1.5f;
 
+    [Header("World UI")]
+    [Tooltip("Always-visible beacon elements (e.g. the '!' exclamation icon). " +
+             "Visible at all times and billboard toward the slug player from anywhere in the level. " +
+             "Hidden once the task is complete.")]
+    [SerializeField] private List<GameObject> beaconUIElements = new();
+
+    [Tooltip("Proximity-only UI elements (e.g. the interact prompt). " +
+             "Only shown when the slug player is inside the trigger zone.")]
+    [SerializeField] private List<GameObject> worldUIElements = new();
+
     public UnityEvent OnInteracted = new();
 
     // Exposed so TaskManager can look this trigger up by identifier.
@@ -52,6 +62,92 @@ public class TaskTrigger : MonoBehaviour
     private List<Material> runtimeLightBarMaterials = new();
     private bool alarmActive = false;
     private Coroutine pulseCoroutine;
+
+    // Cached slug player camera transform used for billboarding world UI.
+    private Transform slugCameraTransform;
+
+    // -------------------------------------------------------------------------
+    // Lifecycle
+    // -------------------------------------------------------------------------
+
+    private void Awake()
+    {
+        // Both beacon and proximity UI start hidden on all clients.
+        // The beacon is only revealed once we confirm a locally-owned SlugPlayer
+        // exists on this machine (see TryCacheSlugCamera). This ensures the FPS
+        // client never sees slug-only UI.
+        SetBeaconVisible(false);
+        SetWorldUIVisible(false);
+    }
+
+    private void Start()
+    {
+        // Attempt to find the locally-owned slug player's camera. If the slug
+        // hasn't spawned yet (common in NGO), we retry in Update until it appears.
+        TryCacheSlugCamera();
+    }
+
+    private void LateUpdate()
+    {
+        // If we haven't confirmed a local slug player yet, keep trying each frame.
+        // On the FPS client this will never succeed, so beacons stay hidden forever.
+        if (slugCameraTransform == null)
+        {
+            TryCacheSlugCamera();
+            return;
+        }
+
+        // Billboard all visible world UI elements (beacon + proximity) toward the slug player's camera.
+        BillboardList(beaconUIElements);
+        BillboardList(worldUIElements);
+    }
+
+    private void BillboardList(List<GameObject> elements)
+    {
+        foreach (var element in elements)
+        {
+            if (element == null || !element.activeSelf) continue;
+            element.transform.rotation = Quaternion.LookRotation(
+                element.transform.position - slugCameraTransform.position
+            );
+        }
+    }
+
+    private void SetWorldUIVisible(bool visible)
+    {
+        foreach (var element in worldUIElements)
+            if (element != null) element.SetActive(visible);
+    }
+
+    private void SetBeaconVisible(bool visible)
+    {
+        foreach (var element in beaconUIElements)
+            if (element != null) element.SetActive(visible);
+    }
+
+    /// <summary>
+    /// Finds the local SlugPlayer in the scene and caches their camera transform
+    /// for use by the billboard logic. Called at Start and again on trigger enter
+    /// in case the player wasn't spawned yet at Start.
+    /// </summary>
+    private void TryCacheSlugCamera()
+    {
+        if (slugCameraTransform != null) return;
+
+        // Only the slug client will have a locally-owned SlugPlayer.
+        // On the FPS client this loop finds nothing, camera stays null,
+        // and beacons remain hidden for that client permanently.
+        foreach (var candidate in FindObjectsByType<SlugPlayer>(FindObjectsSortMode.None))
+        {
+            if (!candidate.IsOwner) continue;
+            var cam = candidate.GetComponentInChildren<Camera>();
+            slugCameraTransform = cam != null ? cam.transform : candidate.transform;
+
+            // Now that we've confirmed this is the slug client, make the beacon visible.
+            SetBeaconVisible(true);
+            break;
+        }
+    }
 
     // -------------------------------------------------------------------------
     // Trigger enter / exit
@@ -67,6 +163,13 @@ public class TaskTrigger : MonoBehaviour
 
         playerInRange = player;
 
+        // Refresh camera cache (handles the case where Start ran before the player spawned).
+        var cam = player.GetComponentInChildren<Camera>();
+        slugCameraTransform = cam != null ? cam.transform : player.transform;
+
+        // Show proximity UI; beacon is already visible.
+        SetWorldUIVisible(true);
+
         var pi = player.GetComponent<PlayerInput>();
         if (pi != null)
         {
@@ -77,8 +180,6 @@ public class TaskTrigger : MonoBehaviour
                 interactAction.performed += OnInteractPerformed;
             }
         }
-
-        if (interactPrompt) interactPrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -117,7 +218,8 @@ public class TaskTrigger : MonoBehaviour
         if (task.TryOpen(playerInRange))
         {
             OnInteracted?.Invoke();
-            if (interactPrompt) interactPrompt.SetActive(false);
+            SetWorldUIVisible(false);
+            SetBeaconVisible(false);
         }
     }
 
@@ -229,13 +331,15 @@ public class TaskTrigger : MonoBehaviour
         }
         playerInRange = null;
 
-        if (interactPrompt)
-            interactPrompt.SetActive(false);
+        // Hide proximity UI when the player leaves, but leave the beacon visible
+        // and keep slugCameraTransform so billboarding continues out of range.
+        SetWorldUIVisible(false);
     }
 
     private void OnDestroy()
     {
         CleanUp();
+        slugCameraTransform = null;
 
         if (pulseCoroutine != null)
             StopCoroutine(pulseCoroutine);
