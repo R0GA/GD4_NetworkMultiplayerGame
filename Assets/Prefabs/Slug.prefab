@@ -966,7 +966,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4826007142735789529}
   - component: {fileID: 6115983046761153567}
-  - component: {fileID: 6029522349719545976}
   - component: {fileID: 6248853712231782709}
   m_Layer: 7
   m_Name: MMCamera
@@ -1041,14 +1040,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6029522349719545976
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333774642175566874}
-  m_Enabled: 1
 --- !u!114 &6248853712231782709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1407,8 +1398,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863728242528542431}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
+  m_LocalRotation: {x: 0.028649515, y: 0.93435395, z: -0.34669954, w: 0.07721034}
+  m_LocalPosition: {x: 0.2554342, y: 3.5929313, z: 3.4720376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4260,8 +4251,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
+  m_LocalRotation: {x: 0.028649515, y: 0.93435395, z: -0.34669954, w: 0.07721034}
+  m_LocalPosition: {x: 0.2554342, y: 3.5929313, z: 3.4720376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4941,8 +4932,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5071095093125033932}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
+  m_LocalRotation: {x: 0.028649515, y: 0.93435395, z: -0.34669954, w: 0.07721034}
+  m_LocalPosition: {x: 0.2554342, y: 3.5929313, z: 3.4720376}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5025,7 +5016,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: -63.34693
+    Value: -175.79239
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -5035,7 +5026,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: -8.404958
+    Value: 28.299107
     Center: 10
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -6802,7 +6793,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 8
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -6837,7 +6828,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -6891,15 +6882,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlugFootstepAudio
   ShowTopMostFoldoutHeaderGroup: 1
   squelchClips:
-  - {fileID: 8300000, guid: 888b9ebeeaa54d74285813cfbcbd7805, type: 3}
-  - {fileID: 8300000, guid: fac861b484743b343a6dcb7a572c36ff, type: 3}
   - {fileID: 8300000, guid: 8230a2f1d20c89e45935bc8223eda91b, type: 3}
-  - {fileID: 8300000, guid: cb7622d65480fd641aded701c599d76b, type: 3}
   stepInterval: 0.5
   moveThreshold: 0.1
   basePitch: 1
   pitchVariance: 0.2
-  stepVolume: 0.6
+  stepVolume: 1
   volumeVariance: 0.1
   minDistance: 1
   maxDistance: 8
