@@ -731,6 +731,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 156656, guid: bddb1706eb9e38c4c8aad9e975af8fba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 405642, guid: bddb1706eb9e38c4c8aad9e975af8fba, type: 3}
       propertyPath: m_LocalScale.x
       value: 5
@@ -1218,7 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acca2ec8cab09784ebd39c0f83c24d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskTrigger
-  taskIdentifier: Valve
+  taskIdentifier: Reactor
   interactPrompt: {fileID: 757717537}
   interactActionName: Interact
   alarmLights: []
