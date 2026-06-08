@@ -8,6 +8,7 @@ public class NetworkGun : NetworkBehaviour
     [SerializeField] private NetworkObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed = 20f;
+    [SerializeField] private ParticleSystem repulsorBlast;
 
     [Header("Aiming")]
     [SerializeField] private float targetDistance = 50f;
@@ -67,5 +68,6 @@ public class NetworkGun : NetworkBehaviour
         proj.Spawn();
         var rb = proj.GetComponent<Rigidbody>();
         rb.linearVelocity = direction * projectileSpeed;
+        repulsorBlast.Play();
     }
 }

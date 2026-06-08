@@ -5776,6 +5776,7 @@ GameObject:
   - component: {fileID: 245153376}
   - component: {fileID: 245153378}
   - component: {fileID: 245153377}
+  - component: {fileID: 245153379}
   m_Layer: 9
   m_Name: BedroomTXT
   m_TagString: Untagged
@@ -5902,6 +5903,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245153375}
   m_CullTransparentMesh: 1
+--- !u!114 &245153379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245153375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c7425200332ee4b958dfd9cd82c0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomNameRotation
+  player: {fileID: 0}
 --- !u!1001 &246188874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33445,6 +33459,7 @@ GameObject:
   - component: {fileID: 1364593901}
   - component: {fileID: 1364593903}
   - component: {fileID: 1364593902}
+  - component: {fileID: 1364593904}
   m_Layer: 9
   m_Name: Comms
   m_TagString: Untagged
@@ -33571,6 +33586,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364593900}
   m_CullTransparentMesh: 1
+--- !u!114 &1364593904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364593900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c7425200332ee4b958dfd9cd82c0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomNameRotation
+  player: {fileID: 0}
 --- !u!1001 &1368698975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35015,6 +35043,7 @@ GameObject:
   - component: {fileID: 1443980606}
   - component: {fileID: 1443980608}
   - component: {fileID: 1443980607}
+  - component: {fileID: 1443980609}
   m_Layer: 9
   m_Name: Pilot
   m_TagString: Untagged
@@ -35143,6 +35172,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443980605}
   m_CullTransparentMesh: 1
+--- !u!114 &1443980609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443980605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c7425200332ee4b958dfd9cd82c0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomNameRotation
+  player: {fileID: 0}
 --- !u!1001 &1444399492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42670,6 +42712,7 @@ GameObject:
   - component: {fileID: 1764760812}
   - component: {fileID: 1764760814}
   - component: {fileID: 1764760813}
+  - component: {fileID: 1764760815}
   m_Layer: 9
   m_Name: Greenhouse
   m_TagString: Untagged
@@ -42796,6 +42839,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764760811}
   m_CullTransparentMesh: 1
+--- !u!114 &1764760815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764760811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c7425200332ee4b958dfd9cd82c0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomNameRotation
+  player: {fileID: 0}
 --- !u!1001 &1765640191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46115,6 +46171,7 @@ GameObject:
   - component: {fileID: 1875701287}
   - component: {fileID: 1875701289}
   - component: {fileID: 1875701288}
+  - component: {fileID: 1875701290}
   m_Layer: 9
   m_Name: Reactor
   m_TagString: Untagged
@@ -46243,6 +46300,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875701286}
   m_CullTransparentMesh: 1
+--- !u!114 &1875701290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875701286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c7425200332ee4b958dfd9cd82c0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomNameRotation
+  player: {fileID: 0}
 --- !u!1001 &1878198192
 PrefabInstance:
   m_ObjectHideFlags: 0
