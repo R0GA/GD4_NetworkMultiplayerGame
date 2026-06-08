@@ -12,11 +12,10 @@ public class NetworkGun : NetworkBehaviour
 
     [Header("Aiming")]
     [SerializeField] private float targetDistance = 50f;
+    [SerializeField] private LayerMask aimMask = ~0;
 
     [Header("Shooting Cost")]
     [SerializeField] private float oxygenCostPerShot = 2f;
-
-    private OxygenManager oxygenManager;
 
     private PlayerInput pi;
     private InputAction shootAction;
@@ -33,10 +32,7 @@ public class NetworkGun : NetworkBehaviour
 
         player = GetComponentInParent<NetworkFPSPlayer>();
         if (player != null)
-        {
             playerCamera = player.PlayerCamera;
-            oxygenManager = player.GetComponent<OxygenManager>(); // ADD THIS
-        }
 
         if (playerCamera == null)
             Debug.LogWarning("NetworkGun: No camera found for aiming.", this);
@@ -62,11 +58,13 @@ public class NetworkGun : NetworkBehaviour
         if (playerCamera == null)
             return firePoint.forward;
 
-        Vector3 targetPoint = playerCamera.transform.position + playerCamera.transform.forward * targetDistance;
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
 
-        Vector3 direction = (targetPoint - firePoint.position).normalized;
+        Vector3 targetPoint = Physics.Raycast(ray, out RaycastHit hit, targetDistance, aimMask)
+            ? hit.point
+            : ray.GetPoint(targetDistance);
 
-        return direction;
+        return (targetPoint - firePoint.position).normalized;
     }
 
     [ServerRpc]
@@ -76,8 +74,11 @@ public class NetworkGun : NetworkBehaviour
 
         var proj = Instantiate(projectilePrefab, pos, Quaternion.LookRotation(direction));
         proj.Spawn();
+
         var rb = proj.GetComponent<Rigidbody>();
-        rb.linearVelocity = direction * projectileSpeed;
+        if (rb != null)
+            rb.linearVelocity = direction * projectileSpeed;
+
         repulsorBlast.Play();
     }
 }

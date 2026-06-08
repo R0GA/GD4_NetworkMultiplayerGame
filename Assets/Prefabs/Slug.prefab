@@ -7035,7 +7035,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   virtualCamera: {fileID: 2452394603933197220}
   playerVisualRoot: {fileID: 2543385146466021363}
-  taskCanvas: {fileID: 3984877037701041132}
+  taskCanvas: {fileID: 288208789190595877}
   cinemachineInputController: {fileID: 6620244743481665403}
   moveSpeed: 5
   jumpHeight: 2
