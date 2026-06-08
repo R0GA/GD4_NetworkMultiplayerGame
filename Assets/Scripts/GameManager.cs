@@ -99,9 +99,8 @@ public class GameManager : MonoBehaviour
     {
         if (currentGameState != GameEndState.Active) return;
 
-        // Only counts as a slug win if the astronaut is still alive.
         var oxy = astronautPlayer != null ? astronautPlayer.GetComponent<OxygenManager>() : null;
-        if (oxy == null || !oxy.IsDead)
+        if (oxy == null || !oxy.IsDead.Value)
             EndGame(GameEndState.SlugTasks);
     }
 

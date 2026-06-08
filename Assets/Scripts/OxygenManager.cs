@@ -6,50 +6,49 @@ public class OxygenManager : NetworkBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float maxOxygen = 100f;
-    [SerializeField] private float drainRate = 5f;       
+    [SerializeField] private float drainRate = 5f;
     [SerializeField] private float lowOxygenThreshold = 25f;
 
     private NetworkVariable<float> currentOxygen = new NetworkVariable<float>(
-        100f,
-        NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Server
-    );
+        100f, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
+    // Same pattern as NetworkHealth — server-authoritative, syncs to all peers
+    public NetworkVariable<bool> IsDead = new NetworkVariable<bool>(
+        false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
-    public UnityEvent<float, float> OnOxygenChanged;  
-    public UnityEvent<bool> OnLowOxygenChanged;    
-
+    public UnityEvent<float, float> OnOxygenChanged;
+    public UnityEvent<bool> OnLowOxygenChanged;
     public UnityEvent OnDeath = new UnityEvent();
 
     private bool wasLowOxygen = false;
-    private bool isDead = false;
 
     public override void OnNetworkSpawn()
     {
         if (IsServer)
-        {
             currentOxygen.Value = maxOxygen;
-        }
 
         currentOxygen.OnValueChanged += OnOxygenValueChanged;
-        OnOxygenValueChanged(0, currentOxygen.Value);
+        IsDead.OnValueChanged += OnIsDeadChanged;
+
+        // Fire initial UI update without triggering death logic
+        OnOxygenChanged?.Invoke(currentOxygen.Value, maxOxygen);
     }
 
-    private void OnDisable()
+    public override void OnNetworkDespawn()
     {
         currentOxygen.OnValueChanged -= OnOxygenValueChanged;
+        IsDead.OnValueChanged -= OnIsDeadChanged;
     }
+
+    // Remove OnDisable — OnNetworkDespawn is the correct NGO cleanup hook
 
     private void Update()
     {
-        if (!IsServer) return;
+        if (!IsServer || IsDead.Value) return;
 
-        if (currentOxygen.Value > 0f)
-        {
-            currentOxygen.Value -= drainRate * Time.deltaTime;
-            if (currentOxygen.Value < 0f)
-                currentOxygen.Value = 0f;
-        }
+        currentOxygen.Value -= drainRate * Time.deltaTime;
+        if (currentOxygen.Value < 0f)
+            currentOxygen.Value = 0f;
     }
 
     private void OnOxygenValueChanged(float previous, float current)
@@ -63,9 +62,16 @@ public class OxygenManager : NetworkBehaviour
             OnLowOxygenChanged?.Invoke(isLow);
         }
 
-        if (current <= 0f && !isDead)
+        // Server sets the flag; NetworkVariable propagates it to all peers
+        if (IsServer && current <= 0f && !IsDead.Value)
+            IsDead.Value = true;
+    }
+
+    private void OnIsDeadChanged(bool previous, bool current)
+    {
+        if (current)
         {
-            isDead = true;
+            Debug.Log($"[OxygenManager] Death confirmed on {(IsServer ? "server" : "client")}");
             OnDeath?.Invoke();
         }
     }
@@ -75,6 +81,7 @@ public class OxygenManager : NetworkBehaviour
         if (!IsServer) return;
         currentOxygen.Value = Mathf.Min(currentOxygen.Value + amount, maxOxygen);
     }
+
     public void DrainOxygen(float amount)
     {
         if (!IsServer) return;
@@ -84,5 +91,4 @@ public class OxygenManager : NetworkBehaviour
     public float CurrentOxygen => currentOxygen.Value;
     public float MaxOxygen => maxOxygen;
     public bool IsLowOxygen => currentOxygen.Value <= lowOxygenThreshold;
-    public bool IsDead => currentOxygen.Value <= 0f;
 }

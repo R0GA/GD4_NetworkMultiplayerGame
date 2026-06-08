@@ -38,6 +38,15 @@ public class NetworkFPSPlayer : NetworkBehaviour
         pi = GetComponent<PlayerInput>();
         audioListener = playerCamera ? playerCamera.GetComponent<AudioListener>() : null;
 
+        // Register on server so GameManager receives OnDeath from OxygenManager (which fires server-side)
+        if (IsServer)
+        {
+            if (GameManager.Instance != null)
+                GameManager.Instance.RegisterAstronaut(this);
+            else
+                Debug.LogWarning("[NetworkFPSPlayer] GameManager.Instance is null on spawn.");
+        }
+
         if (!IsOwner)
         {
             if (playerCamera) playerCamera.enabled = false;
@@ -57,12 +66,6 @@ public class NetworkFPSPlayer : NetworkBehaviour
         if (audioListener) audioListener.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        // Register with GameManager so it can attach OxygenManager listeners.
-        if (GameManager.Instance != null)
-            GameManager.Instance.RegisterAstronaut(this);
-        else
-            Debug.LogWarning("[NetworkFPSPlayer] GameManager.Instance is null on spawn.");
     }
 
     private void Update()

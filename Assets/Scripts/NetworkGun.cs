@@ -48,27 +48,32 @@ public class NetworkGun : NetworkBehaviour
 
         if (shootAction.WasPressedThisFrame())
         {
-            Vector3 direction = GetAimDirection();
-            ShootServerRPC(firePoint.position, direction);
+            // Step 1: raycast from camera centre to find the world point the crosshair is on
+            Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+            Vector3 targetPoint = Physics.Raycast(ray, out RaycastHit hit, targetDistance, aimMask)
+                ? hit.point
+                : ray.GetPoint(targetDistance);
+
+            // Step 2: bullet spawns at firePoint, but aims AT the camera's target point
+            // This makes the bullet path converge on the crosshair regardless of barrel offset
+            Vector3 spawnPos = firePoint != null ? firePoint.position : playerCamera.transform.position;
+            Vector3 direction = (targetPoint - spawnPos).normalized;
+
+            PlayVFXClientRpc();
+            ShootServerRpc(spawnPos, direction);
         }
     }
 
-    private Vector3 GetAimDirection()
+    // Plays the particle effect on the owner client immediately (no server round-trip)
+    [ClientRpc]
+    private void PlayVFXClientRpc()
     {
-        if (playerCamera == null)
-            return firePoint.forward;
-
-        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
-
-        Vector3 targetPoint = Physics.Raycast(ray, out RaycastHit hit, targetDistance, aimMask)
-            ? hit.point
-            : ray.GetPoint(targetDistance);
-
-        return (targetPoint - firePoint.position).normalized;
+        if (IsOwner && repulsorBlast != null)
+            repulsorBlast.Play();
     }
 
     [ServerRpc]
-    private void ShootServerRPC(Vector3 pos, Vector3 direction)
+    private void ShootServerRpc(Vector3 pos, Vector3 direction)
     {
         GetComponentInParent<OxygenManager>()?.DrainOxygen(oxygenCostPerShot);
 
@@ -78,7 +83,5 @@ public class NetworkGun : NetworkBehaviour
         var rb = proj.GetComponent<Rigidbody>();
         if (rb != null)
             rb.linearVelocity = direction * projectileSpeed;
-
-        repulsorBlast.Play();
     }
 }

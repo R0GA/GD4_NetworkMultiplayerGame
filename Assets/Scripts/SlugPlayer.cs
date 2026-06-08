@@ -315,8 +315,6 @@ public class SlugPlayer : NetworkBehaviour
 
     private void ApplyPropVisual(int propId)
     {
-        Debug.Log($"[SlugPlayer] ApplyPropVisual START for propId={propId}");
-
         if (spawnedPropVisual != null)
         {
             Destroy(spawnedPropVisual);
@@ -327,49 +325,25 @@ public class SlugPlayer : NetworkBehaviour
         {
             if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(true);
             ResetCharacterController();
-            Debug.Log("[SlugPlayer] Reverted to normal form.");
             return;
         }
 
-        if (!PropInteractable.Registry.TryGetValue(propId, out PropInteractable prop))
-        {
-            Debug.LogWarning($"[SlugPlayer] Prop id {propId} not found in registry.");
-            return;
-        }
-
-        // CRITICAL CHECK: Ensure prop.gameObject is valid
-        if (prop == null || prop.gameObject == null)
-        {
-            Debug.LogError($"[SlugPlayer] Prop {propId} exists in registry but its gameObject is null!");
-            return;
-        }
-
-        Debug.Log($"[SlugPlayer] Prop GameObject: {prop.gameObject.name}, active={prop.gameObject.activeInHierarchy}, scene={prop.gameObject.scene.name}");
+        if (!PropInteractable.Registry.TryGetValue(propId, out PropInteractable prop)) return;
+        if (prop == null || prop.gameObject == null) return;
 
         if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(false);
 
-        try
-        {
-            Debug.Log("[SlugPlayer] About to Instantiate...");
-            spawnedPropVisual = Instantiate(prop.gameObject, transform);
-            Debug.Log($"[SlugPlayer] Instantiate SUCCESS. spawnedPropVisual={spawnedPropVisual != null}");
+        spawnedPropVisual = Instantiate(prop.gameObject, transform);
+        spawnedPropVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        spawnedPropVisual.name = $"[PropVisual] {prop.DisplayName}";
 
-            spawnedPropVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-            spawnedPropVisual.name = $"[PropVisual] {prop.DisplayName}";
-            Debug.Log($"[SlugPlayer] Set name to {spawnedPropVisual.name}");
+        // Remove physics/logic — this is PURELY visual, the CharacterController handles collision
+        foreach (var rb in spawnedPropVisual.GetComponentsInChildren<Rigidbody>()) Destroy(rb);
+        foreach (var col in spawnedPropVisual.GetComponentsInChildren<Collider>()) Destroy(col);
+        foreach (var pai in spawnedPropVisual.GetComponentsInChildren<PropInteractable>()) Destroy(pai);
 
-            foreach (var rb in spawnedPropVisual.GetComponentsInChildren<Rigidbody>()) Destroy(rb);
-            foreach (var col in spawnedPropVisual.GetComponentsInChildren<Collider>()) Destroy(col);
-            foreach (var pai in spawnedPropVisual.GetComponentsInChildren<PropInteractable>()) Destroy(pai);
-            Debug.Log("[SlugPlayer] Cleaned up components");
-
-            FitCharacterControllerToProp(spawnedPropVisual);
-            Debug.Log($"[SlugPlayer] Spawned prop visual '{spawnedPropVisual.name}' for prop id {propId}");
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"[SlugPlayer] EXCEPTION in ApplyPropVisual: {e.Message}\n{e.StackTrace}");
-        }
+        // Resize the CharacterController to roughly match the prop so it feels right to move
+        FitCharacterControllerToProp(spawnedPropVisual);
     }
 
     private void FitCharacterControllerToProp(GameObject propVisual)

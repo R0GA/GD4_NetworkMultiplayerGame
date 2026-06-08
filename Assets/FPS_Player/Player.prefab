@@ -332,6 +332,9 @@ MonoBehaviour:
   projectileSpeed: 20
   repulsorBlast: {fileID: 1003394971968487168}
   targetDistance: 15
+  aimMask:
+    serializedVersion: 2
+    m_Bits: 449
   oxygenCostPerShot: 2
 --- !u!114 &810900932998658865
 MonoBehaviour:
@@ -352,6 +355,11 @@ MonoBehaviour:
       MinSecondsBetweenUpdates: 0
       MaxSecondsBetweenUpdates: 0
     m_InternalValue: 100
+  IsDead:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -395,6 +403,11 @@ MonoBehaviour:
   maxOxygen: 100
   drainRate: 1
   lowOxygenThreshold: 25
+  IsDead:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
   OnOxygenChanged:
     m_PersistentCalls:
       m_Calls: []
