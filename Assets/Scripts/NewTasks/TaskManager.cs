@@ -3,18 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-/// <summary>
-/// Tracks task completion for the slug player.
-/// 
-/// Ownership model:
-///   • One TaskManager NetworkObject lives in the scene.
-///   • It is owned by the slug client (the one who has the SlugPlayer).
-///   • On spawn, it calls GameManager.RegisterTaskManager() so the GameManager
-///     can listen for OnAllTasksCompleted.
-///   • BaseTask components live on (or are children of) the slug player prefab.
-///     The manager discovers them via GetComponentsInChildren after the slug
-///     player registers itself (see RegisterSlugPlayer below).
-/// </summary>
+
 public class TaskManager : NetworkBehaviour
 {
     [Header("Task Registry")]
@@ -28,7 +17,6 @@ public class TaskManager : NetworkBehaviour
 
     public UnityEvent OnAllTasksCompleted = new();
 
-    // Bitmask — bit i is set when task i is complete.
     private readonly NetworkVariable<int> completedTasksMask = new(
         0,
         NetworkVariableReadPermission.Everyone,
@@ -36,20 +24,14 @@ public class TaskManager : NetworkBehaviour
 
     private bool allDone = false;
 
-    // -------------------------------------------------------------------------
-    // Network lifecycle
-    // -------------------------------------------------------------------------
 
     public override void OnNetworkSpawn()
     {
         completedTasksMask.OnValueChanged += OnCompletedMaskChanged;
 
-        // Show task HUD only on the owning (slug) client.
         if (taskListPanel != null)
             taskListPanel.SetActive(IsOwner);
 
-        // Tell the GameManager this manager exists so it can subscribe to
-        // OnAllTasksCompleted regardless of spawn order.
         if (GameManager.Instance != null)
             GameManager.Instance.RegisterTaskManager(this);
     }
@@ -58,10 +40,6 @@ public class TaskManager : NetworkBehaviour
     {
         completedTasksMask.OnValueChanged -= OnCompletedMaskChanged;
     }
-
-    // -------------------------------------------------------------------------
-    // Called by SlugPlayer (or a bootstrapper) once the player prefab exists
-    // -------------------------------------------------------------------------
 
     /// <summary>
     /// Discovers all BaseTask components on <paramref name="slugPlayerRoot"/>
@@ -92,19 +70,11 @@ public class TaskManager : NetworkBehaviour
         Debug.Log($"[TaskManager] Initialised {allTasks.Count} task(s).");
     }
 
-    // -------------------------------------------------------------------------
-    // Called by BaseTask on the owning client when a task finishes
-    // -------------------------------------------------------------------------
-
     public void NotifyTaskCompleted(int taskIndex)
     {
         if (!IsOwner) return;
         MarkTaskCompleteServerRpc(taskIndex);
     }
-
-    // -------------------------------------------------------------------------
-    // Server RPC — sets the shared bitmask
-    // -------------------------------------------------------------------------
 
     [ServerRpc]
     private void MarkTaskCompleteServerRpc(int taskIndex)
@@ -118,10 +88,6 @@ public class TaskManager : NetworkBehaviour
         completedTasksMask.Value |= (1 << taskIndex);
         CheckAllComplete();
     }
-
-    // -------------------------------------------------------------------------
-    // Reacts to mask change on ALL clients
-    // -------------------------------------------------------------------------
 
     private void OnCompletedMaskChanged(int previous, int current)
     {
@@ -145,10 +111,6 @@ public class TaskManager : NetworkBehaviour
         CheckAllComplete();
     }
 
-    // -------------------------------------------------------------------------
-    // Alarms — run on every client
-    // -------------------------------------------------------------------------
-
     private void TriggerAlarms(int newlyCompletedMask)
     {
         var allTriggers = FindObjectsByType<TaskTrigger>(FindObjectsSortMode.None);
@@ -169,10 +131,6 @@ public class TaskManager : NetworkBehaviour
             Debug.LogWarning("[TaskManager] ShipAudioManager.Instance is null.");
     }
 
-    // -------------------------------------------------------------------------
-    // Completion check
-    // -------------------------------------------------------------------------
-
     private void CheckAllComplete()
     {
         if (allDone || allTasks.Count == 0) return;
@@ -184,10 +142,6 @@ public class TaskManager : NetworkBehaviour
         Debug.Log("[TaskManager] All tasks completed!");
         OnAllTasksCompleted?.Invoke();
     }
-
-    // -------------------------------------------------------------------------
-    // Utilities
-    // -------------------------------------------------------------------------
 
     public bool IsTaskComplete(int index) =>
         index >= 0 && index < allTasks.Count && (completedTasksMask.Value & (1 << index)) != 0;

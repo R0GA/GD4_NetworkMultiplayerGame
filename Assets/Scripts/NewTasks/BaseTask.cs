@@ -84,9 +84,6 @@ public abstract class BaseTask : MonoBehaviour
         Debug.Log($"[BaseTask] '{taskDisplayName}' completed (index {taskIndex}).");
     }
 
-    // -------------------------------------------------------------------------
-    // Interact-to-close handling
-    // -------------------------------------------------------------------------
 
     private void SubscribeInteractAction(SlugPlayer player)
     {
@@ -114,10 +111,6 @@ public abstract class BaseTask : MonoBehaviour
         if (isOpen && !isComplete)
             CloseTask();
     }
-
-    // -------------------------------------------------------------------------
-    // Overridable hooks
-    // -------------------------------------------------------------------------
 
     protected abstract void OnOpen();
     protected virtual void OnClose() { }

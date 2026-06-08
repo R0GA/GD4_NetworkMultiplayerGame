@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class WireRenderer : MaskableGraphic,
     IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // ── Inspector ──────────────────────────────────────────────────────────────
     [Header("Identity")]
     public int wireIndex = 0;
     public Color wireColor = Color.red;
@@ -23,7 +22,7 @@ public class WireRenderer : MaskableGraphic,
     [SerializeField] private float connectorLength = 28f;
     [SerializeField] private float connectorWidth = 26f;
 
-    // ── Runtime ───────────────────────────────────────────────────────────────
+
     public bool isDragging { get; private set; }
     public bool IsDetached { get; private set; }
     public bool IsTipDragging { get; private set; } // drag started from tip handle
@@ -34,8 +33,7 @@ public class WireRenderer : MaskableGraphic,
 
     public override Color color => wireColor;
 
-    // ── Lifecycle ─────────────────────────────────────────────────────────────
-    protected override void Awake()
+       protected override void Awake()
     {
         base.Awake();
         raycastTarget = false;
@@ -73,8 +71,6 @@ public class WireRenderer : MaskableGraphic,
         SetVerticesDirty();
     }
 
-    // ── Drag Handlers ─────────────────────────────────────────────────────────
-    // Called either directly (from source socket forward) or via tip handle forward.
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (sourceSocket == null) return;
@@ -100,11 +96,10 @@ public class WireRenderer : MaskableGraphic,
             sourceSocket?.ForceSetPluggedWire(this);
     }
 
-    /// <summary>Called by WireTipHandle so we know not to hide it mid-drag.</summary>
+
     public void NotifyTipDragBegan() => IsTipDragging = true;
     public void NotifyTipDragEnded() => IsTipDragging = false;
 
-    // ── Public API ────────────────────────────────────────────────────────────
     public void AttachToSocket(WireConnector socket)
     {
         destinationSocket = socket;
@@ -123,7 +118,6 @@ public class WireRenderer : MaskableGraphic,
         IsDetached = true;
     }
 
-    // ── Coordinate Helpers ────────────────────────────────────────────────────
     private Canvas RootCanvas => canvas;
 
     private Vector2 WorldToCanvasLocal(Vector3 worldPos)
@@ -153,7 +147,6 @@ public class WireRenderer : MaskableGraphic,
 
     private Vector2 GetDroopEnd(Vector2 start) => start + new Vector2(40f, -80f);
 
-    // ── Mesh Generation ───────────────────────────────────────────────────────
     private void BuildQuadStrip(VertexHelper vh, Vector2 start, Vector2 end)
     {
         Color32 c32 = wireColor;

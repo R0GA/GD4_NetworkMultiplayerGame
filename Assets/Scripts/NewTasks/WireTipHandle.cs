@@ -35,10 +35,10 @@ public class WireTipHandle : MonoBehaviour,
         gameObject.SetActive(false);
     }
 
-    /// <summary>Returns the wire this handle belongs to, for use by WireConnector.OnDrop.</summary>
+   
     public WireRenderer GetDragWire() => wire;
 
-    /// <summary>Called every frame by WireRenderer.LateUpdate (which always runs).</summary>
+    
     public void UpdateFromWire(bool shouldBeActive, Vector2 tipPos)
     {
         if (gameObject.activeSelf != shouldBeActive)
@@ -48,16 +48,12 @@ public class WireTipHandle : MonoBehaviour,
             rt.anchoredPosition = tipPos;
     }
 
-    // ── Input ─────────────────────────────────────────────────────────────────
     public void OnPointerDown(PointerEventData eventData) { }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (wire == null) return;
 
-        // Stop the tip handle intercepting raycasts while it follows the cursor.
-        // Without this it sits on top of every socket the player hovers over,
-        // blocking OnPointerEnter and OnDrop from ever reaching the socket Image.
         if (img != null) img.raycastTarget = false;
 
         wire.NotifyTipDragBegan();

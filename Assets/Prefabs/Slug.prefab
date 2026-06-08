@@ -1884,8 +1884,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863728242528542431}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18350928, y: -0.55002314, z: -0.12537906, w: 0.80503356}
-  m_LocalPosition: {x: 2.493489, y: 0.099999905, z: -0.18031448}
+  m_LocalRotation: {x: -0.08687715, y: -0.71368307, z: -0.089961536, w: 0.68921393}
+  m_LocalPosition: {x: 2.96227, y: 0.43292594, z: 0.5771956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5032,8 +5032,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18350928, y: -0.55002314, z: -0.12537906, w: 0.80503356}
-  m_LocalPosition: {x: 2.493489, y: 0.099999905, z: -0.18031448}
+  m_LocalRotation: {x: -0.08687715, y: -0.71368307, z: -0.089961536, w: 0.68921393}
+  m_LocalPosition: {x: 2.96227, y: 0.43292594, z: 0.5771956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5963,8 +5963,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5071095093125033932}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18350928, y: -0.5500231, z: -0.12537906, w: 0.8050336}
-  m_LocalPosition: {x: 2.493489, y: 0.099999905, z: -0.18031448}
+  m_LocalRotation: {x: -0.08687715, y: -0.71368307, z: -0.089961536, w: 0.68921393}
+  m_LocalPosition: {x: 2.96227, y: 0.43292594, z: 0.5771956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6047,7 +6047,7 @@ MonoBehaviour:
     SplineCurvature: 0.5
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: -85.86389
+    Value: -101.02587
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -6057,7 +6057,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: -10
+    Value: -3.4236865
     Center: 10
     Range: {x: -10, y: 45}
     Wrap: 0
@@ -6784,7 +6784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2553614107851232273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7666,7 +7666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 4027954745
+  GlobalObjectIdHash: 3742408582
   InScenePlacedSourceGlobalObjectIdHash: 4027954745
   DeferredDespawnTick: 0
   Ownership: 1

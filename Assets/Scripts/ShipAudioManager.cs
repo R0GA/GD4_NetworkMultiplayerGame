@@ -1,11 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Sits on a persistent, non-networked ship GameObject (e.g. "ShipAudioManager").
-/// Provides a singleton so TaskManager can trigger the alarm from any client
-/// without depending on a NetworkObject that could be owned by only one player.
-/// </summary>
 public class ShipAudioManager : MonoBehaviour
 {
     public static ShipAudioManager Instance { get; private set; }
@@ -23,8 +18,6 @@ public class ShipAudioManager : MonoBehaviour
 
     private void Awake()
     {
-        // Simple singleton — only one ship per scene so no need for
-        // DontDestroyOnLoad unless you have a persistent scene setup.
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -41,10 +34,6 @@ public class ShipAudioManager : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    /// <summary>
-    /// Plays the alarm on this client. Called by TaskManager inside its
-    /// NetworkVariable callback, which already fires on every client.
-    /// </summary>
     public void PlayAlarm()
     {
         if (alarmSource == null || alarmClip == null)
@@ -69,9 +58,6 @@ public class ShipAudioManager : MonoBehaviour
             fadeCoroutine = StartCoroutine(FadeOut(alarmDuration));
     }
 
-    /// <summary>
-    /// Stops the alarm immediately (e.g. if the game ends).
-    /// </summary>
     public void StopAlarm()
     {
         if (fadeCoroutine != null)

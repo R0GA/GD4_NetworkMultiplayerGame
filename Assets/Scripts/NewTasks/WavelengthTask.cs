@@ -5,8 +5,6 @@ using TMPro;
 
 public class WavelengthTask : BaseTask
 {
-    // ── Inspector ─────────────────────────────────────────────────────────────
-
     [Header("Wave Rendering")]
     [Tooltip("LineRenderer that draws the target wave (static).")]
     [SerializeField] private LineRenderer targetWaveRenderer;
@@ -61,11 +59,9 @@ public class WavelengthTask : BaseTask
 
     protected override void OnOpen()
     {
-        // Generate random target wave
         targetAmplitude = Random.Range(minAmplitude, maxAmplitude);
         targetFrequency = Random.Range(minFrequency, maxFrequency);
 
-        // Initialize current values to something different (e.g., half of range)
         currentAmplitude = (minAmplitude + maxAmplitude) / 2f;
         currentFrequency = (minFrequency + maxFrequency) / 2f;
 

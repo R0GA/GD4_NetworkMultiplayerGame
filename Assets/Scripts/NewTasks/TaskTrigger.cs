@@ -66,38 +66,25 @@ public class TaskTrigger : MonoBehaviour
     // Cached slug player camera transform used for billboarding world UI.
     private Transform slugCameraTransform;
 
-    // -------------------------------------------------------------------------
-    // Lifecycle
-    // -------------------------------------------------------------------------
-
     private void Awake()
     {
-        // Both beacon and proximity UI start hidden on all clients.
-        // The beacon is only revealed once we confirm a locally-owned SlugPlayer
-        // exists on this machine (see TryCacheSlugCamera). This ensures the FPS
-        // client never sees slug-only UI.
         SetBeaconVisible(false);
         SetWorldUIVisible(false);
     }
 
     private void Start()
     {
-        // Attempt to find the locally-owned slug player's camera. If the slug
-        // hasn't spawned yet (common in NGO), we retry in Update until it appears.
         TryCacheSlugCamera();
     }
 
     private void LateUpdate()
     {
-        // If we haven't confirmed a local slug player yet, keep trying each frame.
-        // On the FPS client this will never succeed, so beacons stay hidden forever.
         if (slugCameraTransform == null)
         {
             TryCacheSlugCamera();
             return;
         }
 
-        // Billboard all visible world UI elements (beacon + proximity) toward the slug player's camera.
         BillboardList(beaconUIElements);
         BillboardList(worldUIElements);
     }
@@ -125,18 +112,10 @@ public class TaskTrigger : MonoBehaviour
             if (element != null) element.SetActive(visible);
     }
 
-    /// <summary>
-    /// Finds the local SlugPlayer in the scene and caches their camera transform
-    /// for use by the billboard logic. Called at Start and again on trigger enter
-    /// in case the player wasn't spawned yet at Start.
-    /// </summary>
     private void TryCacheSlugCamera()
     {
         if (slugCameraTransform != null) return;
 
-        // Only the slug client will have a locally-owned SlugPlayer.
-        // On the FPS client this loop finds nothing, camera stays null,
-        // and beacons remain hidden for that client permanently.
         foreach (var candidate in FindObjectsByType<SlugPlayer>(FindObjectsSortMode.None))
         {
             if (!candidate.IsOwner) continue;
@@ -148,10 +127,6 @@ public class TaskTrigger : MonoBehaviour
             break;
         }
     }
-
-    // -------------------------------------------------------------------------
-    // Trigger enter / exit
-    // -------------------------------------------------------------------------
 
     private void OnTriggerEnter(Collider other)
     {
@@ -190,9 +165,6 @@ public class TaskTrigger : MonoBehaviour
         CleanUp();
     }
 
-    // -------------------------------------------------------------------------
-    // Interaction
-    // -------------------------------------------------------------------------
 
     private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
@@ -223,15 +195,6 @@ public class TaskTrigger : MonoBehaviour
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Alarm lights — called by TaskManager on all clients when the task completes
-    // -------------------------------------------------------------------------
-
-    /// <summary>
-    /// Swaps the correct material slot on each light-bar renderer to the alarm
-    /// material, recolors each child Light component, and starts the pulse.
-    /// Safe to call multiple times; subsequent calls are ignored.
-    /// </summary>
     public void ActivateAlarmLights()
     {
         if (alarmActive) return;
@@ -273,8 +236,6 @@ public class TaskTrigger : MonoBehaviour
 
     private IEnumerator PulseLights()
     {
-        // Cache whether each entry's material supports emission so we don't
-        // call HasProperty every frame.
         bool[] hasEmission = new bool[runtimeLightBarMaterials.Count];
         Color[] baseEmission = new Color[runtimeLightBarMaterials.Count];
         float[] baseLightIntensity = new float[alarmLights.Count];
@@ -318,10 +279,6 @@ public class TaskTrigger : MonoBehaviour
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Cleanup
-    // -------------------------------------------------------------------------
-
     private void CleanUp()
     {
         if (interactAction != null)
@@ -331,8 +288,6 @@ public class TaskTrigger : MonoBehaviour
         }
         playerInRange = null;
 
-        // Hide proximity UI when the player leaves, but leave the beacon visible
-        // and keep slugCameraTransform so billboarding continues out of range.
         SetWorldUIVisible(false);
     }
 

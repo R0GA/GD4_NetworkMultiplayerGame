@@ -3,21 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// <summary>
-/// Circuit-Breaker Wire-Swap Task.
-///
-/// KEY FIXES vs original:
-///  1. Wire prefab RectTransform is stretched to fill the whole wireContainer
-///     so the WireRenderer (MaskableGraphic) occupies the full panel area and
-///     can receive drag events anywhere on it.
-///  2. WireContainer sits ABOVE socket containers in the hierarchy so wires
-///     are drawn on top, but its CanvasGroup has Blocks Raycasts = FALSE so
-///     clicks pass through to sockets underneath for OnDrop.
-///  3. BuildTask() properly sizes each wire's RectTransform.
-/// </summary>
 public class WireTask : BaseTask
 {
-    // ── Inspector ──────────────────────────────────────────────────────────────
     [Header("Wire Task – Data")]
     [SerializeField] private WireTaskData taskData;
 
@@ -52,14 +39,12 @@ public class WireTask : BaseTask
     [SerializeField] private float socketSpacing = 90f;
     [SerializeField] private bool shuffleDestinationsOnOpen = true;
 
-    // ── Runtime ───────────────────────────────────────────────────────────────
     private WireConnector[] sourceSockets;
     private WireConnector[] destSockets;
     private WireRenderer[] wires;
 
     private bool taskInitialised = false;
 
-    // ── BaseTask overrides ────────────────────────────────────────────────────
     protected override void OnOpen()
     {
         if (!taskInitialised)
@@ -84,7 +69,6 @@ public class WireTask : BaseTask
 
     protected override void OnClose() { }
 
-    // ── Build ─────────────────────────────────────────────────────────────────
     private void BuildTask()
     {
         if (taskData == null)
@@ -110,24 +94,18 @@ public class WireTask : BaseTask
         {
             WireDefinition def = taskData.wires[i];
 
-            // ── Left source socket ─────────────────────────────────────────────
             WireConnector src = SpawnSocket(leftSocketContainer, def, i, true,
                 new Vector2(0f, startY - i * socketSpacing));
             sourceSockets[i] = src;
 
-            // ── Right destination socket (shuffled row) ────────────────────────
             int destSlot = shuffled[i];
             WireConnector dst = SpawnSocket(rightSocketContainer, def, i, false,
                 new Vector2(0f, startY - destSlot * socketSpacing));
             destSockets[i] = dst;
 
-            // ── Wire ──────────────────────────────────────────────────────────
             GameObject wireGO = Instantiate(wirePrefab, wireContainer);
             wireGO.name = $"Wire_{def.label}";
 
-            // CRITICAL: stretch wire RectTransform to fill wireContainer so
-            // the MaskableGraphic covers the whole panel and drag events can
-            // originate anywhere near the source socket.
             RectTransform wireRT = wireGO.GetComponent<RectTransform>();
             wireRT.anchorMin = Vector2.zero;
             wireRT.anchorMax = Vector2.one;
@@ -147,11 +125,6 @@ public class WireTask : BaseTask
             wr.sourceSocket = src;
             wires[i] = wr;
 
-            // Spawn the invisible tip handle that lets the player grab a
-            // drooping wire by its end and drag it to a new destination.
-            // MUST use tipHandleContainer (panel root), NOT wireContainer,
-            // because wireContainer has blocksRaycasts=false which would
-            // swallow all clicks on tip handles.
             wr.SpawnTipHandle(tipHandleContainer != null ? tipHandleContainer : wireContainer);
         }
 
@@ -200,10 +173,6 @@ public class WireTask : BaseTask
         tmp.alignment = TextAlignmentOptions.Center;
     }
 
-    /// <summary>
-    /// Plugs every wire back into its own colour-matching destination socket
-    /// (the starting "correct" state the player must undo).
-    /// </summary>
     private void ResetWires()
     {
         if (wires == null) return;
@@ -216,7 +185,6 @@ public class WireTask : BaseTask
         }
     }
 
-    // ── Per-Frame Completion Check ────────────────────────────────────────────
     private void Update()
     {
         if (!IsOpen || IsComplete) return;
@@ -257,11 +225,6 @@ public class WireTask : BaseTask
         CompleteTask();
     }
 
-    // ── Utility ───────────────────────────────────────────────────────────────
-    /// <summary>
-    /// Adds a CanvasGroup to the given GameObject (if missing) and sets
-    /// Blocks Raycasts to false so pointer events pass through to sockets.
-    /// </summary>
     private static void EnsureCanvasGroupPassthrough(GameObject go)
     {
         CanvasGroup cg = go.GetComponent<CanvasGroup>();

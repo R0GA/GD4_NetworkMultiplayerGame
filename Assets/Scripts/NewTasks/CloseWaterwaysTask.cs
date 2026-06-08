@@ -2,29 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-/// <summary>
-/// Close Waterways minigame task.
-/// The player clicks and drags the valve wheel counter-clockwise to reduce
-/// water flow from 100% down to 0%.  Extends BaseTask so it plugs straight
-/// into your existing TaskManager / TaskTrigger system.
-///
-/// Inspector quick-reference
-/// ─────────────────────────
-///  taskPanel          ► The root Canvas / panel GameObject for this task UI
-///  taskDisplayName    ► "Close Waterways"   (shown in task list HUD)
-///  taskIdentifier     ► e.g. "close_waterways"  (must match TaskTrigger)
-///  valveTransform     ► The RectTransform of the valve wheel Image
-///  flowFillImage      ► Image (fill type = Filled, method = Vertical) for water meter
-///  flowBarFill        ► Optionally a second image for animated fill colour
-///  completionMessage  ► Optional GameObject shown briefly on success
-///  turnsRequired      ► How many full 360° turns to fully close valve (default 2)
-///  dragSensitivity    ► Mouse-drag speed multiplier (default 1.0)
-/// </summary>
 public class CloseWaterwaysTask : BaseTask,
     IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    // ── Inspector fields ───────────────────────────────────────────────────
-
     [Header("Valve")]
     [Tooltip("RectTransform of the valve wheel sprite that will visually rotate.")]
     [SerializeField] private RectTransform valveTransform;
@@ -52,7 +32,6 @@ public class CloseWaterwaysTask : BaseTask,
     [Tooltip("Seconds the completion message is shown before the panel closes.")]
     [SerializeField] private float completionDelay = 1.2f;
 
-    // ── Runtime state ──────────────────────────────────────────────────────
 
     // Total CCW degrees accumulated by the player.
     private float totalCCWDegrees = 0f;
@@ -74,14 +53,8 @@ public class CloseWaterwaysTask : BaseTask,
     // Wobble coroutine handle
     private Coroutine wobbleCoroutine;
 
-    // ── BaseTask overrides ─────────────────────────────────────────────────
-
     protected override void OnOpen()
     {
-        // Reset state each time the panel opens
-        // (keeps prior progress if you want persistence — remove the line below
-        //  if you want players to have to finish in one sitting.)
-        // totalCCWDegrees = 0f;
 
         UpdateVisuals();
     }
@@ -91,7 +64,6 @@ public class CloseWaterwaysTask : BaseTask,
         isDragging = false;
     }
 
-    // ── Drag interaction ───────────────────────────────────────────────────
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -100,7 +72,6 @@ public class CloseWaterwaysTask : BaseTask,
         isDragging = true;
         lastMousePos = eventData.position;
 
-        // Cache the valve's screen-space centre for angle calculations.
         valveCenterScreen = GetValveCentreScreenPos();
     }
 
@@ -147,7 +118,6 @@ public class CloseWaterwaysTask : BaseTask,
         }
     }
 
-    // ── Visual helpers ─────────────────────────────────────────────────────
 
     private void UpdateVisuals()
     {
@@ -191,7 +161,6 @@ public class CloseWaterwaysTask : BaseTask,
         return RectTransformUtility.WorldToScreenPoint(null, worldCentre);
     }
 
-    // ── Completion sequence ────────────────────────────────────────────────
 
     private System.Collections.IEnumerator CompleteWithDelay()
     {
@@ -208,7 +177,6 @@ public class CloseWaterwaysTask : BaseTask,
         CompleteTask(); // inherited from BaseTask — notifies TaskManager
     }
 
-    // ── Wrong-direction wobble ─────────────────────────────────────────────
 
     private void TriggerWobble()
     {

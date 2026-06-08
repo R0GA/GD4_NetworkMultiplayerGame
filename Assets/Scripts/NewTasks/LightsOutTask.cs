@@ -3,25 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-/// <summary>
-/// Lights Out – 1D row variant.
-///
-/// Automatically spawns <switchCount> copies of switchPrefab into switchRowParent
-/// and <switchCount> copies of lightPrefab into lightRowParent when the task opens.
-///
-/// Switch prefab structure expected:
-///   SwitchRoot  [Button]
-///     └─ LeverHandle  [Image, RectTransform]   ← first child; slides up/down
-///
-/// Light prefab structure expected:
-///   LightRoot  [Image]   (or Image on any first-found child)
-/// </summary>
 public class LightsOutTask : BaseTask
 {
-    // -----------------------------------------------------------------------
-    //  Inspector
-    // -----------------------------------------------------------------------
-
     [Header("Lights Out – Prefabs")]
     [Tooltip("Prefab instantiated once per switch. Must have a Button on its root and " +
              "an Image on its first child (the lever handle that slides).")]
@@ -81,10 +64,6 @@ public class LightsOutTask : BaseTask
     [SerializeField] private AudioClip leverClickSound;
     [SerializeField] private AudioClip puzzleSolvedSound;
 
-    // -----------------------------------------------------------------------
-    //  Private runtime state
-    // -----------------------------------------------------------------------
-
     private bool[] lightState;
     private Button[] switchButtons;
     private RectTransform[] leverHandles;
@@ -92,10 +71,6 @@ public class LightsOutTask : BaseTask
     private Image[] lightImages;
 
     private bool leverAnimating;
-
-    // -----------------------------------------------------------------------
-    //  BaseTask overrides
-    // -----------------------------------------------------------------------
 
     protected override void OnOpen()
     {
@@ -106,14 +81,7 @@ public class LightsOutTask : BaseTask
 
     protected override void OnClose() { }
 
-    // -----------------------------------------------------------------------
-    //  Row spawning
-    // -----------------------------------------------------------------------
-
-    /// <summary>
-    /// Destroys any existing children in both row parents, then instantiates
-    /// exactly <switchCount> copies of each prefab and caches component refs.
-    /// </summary>
+   
     private void SpawnRow()
     {
         if (!ValidatePrefabs()) return;
@@ -129,7 +97,6 @@ public class LightsOutTask : BaseTask
 
         for (int i = 0; i < switchCount; i++)
         {
-            // ── Switch ──────────────────────────────────────────────────
             GameObject sw = Instantiate(switchPrefab, switchRowParent);
             sw.name = $"Switch_{i:00}";
 
@@ -160,7 +127,6 @@ public class LightsOutTask : BaseTask
                 Debug.LogWarning($"[LightsOutTask] Switch prefab needs at least one child (the lever handle).");
             }
 
-            // ── Light ────────────────────────────────────────────────────
             GameObject lt = Instantiate(lightPrefab, lightRowParent);
             lt.name = $"Light_{i:00}";
 
@@ -171,10 +137,6 @@ public class LightsOutTask : BaseTask
                 Debug.LogWarning($"[LightsOutTask] Light prefab (or its children) has no Image component.");
         }
     }
-
-    // -----------------------------------------------------------------------
-    //  Helpers
-    // -----------------------------------------------------------------------
 
     private bool ValidatePrefabs()
     {
@@ -206,17 +168,12 @@ public class LightsOutTask : BaseTask
         return true;
     }
 
-    /// <summary>Destroys all children of a transform (immediate in editor, normal in play).</summary>
     private static void ClearChildren(Transform parent)
     {
         if (parent == null) return;
         for (int i = parent.childCount - 1; i >= 0; i--)
             Destroy(parent.GetChild(i).gameObject);
     }
-
-    // -----------------------------------------------------------------------
-    //  Puzzle generation
-    // -----------------------------------------------------------------------
 
     private void GeneratePuzzle()
     {
@@ -246,10 +203,6 @@ public class LightsOutTask : BaseTask
         if (randomSeed >= 0) Random.state = saved;
     }
 
-    // -----------------------------------------------------------------------
-    //  Toggle logic
-    // -----------------------------------------------------------------------
-
     private void ApplyToggle(int index)
     {
         FlipCell(index);
@@ -263,9 +216,6 @@ public class LightsOutTask : BaseTask
         lightState[index] = !lightState[index];
     }
 
-    // -----------------------------------------------------------------------
-    //  Input
-    // -----------------------------------------------------------------------
 
     private void OnLeverPressed(int index)
     {
@@ -279,9 +229,6 @@ public class LightsOutTask : BaseTask
             StartCoroutine(SolveSequence());
     }
 
-    // -----------------------------------------------------------------------
-    //  Win condition
-    // -----------------------------------------------------------------------
 
     private bool IsSolved()
     {
@@ -297,10 +244,6 @@ public class LightsOutTask : BaseTask
         yield return new WaitForSeconds(0.7f);
         CompleteTask();
     }
-
-    // -----------------------------------------------------------------------
-    //  Visuals
-    // -----------------------------------------------------------------------
 
     private void RefreshAllVisuals(bool instant)
     {
@@ -361,10 +304,6 @@ public class LightsOutTask : BaseTask
         foreach (var btn in switchButtons)
             if (btn != null) btn.interactable = state;
     }
-
-    // -----------------------------------------------------------------------
-    //  Audio
-    // -----------------------------------------------------------------------
 
     private void PlaySound(AudioClip clip)
     {

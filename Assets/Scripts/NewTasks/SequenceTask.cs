@@ -40,7 +40,7 @@ public class SequenceTask : BaseTask
     private int currentRound = 0;
     private int playerInputStep = 0;
     private bool acceptingInput = false;
-    private bool roundFailed = false;   // NEW: indicates current round attempt failed
+    private bool roundFailed = false;   
     private Coroutine activeRoutine;
 
     protected override void OnOpen()

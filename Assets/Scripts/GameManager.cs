@@ -3,16 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Tracks win/loss conditions. Because players are spawned dynamically by
-/// GamePlayerSpawner we cannot serialise references in the Inspector — instead
-/// each player prefab calls GameManager.Instance.RegisterPlayer() on spawn.
-/// </summary>
+
 public class GameManager : MonoBehaviour
 {
-    // -------------------------------------------------------------------------
-    // Singleton
-    // -------------------------------------------------------------------------
 
     private static GameManager instance;
     public static GameManager Instance => instance;
@@ -24,10 +17,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // -------------------------------------------------------------------------
-    // State
-    // -------------------------------------------------------------------------
-
     public enum GameEndState { Active, AstronautWins, SlugTasks, AstroDeath }
 
     private GameEndState currentGameState = GameEndState.Active;
@@ -38,9 +27,6 @@ public class GameManager : MonoBehaviour
     private SlugPlayer slugPlayer;
     private TaskManager taskManager;
 
-    // -------------------------------------------------------------------------
-    // Registration API — called by each player prefab on OnNetworkSpawn
-    // -------------------------------------------------------------------------
 
     public void RegisterAstronaut(NetworkFPSPlayer player)
     {
@@ -78,9 +64,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("[GameManager] TaskManager registered.");
     }
 
-    // -------------------------------------------------------------------------
-    // Win condition callbacks
-    // -------------------------------------------------------------------------
 
     private void OnAstronautDeath()
     {
@@ -104,10 +87,6 @@ public class GameManager : MonoBehaviour
             EndGame(GameEndState.SlugTasks);
     }
 
-    // -------------------------------------------------------------------------
-    // End game
-    // -------------------------------------------------------------------------
-
     private void EndGame(GameEndState endState)
     {
         if (currentGameState != GameEndState.Active) return;
@@ -129,10 +108,6 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GameManager] Ending game → {sceneName}");
         NetworkManager.Singleton.SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
-
-    // -------------------------------------------------------------------------
-    // Utilities
-    // -------------------------------------------------------------------------
 
     public GameEndState GetGameState() => currentGameState;
     public bool IsGameActive() => currentGameState == GameEndState.Active;

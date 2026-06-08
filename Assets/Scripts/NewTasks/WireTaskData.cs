@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// ScriptableObject that defines the wire colours used in the circuit-breaker task.
-/// Create one via Assets > Create > WireTask > Wire Task Data.
-/// </summary>
 [CreateAssetMenu(fileName = "WireTaskData", menuName = "WireTask/Wire Task Data")]
 public class WireTaskData : ScriptableObject
 {
