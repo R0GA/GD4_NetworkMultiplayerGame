@@ -103,6 +103,19 @@ public class SlugPlayer : NetworkBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Debug.Log($"[SlugPlayer] After SetupInput - moveAction.enabled={moveAction.enabled}, lookAction.enabled={lookAction.enabled}, jumpAction.enabled={jumpAction.enabled}");
+
+        // Register with GameManager so it can attach NetworkHealth listeners.
+        if (GameManager.Instance != null)
+            GameManager.Instance.RegisterSlug(this);
+        else
+            Debug.LogWarning("[SlugPlayer] GameManager.Instance is null on spawn.");
+
+        // Register with TaskManager so it can discover and initialise our tasks.
+        var taskManager = FindObjectOfType<TaskManager>();
+        if (taskManager != null)
+            taskManager.RegisterSlugPlayer(gameObject);
+        else
+            Debug.LogWarning("[SlugPlayer] TaskManager not found in scene.");
     }
 
     public override void OnNetworkDespawn()
@@ -133,9 +146,9 @@ public class SlugPlayer : NetworkBehaviour
     {
         if (!IsOwner) return;
 
-       
+
         if (isInUIMode) return;
-       
+
         GroundCheck();
         HandleMovement();
         HandleTransformInput();
@@ -150,7 +163,7 @@ public class SlugPlayer : NetworkBehaviour
 
         if (pickUpAction.WasPressedThisFrame()) PickUp();
 
-        if (Time.frameCount % 60 == 0) 
+        if (Time.frameCount % 60 == 0)
         {
             //Debug.Log($"[SlugPlayer] moveAction.ReadValue<Vector2>() = {moveAction.ReadValue<Vector2>()}");
         }
@@ -289,63 +302,63 @@ public class SlugPlayer : NetworkBehaviour
     }
 
     private void ApplyPropVisual(int propId)
-{
-    Debug.Log($"[SlugPlayer] ApplyPropVisual START for propId={propId}");
-
-    if (spawnedPropVisual != null)
     {
-        Destroy(spawnedPropVisual);
-        spawnedPropVisual = null;
+        Debug.Log($"[SlugPlayer] ApplyPropVisual START for propId={propId}");
+
+        if (spawnedPropVisual != null)
+        {
+            Destroy(spawnedPropVisual);
+            spawnedPropVisual = null;
+        }
+
+        if (propId == -1)
+        {
+            if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(true);
+            ResetCharacterController();
+            Debug.Log("[SlugPlayer] Reverted to normal form.");
+            return;
+        }
+
+        if (!PropInteractable.Registry.TryGetValue(propId, out PropInteractable prop))
+        {
+            Debug.LogWarning($"[SlugPlayer] Prop id {propId} not found in registry.");
+            return;
+        }
+
+        // CRITICAL CHECK: Ensure prop.gameObject is valid
+        if (prop == null || prop.gameObject == null)
+        {
+            Debug.LogError($"[SlugPlayer] Prop {propId} exists in registry but its gameObject is null!");
+            return;
+        }
+
+        Debug.Log($"[SlugPlayer] Prop GameObject: {prop.gameObject.name}, active={prop.gameObject.activeInHierarchy}, scene={prop.gameObject.scene.name}");
+
+        if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(false);
+
+        try
+        {
+            Debug.Log("[SlugPlayer] About to Instantiate...");
+            spawnedPropVisual = Instantiate(prop.gameObject, transform);
+            Debug.Log($"[SlugPlayer] Instantiate SUCCESS. spawnedPropVisual={spawnedPropVisual != null}");
+
+            spawnedPropVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            spawnedPropVisual.name = $"[PropVisual] {prop.DisplayName}";
+            Debug.Log($"[SlugPlayer] Set name to {spawnedPropVisual.name}");
+
+            foreach (var rb in spawnedPropVisual.GetComponentsInChildren<Rigidbody>()) Destroy(rb);
+            foreach (var col in spawnedPropVisual.GetComponentsInChildren<Collider>()) Destroy(col);
+            foreach (var pai in spawnedPropVisual.GetComponentsInChildren<PropInteractable>()) Destroy(pai);
+            Debug.Log("[SlugPlayer] Cleaned up components");
+
+            FitCharacterControllerToProp(spawnedPropVisual);
+            Debug.Log($"[SlugPlayer] Spawned prop visual '{spawnedPropVisual.name}' for prop id {propId}");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"[SlugPlayer] EXCEPTION in ApplyPropVisual: {e.Message}\n{e.StackTrace}");
+        }
     }
-
-    if (propId == -1)
-    {
-        if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(true);
-        ResetCharacterController();
-        Debug.Log("[SlugPlayer] Reverted to normal form.");
-        return;
-    }
-
-    if (!PropInteractable.Registry.TryGetValue(propId, out PropInteractable prop))
-    {
-        Debug.LogWarning($"[SlugPlayer] Prop id {propId} not found in registry.");
-        return;
-    }
-
-    // CRITICAL CHECK: Ensure prop.gameObject is valid
-    if (prop == null || prop.gameObject == null)
-    {
-        Debug.LogError($"[SlugPlayer] Prop {propId} exists in registry but its gameObject is null!");
-        return;
-    }
-
-    Debug.Log($"[SlugPlayer] Prop GameObject: {prop.gameObject.name}, active={prop.gameObject.activeInHierarchy}, scene={prop.gameObject.scene.name}");
-
-    if (playerVisualRoot) playerVisualRoot.gameObject.SetActive(false);
-
-    try
-    {
-        Debug.Log("[SlugPlayer] About to Instantiate...");
-        spawnedPropVisual = Instantiate(prop.gameObject, transform);
-        Debug.Log($"[SlugPlayer] Instantiate SUCCESS. spawnedPropVisual={spawnedPropVisual != null}");
-
-        spawnedPropVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        spawnedPropVisual.name = $"[PropVisual] {prop.DisplayName}";
-        Debug.Log($"[SlugPlayer] Set name to {spawnedPropVisual.name}");
-
-        foreach (var rb in spawnedPropVisual.GetComponentsInChildren<Rigidbody>()) Destroy(rb);
-        foreach (var col in spawnedPropVisual.GetComponentsInChildren<Collider>()) Destroy(col);
-        foreach (var pai in spawnedPropVisual.GetComponentsInChildren<PropInteractable>()) Destroy(pai);
-        Debug.Log("[SlugPlayer] Cleaned up components");
-
-        FitCharacterControllerToProp(spawnedPropVisual);
-        Debug.Log($"[SlugPlayer] Spawned prop visual '{spawnedPropVisual.name}' for prop id {propId}");
-    }
-    catch (System.Exception e)
-    {
-        Debug.LogError($"[SlugPlayer] EXCEPTION in ApplyPropVisual: {e.Message}\n{e.StackTrace}");
-    }
-}
 
     private void FitCharacterControllerToProp(GameObject propVisual)
     {
@@ -384,22 +397,22 @@ public class SlugPlayer : NetworkBehaviour
 
     public void PickUp()
     {
-        if(heldObject != null)
+        if (heldObject != null)
         {
             heldObject.GetComponent<Rigidbody>().isKinematic = false;
             heldObject.transform.parent = null;
             isHolding = false;
-            
+
         }
 
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
-        Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward*pickUpRange, Color.red, 2f);
+        Debug.DrawRay(gameObject.transform.position, gameObject.transform.forward * pickUpRange, Color.red, 2f);
 
 
-        if(Physics.Raycast(ray,out hit,pickUpRange, pickUpLayer))
-        { 
+        if (Physics.Raycast(ray, out hit, pickUpRange, pickUpLayer))
+        {
             Debug.Log("Hit");
             heldObject = hit.collider.gameObject;
             heldObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -407,8 +420,8 @@ public class SlugPlayer : NetworkBehaviour
             heldObject.transform.position = holdPoint.position;
             heldObject.transform.rotation = holdPoint.rotation;
             heldObject.transform.parent = holdPoint;
-            isHolding=true;
-           
+            isHolding = true;
+
         }
     }
     public BaseTask GetTaskByIdentifier(string identifier)
