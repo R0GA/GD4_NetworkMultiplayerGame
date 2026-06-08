@@ -1,0 +1,1512 @@
+fileFormatVersion: 2
+guid: 55f7b43169298454dab410404032476b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 15135
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee15260e140ea0d46aebd689ab9572f6
+      internalID: -1557042989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_1
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 15135
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807332a8e45d6a947ab8ca7d85667e6b
+      internalID: -757489043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_2
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 15135
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7515dd867ab32f41ba9b78e1f09c0de
+      internalID: 1938653381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_3
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 15135
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75990f6d0c21831449976354903f2762
+      internalID: 435221110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 14054
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 746602c28e4377747aacde6f3ab5cb15
+      internalID: 1537979411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_5
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 14054
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f0d6ecb89654c4591daf226cb8d5a1
+      internalID: -1788073330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_6
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 14054
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150325b60e7ac9542a556f7fb03489c9
+      internalID: 61726644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_7
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 14054
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3403183457645c44ab4b45a68450d29e
+      internalID: -519547688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12973
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa13c6c4bcb0cde418b1d16c863ee5e4
+      internalID: -2107383139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 12973
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c4433d18102cb41a1aa517fb7e8dab
+      internalID: 922445886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_10
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 12973
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e955ca145262564e8289688a3bb8e63
+      internalID: 876641237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_11
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 12973
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b389a7fa92841cc4c905910e9cfea457
+      internalID: -1855291629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11892
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43083fb467f6fa5418a5f0e84cb97856
+      internalID: -1387829397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 11892
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47bf916b6118b454d92fc13e9d65358c
+      internalID: -111603790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_14
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 11892
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 575507f5a2bbbf8419b76eeb9fb69934
+      internalID: -1227063601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_15
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 11892
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbab7d15b370ce84abe0f7df8f051253
+      internalID: -1917483950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10811
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d186c0643fe39614d83418efd5c57606
+      internalID: -1572152034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 10811
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e8e470ba7932b04a84bdffb0580197e
+      internalID: -34633306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_18
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 10811
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bdecb637994254291f5ab773cc9fc5
+      internalID: 169379558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_19
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 10811
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cdd97b22dcbcaf4fbbdb216ac1a96ca
+      internalID: -1332936873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9730
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc6976e5c986af449b180f0507c2aa99
+      internalID: 684798808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_21
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 9730
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f66413b3e6ee4c4cb271abd16f47603
+      internalID: 298831423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_22
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 9730
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f8b67883966e2469ff6f315cef8b61
+      internalID: -2071393975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_23
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 9730
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 679e851e3c5badd4ba272edfc051625d
+      internalID: 160849542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8649
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3f36453767b504ab195d0fa863aa47
+      internalID: -25093529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_25
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 8649
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e5a305173834614ab2638ee3e1427db
+      internalID: 657195115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_26
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 8649
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914d808ea6a85754cade2d256e41949a
+      internalID: 380719077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_27
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 8649
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e91c0babdb4384b98c7b07c36b0a68
+      internalID: 782968338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7568
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7240f0a348bf9b040821c0875fdfbdf9
+      internalID: 773135650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_29
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 7568
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0980931d7e543044aa484a7b531c579f
+      internalID: -1170091432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_30
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 7568
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a37e6bea516f24aa4c6fa515af71a7
+      internalID: -1393796447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_31
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 7568
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ed0b0f23d59584a82fac60498f4708
+      internalID: 1729642457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6487
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc67a347af6c02d4692de5fd6c2aeb3b
+      internalID: -1250094549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_33
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 6487
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd7dc0559bd4784aa75cf04254fa2d4
+      internalID: 27914362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_34
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 6487
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6baf64e100fe88a4fa60a046ab7d8473
+      internalID: -161720625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_35
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 6487
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dafd4eb76477644390b05a42d9e3bd8
+      internalID: 1039952096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5406
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820ab3aa0c136b14dac6873a47012eb8
+      internalID: -1458639051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_37
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 5406
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aad36e966bd90b4bae8b33de8357fa7
+      internalID: 1212274517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_38
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 5406
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03197f8c0b05ddf43914b2d154e7825c
+      internalID: 752685042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_39
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 5406
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782bd9361fc102546857b48d84696422
+      internalID: -533187428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4325
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f86dbb1732eb6e94ba33deefd1d0023f
+      internalID: -2007166766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_41
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 4325
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b830105fa059d5145a2dc695d6f147c8
+      internalID: 546577401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_42
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 4325
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1438ae91d343b4eaf7f9101b268663
+      internalID: 1321853490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_43
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 4325
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a873728b1f7a14f9748a967b9b12bf
+      internalID: -1854701121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3244
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2853b718105c57c42b9e220734ff1211
+      internalID: 1620692682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_45
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 3244
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb78aad8f012a2b4b94747b8f0bb1c51
+      internalID: 1597652611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_46
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 3244
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6849b66d2d46804e96af77761abd91e
+      internalID: -1479492687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_47
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 3244
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd673b1809bf47a478baef280844679a
+      internalID: -129802892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2163
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e214e76d189f340af82ba6e8ae5dc3
+      internalID: -2087904199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_49
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 2163
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bc4f17669b61064d9d2d93f2193d274
+      internalID: 1845565821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_50
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 2163
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c894656d473824a48bc5cc2eb6bb3896
+      internalID: -820303525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_51
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 2163
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe00c373728cf4a4aac959ee255afbb1
+      internalID: -1364275756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1082
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7375625d760e049814fc9461fd6310
+      internalID: 1545379113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_53
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 1082
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ea5ce46cb7bc44fb8b5e89cf6fbe66
+      internalID: -1783512779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_54
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 1082
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dec2b27d0fb8f9458d697b6f5c3851b
+      internalID: -1752310215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_55
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 1082
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4307461299c79488740b36f63608af
+      internalID: 234501139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409d456a2ae0a1f4d97eddbe2cc8c981
+      internalID: -2136213915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_57
+      rect:
+        serializedVersion: 2
+        x: 1921
+        y: 1
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5bdab4c6f95b04ab64388ecdf15279
+      internalID: -320612183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_58
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 1
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e59a39990773bd4db72cef00bf4d374
+      internalID: -1346181504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exam UI-sprite-sheet (1)_59
+      rect:
+        serializedVersion: 2
+        x: 5763
+        y: 1
+        width: 1921
+        height: 1081
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f36dad3dd7fa4f4a9ec11d4dde3da2a
+      internalID: 1429065774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c12b9a9774b6d3c4ba7f26f8a05f92a0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":15.0},"gridSpriteSize":{"x":1921.0,"y":1081.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Exam UI-sprite-sheet (1)_0: -1557042989
+      Exam UI-sprite-sheet (1)_1: -757489043
+      Exam UI-sprite-sheet (1)_10: 876641237
+      Exam UI-sprite-sheet (1)_11: -1855291629
+      Exam UI-sprite-sheet (1)_12: -1387829397
+      Exam UI-sprite-sheet (1)_13: -111603790
+      Exam UI-sprite-sheet (1)_14: -1227063601
+      Exam UI-sprite-sheet (1)_15: -1917483950
+      Exam UI-sprite-sheet (1)_16: -1572152034
+      Exam UI-sprite-sheet (1)_17: -34633306
+      Exam UI-sprite-sheet (1)_18: 169379558
+      Exam UI-sprite-sheet (1)_19: -1332936873
+      Exam UI-sprite-sheet (1)_2: 1938653381
+      Exam UI-sprite-sheet (1)_20: 684798808
+      Exam UI-sprite-sheet (1)_21: 298831423
+      Exam UI-sprite-sheet (1)_22: -2071393975
+      Exam UI-sprite-sheet (1)_23: 160849542
+      Exam UI-sprite-sheet (1)_24: -25093529
+      Exam UI-sprite-sheet (1)_25: 657195115
+      Exam UI-sprite-sheet (1)_26: 380719077
+      Exam UI-sprite-sheet (1)_27: 782968338
+      Exam UI-sprite-sheet (1)_28: 773135650
+      Exam UI-sprite-sheet (1)_29: -1170091432
+      Exam UI-sprite-sheet (1)_3: 435221110
+      Exam UI-sprite-sheet (1)_30: -1393796447
+      Exam UI-sprite-sheet (1)_31: 1729642457
+      Exam UI-sprite-sheet (1)_32: -1250094549
+      Exam UI-sprite-sheet (1)_33: 27914362
+      Exam UI-sprite-sheet (1)_34: -161720625
+      Exam UI-sprite-sheet (1)_35: 1039952096
+      Exam UI-sprite-sheet (1)_36: -1458639051
+      Exam UI-sprite-sheet (1)_37: 1212274517
+      Exam UI-sprite-sheet (1)_38: 752685042
+      Exam UI-sprite-sheet (1)_39: -533187428
+      Exam UI-sprite-sheet (1)_4: 1537979411
+      Exam UI-sprite-sheet (1)_40: -2007166766
+      Exam UI-sprite-sheet (1)_41: 546577401
+      Exam UI-sprite-sheet (1)_42: 1321853490
+      Exam UI-sprite-sheet (1)_43: -1854701121
+      Exam UI-sprite-sheet (1)_44: 1620692682
+      Exam UI-sprite-sheet (1)_45: 1597652611
+      Exam UI-sprite-sheet (1)_46: -1479492687
+      Exam UI-sprite-sheet (1)_47: -129802892
+      Exam UI-sprite-sheet (1)_48: -2087904199
+      Exam UI-sprite-sheet (1)_49: 1845565821
+      Exam UI-sprite-sheet (1)_5: -1788073330
+      Exam UI-sprite-sheet (1)_50: -820303525
+      Exam UI-sprite-sheet (1)_51: -1364275756
+      Exam UI-sprite-sheet (1)_52: 1545379113
+      Exam UI-sprite-sheet (1)_53: -1783512779
+      Exam UI-sprite-sheet (1)_54: -1752310215
+      Exam UI-sprite-sheet (1)_55: 234501139
+      Exam UI-sprite-sheet (1)_56: -2136213915
+      Exam UI-sprite-sheet (1)_57: -320612183
+      Exam UI-sprite-sheet (1)_58: -1346181504
+      Exam UI-sprite-sheet (1)_59: 1429065774
+      Exam UI-sprite-sheet (1)_6: 61726644
+      Exam UI-sprite-sheet (1)_7: -519547688
+      Exam UI-sprite-sheet (1)_8: -2107383139
+      Exam UI-sprite-sheet (1)_9: 922445886
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
