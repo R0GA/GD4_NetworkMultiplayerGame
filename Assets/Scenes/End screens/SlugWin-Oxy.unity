@@ -473,7 +473,27 @@ PrefabInstance:
     - target: {fileID: 761420081198209227, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bb6dbb45c39f9a243849c0ac74efe6fd, type: 3}
+      objectReference: {fileID: 21300000, guid: aae0ed58379368d41b61e82b1705a191, type: 3}
+    - target: {fileID: 761420081198209227, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586092166992715872, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 484.5371
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586092166992715872, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 93.7258
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586092166992715872, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 622.162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586092166992715872, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -386
+      objectReference: {fileID: 0}
     - target: {fileID: 5051472649754130746, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
       propertyPath: m_Name
       value: EndScreen Canvas
@@ -556,6 +576,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8559354032663604722, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063687073841064678, guid: 9adf6ff556147ba44b7aad317719fae4, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
