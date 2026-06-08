@@ -26,7 +26,7 @@ public class NetworkFPSPlayer : NetworkBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
-    private CharacterController cc; 
+    private CharacterController cc;
     private bool isGrounded;
     private Vector3 velocity;
 
@@ -57,6 +57,12 @@ public class NetworkFPSPlayer : NetworkBehaviour
         if (audioListener) audioListener.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Register with GameManager so it can attach OxygenManager listeners.
+        if (GameManager.Instance != null)
+            GameManager.Instance.RegisterAstronaut(this);
+        else
+            Debug.LogWarning("[NetworkFPSPlayer] GameManager.Instance is null on spawn.");
     }
 
     private void Update()
@@ -84,16 +90,16 @@ public class NetworkFPSPlayer : NetworkBehaviour
         }
     }
 
-    public void ApplyGravity() 
+    public void ApplyGravity()
     {
         if (isGrounded && velocity.y < 0)
-            velocity.y = -0.5f;   
+            velocity.y = -0.5f;
         else
             velocity.y += Physics.gravity.y * Time.deltaTime;
 
         cc.Move(velocity * Time.deltaTime);
     }
-    public void Jump(float jumpHeight) 
+    public void Jump(float jumpHeight)
     {
         Debug.Log("Jumping with height: " + jumpHeight);
         if (isGrounded)
