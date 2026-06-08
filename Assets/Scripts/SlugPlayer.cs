@@ -113,12 +113,6 @@ public class SlugPlayer : NetworkBehaviour
         Cursor.visible = false;
         Debug.Log($"[SlugPlayer] After SetupInput - moveAction.enabled={moveAction.enabled}, lookAction.enabled={lookAction.enabled}, jumpAction.enabled={jumpAction.enabled}");
 
-        // Register with GameManager so it can attach NetworkHealth listeners.
-        if (GameManager.Instance != null)
-            GameManager.Instance.RegisterSlug(this);
-        else
-            Debug.LogWarning("[SlugPlayer] GameManager.Instance is null on spawn.");
-
         // Register with TaskManager so it can discover and initialise our tasks.
         var taskManager = FindObjectOfType<TaskManager>();
         if (taskManager != null)
@@ -196,9 +190,9 @@ public class SlugPlayer : NetworkBehaviour
 
         if (uiActive) velocity = Vector3.zero;
 
-        if(uiActive) taskCanvas.SetActive(false);
+        if (uiActive) taskCanvas.SetActive(false);
         else taskCanvas.SetActive(true);
-        
+
         Cursor.lockState = uiActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = uiActive;
     }
@@ -337,7 +331,7 @@ public class SlugPlayer : NetworkBehaviour
         spawnedPropVisual.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         spawnedPropVisual.name = $"[PropVisual] {prop.DisplayName}";
 
-        // Remove physics/logic — this is PURELY visual, the CharacterController handles collision
+        // Remove physics/logic ï¿½ this is PURELY visual, the CharacterController handles collision
         foreach (var rb in spawnedPropVisual.GetComponentsInChildren<Rigidbody>()) Destroy(rb);
         foreach (var col in spawnedPropVisual.GetComponentsInChildren<Collider>()) Destroy(col);
         foreach (var pai in spawnedPropVisual.GetComponentsInChildren<PropInteractable>()) Destroy(pai);

@@ -91,6 +91,13 @@ public class GameManager : MonoBehaviour
     {
         if (currentGameState != GameEndState.Active) return;
 
+        // LoadScene must only be called from the server
+        if (!NetworkManager.Singleton.IsServer)
+        {
+            Debug.LogWarning("[GameManager] EndGame called on client — ignoring.");
+            return;
+        }
+
         currentGameState = endState;
         Time.timeScale = 1f;
         OnGameEnd?.Invoke(endState);

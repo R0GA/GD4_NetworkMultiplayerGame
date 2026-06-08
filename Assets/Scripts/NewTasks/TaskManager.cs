@@ -32,8 +32,15 @@ public class TaskManager : NetworkBehaviour
         if (taskListPanel != null)
             taskListPanel.SetActive(IsOwner);
 
-        if (GameManager.Instance != null)
-            GameManager.Instance.RegisterTaskManager(this);
+        // Register on server only — EndGame calls NetworkManager.SceneManager.LoadScene
+        // which must run server-side, so the listener must be attached there too.
+        if (IsServer)
+        {
+            if (GameManager.Instance != null)
+                GameManager.Instance.RegisterTaskManager(this);
+            else
+                Debug.LogWarning("[TaskManager] GameManager.Instance is null on spawn.");
+        }
     }
 
     public override void OnNetworkDespawn()
@@ -140,7 +147,11 @@ public class TaskManager : NetworkBehaviour
 
         allDone = true;
         Debug.Log("[TaskManager] All tasks completed!");
-        OnAllTasksCompleted?.Invoke();
+
+        // Only invoke on the server — GameManager.EndGame calls
+        // NetworkManager.SceneManager.LoadScene which is server-authoritative.
+        if (IsServer)
+            OnAllTasksCompleted?.Invoke();
     }
 
     public bool IsTaskComplete(int index) =>

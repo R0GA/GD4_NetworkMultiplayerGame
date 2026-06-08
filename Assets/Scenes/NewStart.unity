@@ -11704,7 +11704,7 @@ MonoBehaviour:
   lobbyPanel: {fileID: 1308422629}
   ipInput: {fileID: 1920531292}
   portInput: {fileID: 2113830392}
-  defaultIp: 127.0.0.1
+  defaultIp: 
   defaultPort: 7777
   transport: {fileID: 1772163838}
   networkManager: {fileID: 1772163839}
