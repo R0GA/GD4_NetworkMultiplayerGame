@@ -1408,7 +1408,7 @@ Transform:
   m_GameObject: {fileID: 1863728242528542431}
   serializedVersion: 2
   m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 1.2046974, y: 0.7635441, z: 0.02173233}
+  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4261,7 +4261,7 @@ Transform:
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
   m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 1.2046974, y: 0.7635441, z: 0.02173233}
+  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6523,6 +6523,7 @@ GameObject:
   - component: {fileID: 3805565169597485108}
   - component: {fileID: 4641750736328402292}
   - component: {fileID: 7703065750973466920}
+  - component: {fileID: 5010416178371705256}
   m_Layer: 7
   m_Name: Slug
   m_TagString: Slug
@@ -6876,6 +6877,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5010416178371705256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023558797097434753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42868ed072a265429f886bbf23a415d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlugFootstepAudio
+  ShowTopMostFoldoutHeaderGroup: 1
+  squelchClips:
+  - {fileID: 8300000, guid: 888b9ebeeaa54d74285813cfbcbd7805, type: 3}
+  - {fileID: 8300000, guid: fac861b484743b343a6dcb7a572c36ff, type: 3}
+  - {fileID: 8300000, guid: 8230a2f1d20c89e45935bc8223eda91b, type: 3}
+  - {fileID: 8300000, guid: cb7622d65480fd641aded701c599d76b, type: 3}
+  stepInterval: 0.5
+  moveThreshold: 0.1
+  basePitch: 1
+  pitchVariance: 0.2
+  stepVolume: 0.6
+  volumeVariance: 0.1
+  minDistance: 1
+  maxDistance: 8
 --- !u!1 &6226012589588712748
 GameObject:
   m_ObjectHideFlags: 0
