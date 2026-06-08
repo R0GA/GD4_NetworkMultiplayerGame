@@ -1,0 +1,2248 @@
+fileFormatVersion: 2
+guid: 175f0a6e42ef98446863980ae7589679
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11023
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e3bcd930a94ca419814e9a5ff268e0
+      internalID: 1581165686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 11023
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48edf106c23c1034ebc28ab95a5d92c4
+      internalID: -1412691733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 11023
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01e5843c62b70a04783daf67b8d315b8
+      internalID: -868673874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 11023
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbbfb6db6175b694a8a7b7a60a111921
+      internalID: -1414865293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10522
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd023b48ed3ba3f49830efed204fbd4c
+      internalID: -1387077496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 10522
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5fa77e75f9ef34b9c9c63392c87cd8
+      internalID: -1660499381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 10522
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b394263ac9ad1c64d865a1311f6c3adb
+      internalID: -453804813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 10522
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94abdcc40ced1744942cbf2c3dc1a99
+      internalID: -428623601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10021
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e970354925ac5c44b2892643980b96a
+      internalID: 940177619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 10021
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513b6e198bc88604291d36caf6a10f3a
+      internalID: -1896794188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 10021
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91c40369bd22cd74b85fab7eec69df10
+      internalID: 2120025575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 10021
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09f28f86b0b6614d9e4fe0b7dc932b3
+      internalID: -228555086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9520
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c11de4057500a4291008d9048d2b33
+      internalID: 430419012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 9520
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee24411f5c066f04088f2b89af5cef73
+      internalID: 1394906161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 9520
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf82f8661c05c094199f1318bd7429da
+      internalID: 172486736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 9520
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffcb33a554a57824b9ee9edede0b4487
+      internalID: 576115596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9019
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6677a3c484f8d0342b1114808c806bb7
+      internalID: 1889329700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 9019
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1baa27b4cec71e41963133677a86181
+      internalID: -1298446670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 9019
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f25ff9fa5f95e41a3ca244decd1ec6
+      internalID: 976983547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 9019
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfde4ade9de2e24abbd8c5907b4ed9a
+      internalID: 639673208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8518
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595224862186acc40b6fd6ae2d54aa4a
+      internalID: 2029717625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 8518
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5167714533049ee4f86b9d1489e5775d
+      internalID: 153550121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 8518
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6f5f511f41ab14c95fd394aa8713ce
+      internalID: -355681204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 8518
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4b66c06fe101a4f91eaee1f86f6717
+      internalID: 286208017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8017
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3c5ec3fca074e48afa5c8928598f19
+      internalID: 1447373678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 8017
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11d824b703625447a4864af8a15c40a
+      internalID: 858986085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 8017
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585737af3fc8c3744ae333298c478179
+      internalID: -728733154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 8017
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb20661d78ce194689e54df2726f927
+      internalID: -1412385750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7516
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6f40dfccc26bf4d91a2cda19ad3501
+      internalID: 1794364136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 7516
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f498c07f08c383b4abf7e0a72793f6a2
+      internalID: -163997301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 7516
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c8e4f68cbdcf4d42bb3977c3dcf3668
+      internalID: 1981026925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 7516
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e42986a8239af44b5c847c59212449
+      internalID: -541263038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7015
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9ec782417d00342ac1f747bb8ef5be
+      internalID: -1693054367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 7015
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 600225542f831c441ab0c07bce5a7b7a
+      internalID: -958467803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 7015
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224e25b17e2da334ea8b702bcd789893
+      internalID: 1850735607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 7015
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d45acbd104ca3946b2b963461f6fcc8
+      internalID: -95065084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6514
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af3dc8aeb2de87749b15df1bbe406390
+      internalID: -1128399065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 6514
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a077400dee1d54f9f76f7c96f7722e
+      internalID: 139703237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 6514
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68cdd825e6611e84f8bc01a5633def0d
+      internalID: 1955856981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 6514
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e7b25d89cb6f74f814ee8fd5ea6b51
+      internalID: 949538159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6013
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa3608de3cad0c42a89a6b429bd9d51
+      internalID: -84042039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 6013
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb52cfb7de550b041a9103a6b146fc03
+      internalID: -1769489632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 6013
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9be4470b7ae546540a5d2dfb804e6515
+      internalID: -469616454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_43
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 6013
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc4584177c8aa242a1fb97b0967fe26
+      internalID: 5048631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5512
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba0978a4e410f14399bfa4fef436585
+      internalID: -1091883400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_45
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 5512
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c69b896aec4d5e642909b8917dcfe12c
+      internalID: 1895476079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_46
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 5512
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1df1aa1db897374fa9099e1c4f0e84d
+      internalID: 1735715997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_47
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 5512
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40917aef07af043478d8a491d3e7848c
+      internalID: 1863096810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5011
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784ab7fa086a8fa4598515768ee5f8d4
+      internalID: -154364054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_49
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 5011
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5addf0fed4bdc4ba452884f582f057
+      internalID: -755431165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_50
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 5011
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f057490b16df4543b98bde1c08b56bb
+      internalID: -577778296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_51
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 5011
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea02ecbf7f0234d4c9affbd22b07513e
+      internalID: 1907323087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4510
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f369f9ea30d74c4bbe84e30cfdc175b
+      internalID: -2038466573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_53
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 4510
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa060400e1efbf49adacec804b8fd9a
+      internalID: 1329268029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_54
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 4510
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548bc7fb7948fa64381f4820ce8d75c0
+      internalID: 986426901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_55
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 4510
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e223dd5dd597194a9b0fc91ad60131e
+      internalID: 1531207218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4009
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 238d00478f973e14097f8b37eebfeb56
+      internalID: 1402937724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_57
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 4009
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74f725a180dc2ae46a72ace33a909c0c
+      internalID: -1850137666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_58
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 4009
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e014e4b27f3dad34c9a39f44649a120e
+      internalID: -274778661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_59
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 4009
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43b04237f79fd247959676d7d015d01
+      internalID: 745820938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3508
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bbf92da4bc8c054cb4432ee1ccb3326
+      internalID: 673250707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_61
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 3508
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a923746c3e2be5e48a21e76db1d62c52
+      internalID: 1735097290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_62
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 3508
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 899198335b0a95641a9e5bb46e7f07f7
+      internalID: 1042287630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_63
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 3508
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bdd1889d8efbcf47b5a1e4baa77c593
+      internalID: 1209620368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3007
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeacd9a77c3529d42ac9dfe535ac9f60
+      internalID: -1949971872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_65
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 3007
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0558a09501853f4ba324f3c90856963
+      internalID: -1164612603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_66
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 3007
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3560cfca983d5459e42b354e78b793
+      internalID: -540873102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_67
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 3007
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec1228f1c967b34b8f29b53bbf6bedf
+      internalID: -740880784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_68
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2506
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9b6897077fdd44ebdbeefa12eb874e
+      internalID: -2087248989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_69
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 2506
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda4dd75632b7614ba343e121d0fc911
+      internalID: -1351721575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_70
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 2506
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fd73e2e64bb71646a50a633e4859717
+      internalID: 1794956598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_71
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 2506
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e165ef5c3f3b9834abbab914c7818246
+      internalID: -295519821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2005
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0105abc2e54e994f89e8841dd09afe4
+      internalID: -708909209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_73
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 2005
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e1c57b641211240a9c50c3aea2accf
+      internalID: 192047984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_74
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 2005
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26d5a985339bca447a642f10b31af6a0
+      internalID: 1012235473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_75
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 2005
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c47c6e20021a1e46a482857eef5b589
+      internalID: -482123829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1504
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b945318ff2560042a094d8e256ec3c8
+      internalID: -480676405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_77
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 1504
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 712f4ca0a7503364a8db5017eafc4648
+      internalID: -1153750907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_78
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 1504
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c64335753decc44b1802fc52966a6d
+      internalID: -911566724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_79
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1504
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa4e4250a32e3548926ab8d56692e44
+      internalID: 1369015975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1003
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff6ab063a952f44386ce39598fdbdd5
+      internalID: -1387497265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_81
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 1003
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f7b3710f3b6684994f44c8c98419a0
+      internalID: 299566765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_82
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 1003
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beab7bbab92f9034194553f9c83a7bcc
+      internalID: 178345597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_83
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1003
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 354deaad6eb4d8747bdb16972b8fda7a
+      internalID: -1768955248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 502
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d38782c3c97d1346918bf21956edb3a
+      internalID: -1304023789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_85
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 502
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a278f33f6716bbd4b9a0f213aeda9f89
+      internalID: -2035229895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_86
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 502
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c5f0f68c2d68842b91b193b4284c01
+      internalID: 904752679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_87
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 502
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd427d0cfdb84747bdd1136f093e0b0
+      internalID: -1107602867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_88
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e28e6bf7680f140a643e607b5b7e24
+      internalID: -1020402913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_89
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 1
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5595ed43438eccb4fa2257408e7e5a4e
+      internalID: 1955049182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_90
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 1
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2072555524008b14ebd2c9c08a2c30e6
+      internalID: -1410049882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AstroHUDGIFOne-sprite-sheet_91
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1
+        width: 501
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9c335c76bee87e49bcdeafccc9ce12f
+      internalID: 753025379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4c756f16833902946bbecabea92c7b37
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":23.0},"gridSpriteSize":{"x":501.0,"y":501.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      AstroHUDGIFOne-sprite-sheet_0: 1581165686
+      AstroHUDGIFOne-sprite-sheet_1: -1412691733
+      AstroHUDGIFOne-sprite-sheet_10: 2120025575
+      AstroHUDGIFOne-sprite-sheet_11: -228555086
+      AstroHUDGIFOne-sprite-sheet_12: 430419012
+      AstroHUDGIFOne-sprite-sheet_13: 1394906161
+      AstroHUDGIFOne-sprite-sheet_14: 172486736
+      AstroHUDGIFOne-sprite-sheet_15: 576115596
+      AstroHUDGIFOne-sprite-sheet_16: 1889329700
+      AstroHUDGIFOne-sprite-sheet_17: -1298446670
+      AstroHUDGIFOne-sprite-sheet_18: 976983547
+      AstroHUDGIFOne-sprite-sheet_19: 639673208
+      AstroHUDGIFOne-sprite-sheet_2: -868673874
+      AstroHUDGIFOne-sprite-sheet_20: 2029717625
+      AstroHUDGIFOne-sprite-sheet_21: 153550121
+      AstroHUDGIFOne-sprite-sheet_22: -355681204
+      AstroHUDGIFOne-sprite-sheet_23: 286208017
+      AstroHUDGIFOne-sprite-sheet_24: 1447373678
+      AstroHUDGIFOne-sprite-sheet_25: 858986085
+      AstroHUDGIFOne-sprite-sheet_26: -728733154
+      AstroHUDGIFOne-sprite-sheet_27: -1412385750
+      AstroHUDGIFOne-sprite-sheet_28: 1794364136
+      AstroHUDGIFOne-sprite-sheet_29: -163997301
+      AstroHUDGIFOne-sprite-sheet_3: -1414865293
+      AstroHUDGIFOne-sprite-sheet_30: 1981026925
+      AstroHUDGIFOne-sprite-sheet_31: -541263038
+      AstroHUDGIFOne-sprite-sheet_32: -1693054367
+      AstroHUDGIFOne-sprite-sheet_33: -958467803
+      AstroHUDGIFOne-sprite-sheet_34: 1850735607
+      AstroHUDGIFOne-sprite-sheet_35: -95065084
+      AstroHUDGIFOne-sprite-sheet_36: -1128399065
+      AstroHUDGIFOne-sprite-sheet_37: 139703237
+      AstroHUDGIFOne-sprite-sheet_38: 1955856981
+      AstroHUDGIFOne-sprite-sheet_39: 949538159
+      AstroHUDGIFOne-sprite-sheet_4: -1387077496
+      AstroHUDGIFOne-sprite-sheet_40: -84042039
+      AstroHUDGIFOne-sprite-sheet_41: -1769489632
+      AstroHUDGIFOne-sprite-sheet_42: -469616454
+      AstroHUDGIFOne-sprite-sheet_43: 5048631
+      AstroHUDGIFOne-sprite-sheet_44: -1091883400
+      AstroHUDGIFOne-sprite-sheet_45: 1895476079
+      AstroHUDGIFOne-sprite-sheet_46: 1735715997
+      AstroHUDGIFOne-sprite-sheet_47: 1863096810
+      AstroHUDGIFOne-sprite-sheet_48: -154364054
+      AstroHUDGIFOne-sprite-sheet_49: -755431165
+      AstroHUDGIFOne-sprite-sheet_5: -1660499381
+      AstroHUDGIFOne-sprite-sheet_50: -577778296
+      AstroHUDGIFOne-sprite-sheet_51: 1907323087
+      AstroHUDGIFOne-sprite-sheet_52: -2038466573
+      AstroHUDGIFOne-sprite-sheet_53: 1329268029
+      AstroHUDGIFOne-sprite-sheet_54: 986426901
+      AstroHUDGIFOne-sprite-sheet_55: 1531207218
+      AstroHUDGIFOne-sprite-sheet_56: 1402937724
+      AstroHUDGIFOne-sprite-sheet_57: -1850137666
+      AstroHUDGIFOne-sprite-sheet_58: -274778661
+      AstroHUDGIFOne-sprite-sheet_59: 745820938
+      AstroHUDGIFOne-sprite-sheet_6: -453804813
+      AstroHUDGIFOne-sprite-sheet_60: 673250707
+      AstroHUDGIFOne-sprite-sheet_61: 1735097290
+      AstroHUDGIFOne-sprite-sheet_62: 1042287630
+      AstroHUDGIFOne-sprite-sheet_63: 1209620368
+      AstroHUDGIFOne-sprite-sheet_64: -1949971872
+      AstroHUDGIFOne-sprite-sheet_65: -1164612603
+      AstroHUDGIFOne-sprite-sheet_66: -540873102
+      AstroHUDGIFOne-sprite-sheet_67: -740880784
+      AstroHUDGIFOne-sprite-sheet_68: -2087248989
+      AstroHUDGIFOne-sprite-sheet_69: -1351721575
+      AstroHUDGIFOne-sprite-sheet_7: -428623601
+      AstroHUDGIFOne-sprite-sheet_70: 1794956598
+      AstroHUDGIFOne-sprite-sheet_71: -295519821
+      AstroHUDGIFOne-sprite-sheet_72: -708909209
+      AstroHUDGIFOne-sprite-sheet_73: 192047984
+      AstroHUDGIFOne-sprite-sheet_74: 1012235473
+      AstroHUDGIFOne-sprite-sheet_75: -482123829
+      AstroHUDGIFOne-sprite-sheet_76: -480676405
+      AstroHUDGIFOne-sprite-sheet_77: -1153750907
+      AstroHUDGIFOne-sprite-sheet_78: -911566724
+      AstroHUDGIFOne-sprite-sheet_79: 1369015975
+      AstroHUDGIFOne-sprite-sheet_8: 940177619
+      AstroHUDGIFOne-sprite-sheet_80: -1387497265
+      AstroHUDGIFOne-sprite-sheet_81: 299566765
+      AstroHUDGIFOne-sprite-sheet_82: 178345597
+      AstroHUDGIFOne-sprite-sheet_83: -1768955248
+      AstroHUDGIFOne-sprite-sheet_84: -1304023789
+      AstroHUDGIFOne-sprite-sheet_85: -2035229895
+      AstroHUDGIFOne-sprite-sheet_86: 904752679
+      AstroHUDGIFOne-sprite-sheet_87: -1107602867
+      AstroHUDGIFOne-sprite-sheet_88: -1020402913
+      AstroHUDGIFOne-sprite-sheet_89: 1955049182
+      AstroHUDGIFOne-sprite-sheet_9: -1896794188
+      AstroHUDGIFOne-sprite-sheet_90: -1410049882
+      AstroHUDGIFOne-sprite-sheet_91: 753025379
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
