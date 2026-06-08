@@ -14,12 +14,15 @@ public class NetworkProjectile : NetworkBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Projectile collided with " + collision.collider.name);
         if (!IsServer) return;
 
         var health = collision.collider.GetComponentInParent<NetworkHealth>();
-        if(health != null)
+        Debug.Log("Projectile hit " + collision.collider.name + " with health: " + (health != null));
+        if (health != null)
         {
             health.TakeDamageServerRpc(damage);
+            Debug.Log("Projectile dealt " + damage + " damage to " + collision.collider.name);
         }
         Despawn();  
     }

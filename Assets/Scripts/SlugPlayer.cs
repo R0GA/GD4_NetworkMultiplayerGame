@@ -9,7 +9,7 @@ public class SlugPlayer : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private Transform playerVisualRoot;
-    [SerializeField] private Canvas taskCanvas;
+    [SerializeField] private GameObject taskCanvas;
     private AudioListener audioListener;
 
     [SerializeField] private CinemachineInputAxisController cinemachineInputController;
@@ -85,6 +85,15 @@ public class SlugPlayer : NetworkBehaviour
         if (networkPropIndex.Value >= 0)
             ApplyPropVisual(networkPropIndex.Value);
 
+        // Register with GameManager on the SERVER (where OnDeath fires)
+        if (IsServer)
+        {
+            if (GameManager.Instance != null)
+                GameManager.Instance.RegisterSlug(this);
+            else
+                Debug.LogWarning("[SlugPlayer] GameManager.Instance is null on spawn.");
+        }
+
         if (!IsOwner)
         {
             if (mainCamera) mainCamera.enabled = false;
@@ -92,13 +101,13 @@ public class SlugPlayer : NetworkBehaviour
             if (pi) pi.enabled = false;
             if (interactHintUI) interactHintUI.SetActive(false);
             if (pickupHintUI) pickupHintUI.SetActive(false);
-            if (taskCanvas) taskCanvas.enabled = false;
+            if (taskCanvas) taskCanvas.SetActive(false);
             return;
         }
 
         if (mainCamera) mainCamera.enabled = true;
         if (audioListener) audioListener.enabled = true;
-        if (taskCanvas) taskCanvas.enabled = true;
+        if (taskCanvas) taskCanvas.SetActive(true);
         SetupInput();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -187,6 +196,9 @@ public class SlugPlayer : NetworkBehaviour
 
         if (uiActive) velocity = Vector3.zero;
 
+        if(uiActive) taskCanvas.SetActive(false);
+        else taskCanvas.SetActive(true);
+        
         Cursor.lockState = uiActive ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = uiActive;
     }

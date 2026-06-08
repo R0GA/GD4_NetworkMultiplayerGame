@@ -182,7 +182,7 @@ public class WireTask : BaseTask
         conn.isSource = isSource;
         conn.correctWireIndex = index;
 
-        AddSocketLabel(go.transform, def.label, def.color);
+        //AddSocketLabel(go.transform, def.label, def.color);
         return conn;
     }
 
