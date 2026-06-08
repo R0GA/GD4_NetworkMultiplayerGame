@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3259823450
+  GlobalObjectIdHash: 1139382641
   InScenePlacedSourceGlobalObjectIdHash: 1139382641
   DeferredDespawnTick: 0
   Ownership: 1
@@ -326,7 +326,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5122656311007252814, guid: b61563b0d1f16b54fb23e8a79b855e38, type: 3}
   firePoint: {fileID: 8672814117082932751}
   projectileSpeed: 20
-  targetDistance: 30
+  repulsorBlast: {fileID: 1003394971968487168}
+  targetDistance: 15
 --- !u!114 &810900932998658865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +559,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -5461,7 +5462,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10616,12 +10617,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7719390997232696221}
-  - {fileID: 1929567244323499087}
   - {fileID: 5148774532958911450}
-  - {fileID: 1321721851742639741}
   - {fileID: 4331202538039599611}
   - {fileID: 2475344373085582942}
+  - {fileID: 7719390997232696221}
+  - {fileID: 1321721851742639741}
+  - {fileID: 1929567244323499087}
   - {fileID: 4223072333244204045}
   m_Father: {fileID: 6609191270306592751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11419,7 +11420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.97735846, g: 0.97735846, b: 0.97735846, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
