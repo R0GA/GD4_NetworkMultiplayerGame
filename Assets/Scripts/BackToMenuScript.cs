@@ -4,6 +4,6 @@ public class BackToMenuScript : MonoBehaviour
 {
     public void BackToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("JoinMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("NewStart");
     }
 }

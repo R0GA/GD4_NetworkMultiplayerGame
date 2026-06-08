@@ -6,29 +6,21 @@ using Unity.Netcode;
 public class SlugFootstepAudio : NetworkBehaviour
 {
     [Header("Squelch Clips")]
-    [Tooltip("Add your 4 squelch audio clips here")]
     [SerializeField] private AudioClip[] squelchClips;
 
     [Header("Timing")]
-    [Tooltip("Time in seconds between each squelch step")]
     [SerializeField] private float stepInterval = 0.5f;
-    [Tooltip("Only play sounds if movement speed exceeds this threshold")]
     [SerializeField] private float moveThreshold = 0.1f;
 
     [Header("Pitch Randomisation")]
-    [Tooltip("Base pitch — 1 is normal speed")]
     [SerializeField] private float basePitch = 1f;
-    [Tooltip("How much pitch can vary up or down randomly each step")]
     [SerializeField] private float pitchVariance = 0.2f;
 
     [Header("Volume")]
-    [Tooltip("Base volume of each squelch")]
-    [SerializeField] [Range(0f, 1f)] private float stepVolume = 0.6f;
-    [Tooltip("How much volume varies randomly each step")]
-    [SerializeField] [Range(0f, 0.3f)] private float volumeVariance = 0.1f;
+    [SerializeField][Range(0f, 1f)] private float stepVolume = 0.6f;
+    [SerializeField][Range(0f, 0.3f)] private float volumeVariance = 0.1f;
 
     [Header("3D Spatial Settings")]
-    [Tooltip("Shorter than the astronaut — slug should feel like a close-range threat")]
     [SerializeField] private float minDistance = 1f;
     [SerializeField] private float maxDistance = 8f;
 
@@ -36,6 +28,10 @@ public class SlugFootstepAudio : NetworkBehaviour
     private CharacterController cc;
     private SlugPlayer slugPlayer;
     private float stepTimer;
+    private int lastClipIndex = -1;
+    private Vector3 lastPosition;
+    private float currentSpeed;
+    private bool positionInitialised;
 
     private void Awake()
     {
@@ -43,7 +39,8 @@ public class SlugFootstepAudio : NetworkBehaviour
         cc = GetComponent<CharacterController>();
         slugPlayer = GetComponent<SlugPlayer>();
 
-        // Configure 3D spatial audio
+        // Spatial settings for when OTHER clients hear this character.
+        // The owner's local playback bypasses spatial audio entirely (see PlayLocalSquelch).
         audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
         audioSource.minDistance = minDistance;
@@ -52,18 +49,34 @@ public class SlugFootstepAudio : NetworkBehaviour
         audioSource.loop = false;
     }
 
+    public override void OnNetworkSpawn()
+    {
+        lastPosition = transform.position;
+    }
+
     private void Update()
     {
         if (!IsOwner) return;
 
-        // Silence completely when transformed into a prop
+        // Suppress footsteps entirely while the slug is transformed into a prop
         if (slugPlayer != null && slugPlayer.IsTransformed)
         {
             stepTimer = 0f;
+            lastPosition = transform.position;
             return;
         }
 
-        bool isMoving = cc.velocity.magnitude > moveThreshold;
+        if (!positionInitialised)
+        {
+            lastPosition = transform.position;
+            positionInitialised = true;
+            return;
+        }
+
+        currentSpeed = (transform.position - lastPosition).magnitude / Time.deltaTime;
+        lastPosition = transform.position;
+
+        bool isMoving = currentSpeed > moveThreshold;
         bool isGrounded = cc.isGrounded;
 
         if (isMoving && isGrounded)
@@ -71,46 +84,74 @@ public class SlugFootstepAudio : NetworkBehaviour
             stepTimer -= Time.deltaTime;
             if (stepTimer <= 0f)
             {
-                PlaySquelch();
+                int clipIndex = GetRandomClipIndex();
+                float pitch = basePitch + Random.Range(-pitchVariance, pitchVariance);
+                float volume = Mathf.Clamp(stepVolume + Random.Range(-volumeVariance, volumeVariance), 0f, 1f);
+
+                // Play immediately, locally, in 2D for the owner.
+                // The AudioListener is on top of us so spatial audio would always be max volume
+                // regardless of maxDistance — this bypasses that problem cleanly.
+                PlayLocalSquelch(clipIndex, pitch, volume);
+
+                // Broadcast to all OTHER clients so they hear it spatially from this object's position.
+                if (IsServer)
+                    PlaySquelchClientRpc(clipIndex, pitch, volume);
+                else
+                    RequestSquelchServerRpc(clipIndex, pitch, volume);
+
                 stepTimer = stepInterval;
             }
         }
         else
         {
-            // Reset so first step after stopping plays immediately
             stepTimer = 0f;
         }
     }
 
-    private void PlaySquelch()
+    // Owner hears their own footsteps locally in 2D — no spatial calculation needed.
+    private void PlayLocalSquelch(int clipIndex, float pitch, float volume)
     {
-        if (squelchClips == null || squelchClips.Length == 0)
-        {
-            Debug.LogWarning("[SlugFootstepAudio] No squelch clips assigned!");
-            return;
-        }
+        if (squelchClips == null || clipIndex >= squelchClips.Length) return;
 
-        AudioClip clip = GetRandomClip();
-
-        audioSource.pitch = basePitch + Random.Range(-pitchVariance, pitchVariance);
-        float volume = stepVolume + Random.Range(-volumeVariance, volumeVariance);
-
-        audioSource.PlayOneShot(clip, volume);
+        // Temporarily override spatialBlend to 0 (2D) for this one shot,
+        // then restore it so remote clients still hear it spatially.
+        float previousBlend = audioSource.spatialBlend;
+        audioSource.spatialBlend = 0f;
+        audioSource.pitch = pitch;
+        audioSource.PlayOneShot(squelchClips[clipIndex], volume);
+        audioSource.spatialBlend = previousBlend;
     }
 
-    private int lastClipIndex = -1;
-    private AudioClip GetRandomClip()
+    // Called by a pure client — relays up to the server
+    [ServerRpc]
+    private void RequestSquelchServerRpc(int clipIndex, float pitch, float volume)
     {
-        if (squelchClips.Length == 1) return squelchClips[0];
+        PlaySquelchClientRpc(clipIndex, pitch, volume);
+    }
+
+    // Called by the server (directly or via relay) — broadcasts to all clients.
+    // The owner skips playback here because they already played it locally above.
+    [ClientRpc]
+    private void PlaySquelchClientRpc(int clipIndex, float pitch, float volume)
+    {
+        // Owner already played their own step locally — avoid doubling up.
+        if (IsOwner) return;
+
+        if (squelchClips == null || clipIndex >= squelchClips.Length) return;
+        audioSource.pitch = pitch;
+        audioSource.PlayOneShot(squelchClips[clipIndex], volume);
+    }
+
+    private int GetRandomClipIndex()
+    {
+        if (squelchClips == null || squelchClips.Length == 0) return 0;
+        if (squelchClips.Length == 1) return 0;
 
         int index;
-        do
-        {
-            index = Random.Range(0, squelchClips.Length);
-        }
+        do { index = Random.Range(0, squelchClips.Length); }
         while (index == lastClipIndex);
 
         lastClipIndex = index;
-        return squelchClips[index];
+        return index;
     }
 }

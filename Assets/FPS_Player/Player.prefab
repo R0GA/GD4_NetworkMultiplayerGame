@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 1139382641
+  GlobalObjectIdHash: 1962376999
   InScenePlacedSourceGlobalObjectIdHash: 1139382641
   DeferredDespawnTick: 0
   Ownership: 1
@@ -438,7 +438,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -473,7 +473,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -527,19 +527,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FootstepAudio
   ShowTopMostFoldoutHeaderGroup: 1
   footstepClips:
-  - {fileID: 8300000, guid: 8e2025a93552cf24fa5495abadeb0378, type: 3}
   - {fileID: 8300000, guid: cc1f011f869b2814489bd5bb28d52e97, type: 3}
-  - {fileID: 8300000, guid: dcc2e58391cf5814da574c9feaa223b7, type: 3}
-  - {fileID: 8300000, guid: b7905a40cc62d9947bc7ba9f29d311ea, type: 3}
-  - {fileID: 8300000, guid: 8bdc5f67ba2ed5d41a7940277436c01e, type: 3}
-  - {fileID: 8300000, guid: 3bac086250eedc946b5a7dc75d4868c2, type: 3}
-  stepInterval: 0.01
+  stepInterval: 0.5
   moveThreshold: 0.1
   basePitch: 1
   pitchVariance: 0.15
   stepVolume: 1
   volumeVariance: 0.1
-  minDistance: 0
+  minDistance: 1
   maxDistance: 15
 --- !u!114 &4653522830865145955
 MonoBehaviour:
@@ -11228,7 +11223,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8885528668334732723}
   - component: {fileID: 6431230991439069899}
-  - component: {fileID: 4581680994975794555}
   - component: {fileID: 5242007191191927234}
   m_Layer: 0
   m_Name: MM_Camera
@@ -11303,14 +11297,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4581680994975794555
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7063551674142731838}
-  m_Enabled: 1
 --- !u!114 &5242007191191927234
 MonoBehaviour:
   m_ObjectHideFlags: 0

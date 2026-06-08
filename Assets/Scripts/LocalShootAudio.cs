@@ -25,7 +25,7 @@ public class LocalShootAudio : NetworkBehaviour
         audioSource = GetComponent<AudioSource>();
 
         // 2D — fully local, no spatial falloff, slug cannot hear this
-        audioSource.spatialBlend = 0f;
+        //audioSource.spatialBlend = 0f;
         audioSource.playOnAwake = false;
         audioSource.loop = false;
     }
