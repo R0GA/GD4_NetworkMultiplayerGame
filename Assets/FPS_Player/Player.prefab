@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3259823450
+  GlobalObjectIdHash: 1139382641
   InScenePlacedSourceGlobalObjectIdHash: 1139382641
   DeferredDespawnTick: 0
   Ownership: 1
@@ -326,6 +326,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5122656311007252814, guid: b61563b0d1f16b54fb23e8a79b855e38, type: 3}
   firePoint: {fileID: 8672814117082932751}
   projectileSpeed: 20
+  repulsorBlast: {fileID: 1003394971968487168}
   targetDistance: 30
 --- !u!114 &810900932998658865
 MonoBehaviour:
@@ -460,7 +461,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -5363,7 +5364,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10518,12 +10519,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7719390997232696221}
-  - {fileID: 1929567244323499087}
   - {fileID: 5148774532958911450}
   - {fileID: 1321721851742639741}
   - {fileID: 4331202538039599611}
   - {fileID: 2475344373085582942}
+  - {fileID: 7719390997232696221}
+  - {fileID: 1929567244323499087}
   - {fileID: 3653591364887985056}
   - {fileID: 1948972655359682491}
   m_Father: {fileID: 6609191270306592751}
@@ -10586,7 +10587,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5114461763871781566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -11112,7 +11113,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1015
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 867b6210c06bd614586cd489a6825729, type: 2}
   m_TargetDisplay: 0
@@ -11520,7 +11521,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 58f985c9f365b924c866fa3b131a2bbb, type: 2}
   m_TargetDisplay: 0

@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 6029522349719545976}
   - component: {fileID: 6248853712231782709}
   m_Layer: 7
-  m_Name: Camera
+  m_Name: MMCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1029,7 +1029,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1527
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0658f73c97cf5c04a806f181342a85ff, type: 2}
   m_TargetDisplay: 0
@@ -1408,7 +1408,7 @@ Transform:
   m_GameObject: {fileID: 1863728242528542431}
   serializedVersion: 2
   m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
+  m_LocalPosition: {x: 1.2046974, y: 0.7635441, z: 0.02173233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1485,7 +1485,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 3c170688e2471b846bdd5b42223e757d, type: 2}
   m_TargetDisplay: 0
@@ -4261,7 +4261,7 @@ Transform:
   m_GameObject: {fileID: 4470846455833554948}
   serializedVersion: 2
   m_LocalRotation: {x: -0.15896708, y: -0.36550927, z: -0.06350635, w: 0.91493136}
-  m_LocalPosition: {x: 2.343774, y: 0.17119074, z: -1.176391}
+  m_LocalPosition: {x: 1.2046974, y: 0.7635441, z: 0.02173233}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4338,7 +4338,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
