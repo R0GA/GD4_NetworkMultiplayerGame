@@ -65,6 +65,7 @@ public class TaskTrigger : MonoBehaviour
 
     // Cached slug player camera transform used for billboarding world UI.
     private Transform slugCameraTransform;
+    private float nextCameraSearchTime;
 
     private void Awake()
     {
@@ -81,7 +82,13 @@ public class TaskTrigger : MonoBehaviour
     {
         if (slugCameraTransform == null)
         {
-            TryCacheSlugCamera();
+            // Throttled: on the astronaut's machine there is never an owned SlugPlayer,
+            // so this would otherwise run FindObjectsByType every single frame.
+            if (Time.unscaledTime >= nextCameraSearchTime)
+            {
+                nextCameraSearchTime = Time.unscaledTime + 0.5f;
+                TryCacheSlugCamera();
+            }
             return;
         }
 
@@ -144,6 +151,13 @@ public class TaskTrigger : MonoBehaviour
 
         // Show proximity UI; beacon is already visible.
         SetWorldUIVisible(true);
+
+        // Never stack a second subscription if Enter fires twice without an Exit.
+        if (interactAction != null)
+        {
+            interactAction.performed -= OnInteractPerformed;
+            interactAction = null;
+        }
 
         var pi = player.GetComponent<PlayerInput>();
         if (pi != null)

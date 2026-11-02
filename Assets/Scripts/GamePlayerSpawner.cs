@@ -18,6 +18,12 @@ public class GamePlayerSpawner : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
+        // GameManager is DontDestroyOnLoad, so it still holds the previous match's
+        // state (e.g. "AstroDeath"), which blocks every win/lose check. Reset it
+        // before any player spawns and registers.
+        if (GameManager.Instance != null)
+            GameManager.Instance.ResetForNewMatch();
+
         if (!IsServer) return;
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnSceneLoadCompleted;
     }
@@ -27,7 +33,7 @@ public class GamePlayerSpawner : NetworkBehaviour
     {
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
 
-        var lobby = FindObjectOfType<LobbyNetworkManager>();
+        var lobby = FindFirstObjectByType<LobbyNetworkManager>();
         if (lobby == null)
         {
             Debug.LogError("[GamePlayerSpawner] LobbyNetworkManager not found in game scene!");
@@ -56,14 +62,15 @@ public class GamePlayerSpawner : NetworkBehaviour
             playerObj.SpawnAsPlayerObject(clientId);
 
             // Registration with GameManager happens inside each player's own
-            // OnNetworkSpawn (see SlugPlayer / NetworkFPSPlayer), so we don't
-            // need to touch GameManager here.
+            // OnNetworkSpawn (see SlugPlayer / NetworkFPSPlayer).
         }
     }
 
     public override void OnNetworkDespawn()
     {
-        if (NetworkManager.Singleton != null)
-            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
+        // SceneManager can already be null if the NetworkManager is shutting down.
+        var nm = NetworkManager.Singleton;
+        if (nm != null && nm.SceneManager != null)
+            nm.SceneManager.OnLoadEventCompleted -= OnSceneLoadCompleted;
     }
 }

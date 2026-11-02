@@ -10,7 +10,7 @@ public class TaskManager : NetworkBehaviour
     [Tooltip("Leave empty — tasks are discovered from the slug player prefab at runtime.")]
     [SerializeField] private List<BaseTask> allTasks = new();
 
-    [Header("UI  (owner client only)")]
+    [Header("UI  (slug's machine only)")]
     [SerializeField] private GameObject taskListPanel;
     [Tooltip("One GameObject per task, same order as allTasks. Hidden when that task is done.")]
     [SerializeField] private List<GameObject> taskListItems = new();
@@ -23,14 +23,24 @@ public class TaskManager : NetworkBehaviour
         NetworkVariableWritePermission.Server);
 
     private bool allDone = false;
+    private bool tasksBuilt = false;
+
+    // True on the machine that is controlling the slug (shows the task HUD).
+    // NOTE: this replaces the old IsOwner checks. TaskManager is a scene object,
+    // so it is owned by the SERVER, which meant the HUD and task completion only
+    // worked when the host was the slug.
+    private bool isLocalSlugViewer = false;
 
 
     public override void OnNetworkSpawn()
     {
         completedTasksMask.OnValueChanged += OnCompletedMaskChanged;
 
+        // Hidden until RegisterSlugPlayer marks this machine as the slug's.
+        // Uses the current flag (not a hard 'false') so a slug that registered
+        // before this ran doesn't get its HUD switched off again.
         if (taskListPanel != null)
-            taskListPanel.SetActive(IsOwner);
+            taskListPanel.SetActive(isLocalSlugViewer);
 
         // Register on server only — EndGame calls NetworkManager.SceneManager.LoadScene
         // which must run server-side, so the listener must be attached there too.
@@ -49,50 +59,80 @@ public class TaskManager : NetworkBehaviour
     }
 
     /// <summary>
-    /// Discovers all BaseTask components on <paramref name="slugPlayerRoot"/>
-    /// and initialises them. Call this from SlugPlayer.OnNetworkSpawn on the
-    /// owning client (or from any point after the prefab is instantiated).
+    /// Discovers all BaseTask components and initialises them.
+    /// Call from SlugPlayer.OnNetworkSpawn on EVERY peer (the server needs the
+    /// task list to validate completion RPCs), passing isLocalOwner = IsOwner.
     /// </summary>
-    public void RegisterSlugPlayer(GameObject slugPlayerRoot)
+    public void RegisterSlugPlayer(GameObject slugPlayerRoot, bool isLocalOwner = true)
     {
-        if (allTasks.Count == 0)
+        if (!tasksBuilt)
         {
-            allTasks.AddRange(slugPlayerRoot.GetComponentsInChildren<BaseTask>(true));
+            if (allTasks.Count == 0)
+            {
+                allTasks.AddRange(slugPlayerRoot.GetComponentsInChildren<BaseTask>(true));
 
-            // Also pick up any scene-level tasks (terminals, panels, etc.)
-            // that are not children of the player prefab.
-            allTasks.AddRange(FindObjectsByType<BaseTask>(FindObjectsSortMode.None));
+                // Also pick up any scene-level tasks (terminals, panels, etc.),
+                // including inactive ones so every peer sees the same set.
+                allTasks.AddRange(FindObjectsByType<BaseTask>(FindObjectsInactive.Include, FindObjectsSortMode.None));
 
-            // De-duplicate in case both sources returned the same component.
-            var seen = new HashSet<BaseTask>();
-            var dedup = new List<BaseTask>();
-            foreach (var t in allTasks)
-                if (t != null && seen.Add(t)) dedup.Add(t);
-            allTasks = dedup;
+                // De-duplicate in case both sources returned the same component.
+                var seen = new HashSet<BaseTask>();
+                var dedup = new List<BaseTask>();
+                foreach (var t in allTasks)
+                    if (t != null && seen.Add(t)) dedup.Add(t);
+
+                // Task indices are sent over the network, so every peer MUST end up
+                // with the same order. FindObjectsByType gives no ordering guarantee,
+                // so sort deterministically (taskIdentifier must be unique per task).
+                dedup.Sort((a, b) =>
+                {
+                    int c = string.CompareOrdinal(a.taskIdentifier, b.taskIdentifier);
+                    return c != 0 ? c : string.CompareOrdinal(a.name, b.name);
+                });
+
+                allTasks = dedup;
+            }
+            tasksBuilt = true;
         }
 
         for (int i = 0; i < allTasks.Count; i++)
             allTasks[i].Initialise(this, i);
 
-        Debug.Log($"[TaskManager] Initialised {allTasks.Count} task(s).");
+        if (isLocalOwner)
+        {
+            isLocalSlugViewer = true;
+            if (taskListPanel != null)
+            {
+                taskListPanel.SetActive(true);
+                Debug.Log($"[TaskManager] Task list shown (panel active={taskListPanel.activeInHierarchy}, items={taskListItems.Count}).");
+            }
+            else
+                Debug.LogWarning("[TaskManager] taskListPanel is not assigned, so the task list cannot be shown.");
+            RefreshTaskListHud(completedTasksMask.Value);
+        }
+
+        Debug.Log($"[TaskManager] Initialised {allTasks.Count} task(s). localOwner={isLocalOwner}");
     }
 
     public void NotifyTaskCompleted(int taskIndex)
     {
-        if (!IsOwner) return;
+        // Any client (not just the TaskManager's owner) may report completion.
         MarkTaskCompleteServerRpc(taskIndex);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void MarkTaskCompleteServerRpc(int taskIndex)
     {
         if (taskIndex < 0 || taskIndex >= allTasks.Count)
         {
-            Debug.LogWarning($"[TaskManager] Invalid task index {taskIndex}");
+            Debug.LogWarning($"[TaskManager] Invalid task index {taskIndex} (server knows {allTasks.Count} tasks)");
             return;
         }
 
-        completedTasksMask.Value |= (1 << taskIndex);
+        int bit = 1 << taskIndex;
+        if ((completedTasksMask.Value & bit) != 0) return; // already done
+
+        completedTasksMask.Value |= bit;
         CheckAllComplete();
     }
 
@@ -100,22 +140,24 @@ public class TaskManager : NetworkBehaviour
     {
         int newlyCompleted = current & ~previous;
 
-        // Update HUD on the owner client.
-        if (IsOwner)
-        {
-            for (int i = 0; i < taskListItems.Count; i++)
-            {
-                if (taskListItems[i] == null) continue;
-                bool done = (current & (1 << i)) != 0;
-                taskListItems[i].SetActive(!done);
-            }
-        }
+        if (isLocalSlugViewer)
+            RefreshTaskListHud(current);
 
         // Trigger alarms everywhere for every newly-completed task.
         if (newlyCompleted != 0)
             TriggerAlarms(newlyCompleted);
 
         CheckAllComplete();
+    }
+
+    private void RefreshTaskListHud(int mask)
+    {
+        for (int i = 0; i < taskListItems.Count; i++)
+        {
+            if (taskListItems[i] == null) continue;
+            bool done = (mask & (1 << i)) != 0;
+            taskListItems[i].SetActive(!done);
+        }
     }
 
     private void TriggerAlarms(int newlyCompletedMask)

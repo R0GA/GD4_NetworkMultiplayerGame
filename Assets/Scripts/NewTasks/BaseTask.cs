@@ -112,6 +112,13 @@ public abstract class BaseTask : MonoBehaviour
             CloseTask();
     }
 
+    protected virtual void OnDestroy()
+    {
+        // The InputAction lives on a persistent asset; make sure it never keeps
+        // a callback into a destroyed task (e.g. match ended while task was open).
+        UnsubscribeInteractAction();
+    }
+
     protected abstract void OnOpen();
     protected virtual void OnClose() { }
 

@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnDestroy()
+    {
+        if (instance == this) instance = null;
+    }
+
     public enum GameEndState { Active, AstronautWins, SlugTasks, AstroDeath }
 
     private GameEndState currentGameState = GameEndState.Active;
@@ -26,6 +31,36 @@ public class GameManager : MonoBehaviour
     private NetworkFPSPlayer astronautPlayer;
     private SlugPlayer slugPlayer;
     private TaskManager taskManager;
+
+
+    /// <summary>
+    /// Puts the manager back into a clean "match about to start" state.
+    ///
+    /// matchOver = false : called when a game scene spawns. Only resets state; it
+    ///                     deliberately leaves the TaskManager reference and the
+    ///                     OnGameEnd listeners alone, because the new scene's
+    ///                     objects may already have registered / subscribed.
+    /// matchOver = true  : called from the end scene. Also drops the (now destroyed)
+    ///                     TaskManager and clears OnGameEnd listeners that belong to
+    ///                     the previous game scene's destroyed objects.
+    /// </summary>
+    public void ResetForNewMatch(bool matchOver = false)
+    {
+        currentGameState = GameEndState.Active;
+        astronautPlayer = null;
+        slugPlayer = null;
+        Time.timeScale = 1f;
+
+        if (matchOver)
+        {
+            if (taskManager != null)
+                taskManager.OnAllTasksCompleted.RemoveListener(OnTasksCompleted);
+            taskManager = null;
+            OnGameEnd.RemoveAllListeners();
+        }
+
+        Debug.Log($"[GameManager] State reset (matchOver={matchOver}).");
+    }
 
 
     public void RegisterAstronaut(NetworkFPSPlayer player)
@@ -59,6 +94,10 @@ public class GameManager : MonoBehaviour
     public void RegisterTaskManager(TaskManager manager)
     {
         if (taskManager == manager) return;
+
+        if (taskManager != null)
+            taskManager.OnAllTasksCompleted.RemoveListener(OnTasksCompleted);
+
         taskManager = manager;
         taskManager.OnAllTasksCompleted.AddListener(OnTasksCompleted);
         Debug.Log("[GameManager] TaskManager registered.");
@@ -92,7 +131,7 @@ public class GameManager : MonoBehaviour
         if (currentGameState != GameEndState.Active) return;
 
         // LoadScene must only be called from the server
-        if (!NetworkManager.Singleton.IsServer)
+        if (NetworkManager.Singleton == null || !NetworkManager.Singleton.IsServer)
         {
             Debug.LogWarning("[GameManager] EndGame called on client — ignoring.");
             return;

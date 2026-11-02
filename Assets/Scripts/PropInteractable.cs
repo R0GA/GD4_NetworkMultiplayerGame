@@ -5,6 +5,10 @@ public class PropInteractable : MonoBehaviour
 {
     public static readonly Dictionary<int, PropInteractable> Registry = new();
 
+    // Static data survives when domain reload is disabled in the editor.
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStatics() => Registry.Clear();
+
     [SerializeField] private string propDisplayName;
     public string DisplayName => string.IsNullOrEmpty(propDisplayName) ? gameObject.name : propDisplayName;
 
@@ -13,7 +17,7 @@ public class PropInteractable : MonoBehaviour
     private void Awake()
     {
         string path = GetHierarchyPath();
-        PropIndex = path.GetHashCode();
+        PropIndex = StableHash(path);
 
         if (Registry.ContainsKey(PropIndex))
         {
@@ -27,7 +31,21 @@ public class PropInteractable : MonoBehaviour
 
     private void OnDestroy()
     {
-        Registry.Remove(PropIndex);
+        // Only remove our own entry (a collision loser must not evict the winner).
+        if (Registry.TryGetValue(PropIndex, out var existing) && existing == this)
+            Registry.Remove(PropIndex);
+    }
+
+    // string.GetHashCode() is not guaranteed to match between processes/platforms,
+    // and this id is sent over the network, so use a fixed FNV-1a hash instead.
+    private static int StableHash(string s)
+    {
+        unchecked
+        {
+            uint h = 2166136261;
+            foreach (char c in s) { h ^= c; h *= 16777619; }
+            return (int)h;
+        }
     }
 
     private string GetHierarchyPath()

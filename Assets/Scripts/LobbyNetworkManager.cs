@@ -42,6 +42,9 @@ public class LobbyNetworkManager : NetworkBehaviour
 
     public override void OnNetworkDespawn()
     {
+        if (IsServer && NetworkManager.Singleton != null)
+            NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
+
         ReadyClients.OnListChanged -= OnReadyListChanged;
         SaboteurClientId.OnValueChanged -= OnRoleChanged;
         SeekerClientId.OnValueChanged -= OnRoleChanged;

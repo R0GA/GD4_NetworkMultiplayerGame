@@ -68,6 +68,10 @@ public class Menu : MonoBehaviour
 
     private void OnServerStarted()
     {
+        // Remove any lobby object left over from a previous match.
+        foreach (var old in FindObjectsByType<LobbyNetworkManager>(FindObjectsSortMode.None))
+            Destroy(old.gameObject);
+
         if (lobbyManagerPrefab)
         {
             GameObject lobbyObj = Instantiate(lobbyManagerPrefab);

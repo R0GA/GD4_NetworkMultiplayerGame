@@ -94,6 +94,14 @@ public class SlugPlayer : NetworkBehaviour
                 Debug.LogWarning("[SlugPlayer] GameManager.Instance is null on spawn.");
         }
 
+        // Register the task list on EVERY peer. The server needs it to validate
+        // completion RPCs; the owner also uses it to show the task HUD.
+        var taskManager = FindFirstObjectByType<TaskManager>(FindObjectsInactive.Include);
+        if (taskManager != null)
+            taskManager.RegisterSlugPlayer(gameObject, IsOwner);
+        else
+            Debug.LogWarning("[SlugPlayer] TaskManager not found in scene.");
+
         if (!IsOwner)
         {
             if (mainCamera) mainCamera.enabled = false;
@@ -112,13 +120,6 @@ public class SlugPlayer : NetworkBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Debug.Log($"[SlugPlayer] After SetupInput - moveAction.enabled={moveAction.enabled}, lookAction.enabled={lookAction.enabled}, jumpAction.enabled={jumpAction.enabled}");
-
-        // Register with TaskManager so it can discover and initialise our tasks.
-        var taskManager = FindObjectOfType<TaskManager>();
-        if (taskManager != null)
-            taskManager.RegisterSlugPlayer(gameObject);
-        else
-            Debug.LogWarning("[SlugPlayer] TaskManager not found in scene.");
     }
 
     public override void OnNetworkDespawn()
